@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GTA New Shop - Armes</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Staatliches&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary-black:#0f0f0f;
+  --secondary-black:#171717;
+  --primary-purple:#8a2be2;
+  --white:#fff;
+  --transition:0.3s;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:var(--primary-black);color:var(--white);overflow-x:hidden;transition: background var(--transition), color var(--transition);}
+
+/* Header */
+header{display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;position:fixed;width:100%;top:0;background:var(--secondary-black);z-index:1000;transition:background var(--transition);}
+.logo img{height:75px;}
+.nav-left{display:flex;align-items:center;gap:2rem;}
+.nav-left ul{display:flex;flex-direction:row;gap:2rem;align-items:center;}
+.nav-left ul li a{color:var(--white);font-weight:500;transition:color var(--transition);text-decoration:none;}
+.nav-left ul li a:hover{color:var(--primary-purple);}
+.gcoins-btn{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;font-weight:600;cursor:pointer;transition:background var(--transition), transform var(--transition);}
+.gcoins-btn:hover{background:#9d4edd;transform:scale(1.05);}
+.header-right{display:flex;align-items:center;gap:1rem;}
+.header-right button{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;cursor:pointer;transition:background var(--transition), transform var(--transition);}
+.header-right button:hover{background:#9d4edd;transform:scale(1.05);}
+.search-bar{position:relative;}
+.search-bar input{padding:0.4rem 1rem;border-radius:50px;border:none;outline:none;width:150px;background:var(--secondary-black);color:#fff;}
+.search-bar input::placeholder{color:rgba(255,255,255,0.5);}
+.search-bar i{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.7);}
+
+/* Main */
+main{padding:8rem 3rem 5rem 3rem;}
+
+/* Barre armes animée */
+.weapon-bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:2rem 3rem;
+  border-radius:12px;
+  margin-bottom:3rem;
+  width:100%;
+  max-width:1400px;
+  margin-left:auto;
+  margin-right:auto;
+  background: linear-gradient(-45deg, #8a2be2, #4b0082, #171717, #0f0f0f);
+  background-size:400% 400%;
+  animation: gradientMove 12s ease infinite;
+  color: #fff;
+}
+.weapon-text{font-family:'Staatliches',sans-serif;font-size:2rem;font-weight:500;}
+.weapon-description{font-size:1rem;max-width:600px;text-align:right;color:#fff;}
+@keyframes gradientMove{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+
+/* Grille armes 3x3 horizontale */
+.weapon-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:2rem;
+  justify-items:center;
+}
+.weapon-card{
+  display:flex;
+  background:var(--secondary-black);
+  border-radius:12px;
+  overflow:hidden;
+  width:100%;
+  max-width:350px;
+  transition:transform var(--transition), box-shadow var(--transition);
+  cursor:pointer;
+  text-decoration:none;
+  color:inherit;
+}
+.weapon-card img{
+  width:150px;
+  height:150px;
+  object-fit:cover;
+}
+.weapon-info{
+  padding:1rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  flex:1;
+  gap:0.5rem;
+}
+.weapon-info h3{font-size:1.2rem;color:var(--white);text-align:center;}
+.weapon-info span{font-weight:600;color:var(--primary-purple);}
+.buy-btn{
+  background:var(--primary-purple);
+  border:none;
+  padding:0.5rem 1rem;
+  border-radius:50px;
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition:background var(--transition), transform var(--transition), box-shadow 0.3s;
+}
+.buy-btn:hover{
+  background:#9d4edd;
+  transform:scale(1.05);
+  box-shadow:0 0 10px rgba(138,43,226,0.7);
+}
+.weapon-card:hover{transform:scale(1.02);box-shadow:0 0 20px var(--primary-purple);}
+
+/* Modal 3D avec image de l'arme en fond */
+.modal{
+  display:none;
+  position:fixed;
+  z-index:2000;
+  left:0;top:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.7);
+  justify-content:center;align-items:center;
+  perspective:1200px;
+}
+.modal-content{
+  position:relative;
+  border-radius:16px;
+  width:90%;
+  max-width:800px;
+  padding:2rem;
+  text-align:center;
+  background:none;
+  transform: rotateY(-20deg) scale(0.5);
+  opacity:0;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  box-shadow:0 0 50px rgba(138,43,226,0.8);
+}
+.modal-bg {
+  position:relative;
+  width:100%;
+  height:400px;
+  margin-bottom:1rem;
+  overflow:hidden;
+  border-radius:12px;
+}
+.modal-weapon {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
+}
+.modal-title{
+  font-family:'Staatliches',sans-serif;
+  font-size:2.5rem;
+  color:var(--primary-purple);
+  margin-bottom:1rem;
+}
+.modal-desc{
+  font-size:1rem;
+  line-height:1.6;
+  text-align:left;
+  margin-bottom:1.5rem;
+}
+.close-btn{
+  position:absolute;
+  top:10px;
+  right:15px;
+  font-size:1.5rem;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* Footer */
+footer{text-align:center;padding:2rem 0;background:var(--secondary-black);color:rgba(255,255,255,0.6);margin-top:5rem;}
+footer a{margin:0 1rem;color:rgba(255,255,255,0.6);}
+footer a:hover{color:var(--primary-purple);}
+footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1rem;}
+
+/* Responsive */
+@media screen and (max-width:1024px){.weapon-grid{grid-template-columns:repeat(2,1fr);}}
+@media screen and (max-width:768px){.weapon-grid{grid-template-columns:1fr;}.weapon-card{flex-direction:column;max-width:90%;}.weapon-card img{width:100%;height:200px;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><img src="assets/images/logo.png" alt="GTA New Shop"></div>
+  <div class="nav-left">
+    <ul>
+      <li><a href="abonnements.html">Abonnements</a></li>
+      <li><a href="objets.html">Objets</a></li>
+      <li><a href="armes.html">Armes</a></li>
+      <li><a href="permissions.html">Permissions IG</a></li>
+      <li><a href="packs.html">Packs</a></li>
+      <li><a href="vehicules.html">Véhicules</a></li>
+    </ul>
+  </div>
+  <div class="header-right">
+    <div class="search-bar">
+      <input type="text" placeholder="Rechercher...">
+      <i class="fas fa-search"></i>
+    </div>
+    <button id="panier-btn" onclick="window.location.href='panier.html'">Panier (0)</button>
+    <button>Se connecter</button>
+    <a href="gcoins.html" class="gcoins-btn">+ Ajouter des GCoins</a>
+  </div>
+</header>
+
+<main>
+  <section class="weapon-bar">
+    <div class="weapon-text">Armes</div>
+    <div class="weapon-description">Découvrez toutes les armes disponibles pour dominer vos adversaires sur le serveur, du pistolet compact au fusil d’assaut.</div>
+  </section>
+
+  <section class="weapon-grid">
+    <!-- Exemple d'arme, répéter pour chaque arme -->
+    <div class="weapon-card" data-title="Pistolet SNS" data-img="assets/images/armes1.png" data-desc="Petit pistolet de poing fiable, idéal pour les débutants ou les situations discrètes." data-price="500">
+      <img src="assets/images/armes1.png" alt="Pistolet SNS">
+      <div class="weapon-info">
+        <h3>Pistolet SNS</h3>
+        <span>500 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
+    <div class="weapon-card" data-title="Pistolet vintage" data-img="assets/images/armes2.png" data-desc="Pistolet ancien, précis et élégant. Recommandé pour les collectionneurs et amateurs de style classique." data-price="600">
+      <img src="assets/images/armes2.png" alt="Pistolet vintage">
+      <div class="weapon-info">
+        <h3>Pistolet vintage</h3>
+        <span>600 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
+    <div class="weapon-card" data-title="Pistolet" data-img="assets/images/armes3.png" data-desc="Pistolet standard, simple et efficace pour les missions rapides." data-price="450">
+      <img src="assets/images/armes3.png" alt="Pistolet">
+      <div class="weapon-info">
+        <h3>Pistolet</h3>
+        <span>450 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
+    <div class="weapon-card" data-title="Pistolet lourd" data-img="assets/images/armes4.png" data-desc="Arme de poing puissante, inflige de lourds dégâts à courte distance." data-price="700">
+      <img src="assets/images/armes4.png" alt="Pistolet lourd">
+      <div class="weapon-info">
+        <h3>Pistolet lourd</h3>
+        <span>700 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
+    <div class="weapon-card" data-title="Glock 17" data-img="assets/images/armes5.png" data-desc="Pistolet moderne et très fiable, facile à manier et à recharger." data-price="550">
+      <img src="assets/images/armes5.png" alt="Glock 17">
+      <div class="weapon-info">
+        <h3>Glock 17</h3>
+        <span>550 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
+    <div class="weapon-card" data-title="Pistolet automatique" data-img="assets/images/armes6.png" data-desc="Pistolet avec tir automatique, excellent pour les combats rapprochés." data-price="800">
+      <img src="assets/images/armes6.png" alt="Pistolet automatique">
+      <div class="weapon-info">
+        <h3>Pistolet automatique</h3>
+        <span>800 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
+    <div class="weapon-card" data-title="Mitraillette légère" data-img="assets/images/armes7.png" data-desc="Idéale pour les combats rapides, légère et maniable." data-price="1200">
+      <img src="assets/images/armes7.png" alt="Mitraillette légère">
+      <div class="weapon-info">
+        <h3>Mitraillette légère</h3>
+        <span>1200 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
+    <div class="weapon-card" data-title="Pistolet-mitrailleur" data-img="assets/images/armes8.png" data-desc="Polyvalent, rapide et précis, parfait pour les missions tactiques." data-price="1500">
+      <img src="assets/images/armes8.png" alt="Pistolet-mitrailleur">
+      <div class="weapon-info">
+        <h3>Pistolet-mitrailleur</h3>
+        <span>1500 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
+    <div class="weapon-card" data-title="Mitraillette" data-img="assets/images/armes9.png" data-desc="Arme compacte à cadence rapide, excellente pour les attaques surprises." data-price="1300">
+      <img src="assets/images/armes9.png" alt="Mitraillette">
+      <div class="weapon-info">
+        <h3>Mitraillette</h3>
+        <span>1300 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
+    <div class="weapon-card" data-title="Fusil compact" data-img="assets/images/armes10.png" data-desc="Fusil léger et maniable, efficace à moyenne distance." data-price="1800">
+      <img src="assets/images/armes10.png" alt="Fusil compact">
+      <div class="weapon-info">
+        <h3>Fusil compact</h3>
+        <span>1800 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
+    <div class="weapon-card" data-title="Canon scié" data-img="assets/images/armes11.png" data-desc="Fusil à canon raccourci, très destructeur à courte distance." data-price="2000">
+      <img src="assets/images/armes11.png" alt="Canon scié">
+      <div class="weapon-info">
+        <h3>Canon scié</h3>
+        <span>2000 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
+    <div class="weapon-card" data-title="Fusil militaire" data-img="assets/images/armes12.png" data-desc="Fusil de combat complet, fiable et puissant pour toutes les situations." data-price="2200">
+      <img src="assets/images/armes12.png" alt="Fusil militaire">
+      <div class="weapon-info">
+        <h3>Fusil militaire</h3>
+        <span>2200 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
+    <div class="weapon-card" data-title="Double Barrel" data-img="assets/images/armes13.png" data-desc="Fusil à double canon, dévastateur à courte portée." data-price="2100">
+      <img src="assets/images/armes13.png" alt="Double Barrel">
+      <div class="weapon-info">
+        <h3>Double Barrel</h3>
+        <span>2100 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
+    <div class="weapon-card" data-title="Fusil d'assaut" data-img="assets/images/armes14.png" data-desc="Arme polyvalente, idéale pour toutes les situations de combat." data-price="2500">
+      <img src="assets/images/armes14.png" alt="Fusil d'assaut">
+      <div class="weapon-info">
+        <h3>Fusil d'assaut</h3>
+        <span>2500 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="modal" id="weapon-modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <div class="modal-bg">
+      <img class="modal-weapon" src="" alt="Arme">
+    </div>
+    <h2 class="modal-title"></h2>
+    <p class="modal-desc"></p>
+    <button class="buy-btn modal-buy-btn">Ajouter au Panier</button>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <a href="mentions-legales.html">Mentions légales</a>|
+    <a href="confidentialite.html">Confidentialité</a>|
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="footer-socials">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-discord"></i></a>
+  </div>
+</footer>
+
+<script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
+<script>
+let panierCount = 0;
+const panierBtn = document.getElementById('panier-btn');
+
+const modal = document.getElementById('weapon-modal');
+const modalContent = modal.querySelector('.modal-content');
+const modalImg = modal.querySelector('.modal-weapon');
+const modalTitle = modal.querySelector('.modal-title');
+const modalDesc = modal.querySelector('.modal-desc');
+const modalBuy = modal.querySelector('.modal-buy-btn');
+
+document.querySelectorAll('.weapon-card').forEach(card=>{
+  const btn = card.querySelector('.buy-btn');
+  btn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    panierCount++;
+    panierBtn.innerText=`Panier (${panierCount})`;
+  });
+  card.addEventListener('click', ()=>{
+    modal.style.display='flex';
+    modalImg.src=card.dataset.img;
+    modalTitle.textContent=card.dataset.title;
+    modalDesc.textContent=card.dataset.desc;
+    modalBuy.onclick=()=>{
+      panierCount++;
+      panierBtn.innerText=`Panier (${panierCount})`;
+    };
+    setTimeout(()=>{modalContent.style.transform='rotateY(0deg) scale(1)'; modalContent.style.opacity=1;},50);
+  });
+});
+
+modal.querySelector('.close-btn').addEventListener('click', ()=>{
+  modalContent.style.transform='rotateY(-20deg) scale(0.5)';
+  modalContent.style.opacity=0;
+  setTimeout(()=>modal.style.display='none',300);
+});
+
+window.addEventListener('click',(e)=>{
+  if(e.target===modal){
+    modalContent.style.transform='rotateY(-20deg) scale(0.5)';
+    modalContent.style.opacity=0;
+    setTimeout(()=>modal.style.display='none',300);
+  }
+});
+</script>
+
+</body>
+</html>
