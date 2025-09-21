@@ -83,19 +83,20 @@ main{padding:8rem 3rem 5rem 3rem;}
   color:#fff;
 }
 .subscription-table thead th {background: var(--primary-purple); color: #fff; font-size:1.1rem; position:relative;}
-.grade-wrapper {position:relative; padding-top:50px;}
+.grade-wrapper {position:relative; padding-top:50px; perspective:1000px;}
 .grade-img {
   width:100px;
   position:absolute;
   top:-40px;
   left:50%;
-  transform:translateX(-50%);
+  transform:translateX(-50%) rotateY(0deg);
   z-index:10;
   border-radius:12px;
   box-shadow:0 10px 20px rgba(138,43,226,0.7);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.5s, box-shadow 0.3s;
+  transform-style:preserve-3d;
 }
-.grade-img:hover{transform:translateX(-50%) scale(1.1); box-shadow:0 15px 25px rgba(138,43,226,1);}
+.grade-img:hover{transform:translateX(-50%) rotateY(15deg) scale(1.1); box-shadow:0 15px 25px rgba(138,43,226,1);}
 .grade-name {margin-top:60px; font-weight:700;}
 
 /* Highlight Elite */
