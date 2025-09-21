@@ -38,26 +38,33 @@ header{display:flex;align-items:center;justify-content:space-between;padding:1re
 
 main{padding:8rem 3rem 3rem 3rem;}
 
-/* Barre de présentation GCoins */
+/* Barre de présentation GCoins avec dégradé animé */
 .gcoins-bar{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:var(--secondary-black);
   padding:2rem 3rem;
   border-radius:12px;
   margin-bottom:3rem;
+  color:#fff;
+  background:linear-gradient(-45deg, #8a2be2, #4b0082, #171717, #0f0f0f);
+  background-size:400% 400%;
+  animation:gradientMove 12s ease infinite;
 }
 .gcoins-bar h1{
   font-family:'Staatliches',sans-serif;
   font-size:2.5rem;
-  color:var(--primary-purple);
 }
 .gcoins-bar p{
   font-size:1.2rem;
   max-width:600px;
   text-align:right;
   color:rgba(255,255,255,0.9);
+}
+@keyframes gradientMove {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
 }
 
 /* Cartes GCoins */
