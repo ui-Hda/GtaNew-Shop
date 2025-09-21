@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GTA New Shop - Véhicules</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Staatliches&display=swap" rel="stylesheet">
-
 <style>
 :root {
   --primary-black:#0f0f0f;
@@ -14,8 +13,8 @@
   --white:#fff;
   --transition:0.3s;
 }
-* {margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body {background:var(--primary-black);color:var(--white);overflow-x:hidden;transition: background var(--transition), color var(--transition);}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:var(--primary-black);color:var(--white);overflow-x:hidden;transition: background var(--transition), color var(--transition);}
 
 /* Header */
 header{display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;position:fixed;width:100%;top:0;background:var(--secondary-black);z-index:1000;transition:background var(--transition);}
@@ -27,12 +26,12 @@ header{display:flex;align-items:center;justify-content:space-between;padding:1re
 .gcoins-btn{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;font-weight:600;cursor:pointer;transition:background var(--transition), transform var(--transition);}
 .gcoins-btn:hover{background:#9d4edd;transform:scale(1.05);}
 .header-right{display:flex;align-items:center;gap:1rem;}
+.header-right button{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;cursor:pointer;transition:background var(--transition), transform var(--transition);}
+.header-right button:hover{background:#9d4edd;transform:scale(1.05);}
 .search-bar{position:relative;}
 .search-bar input{padding:0.4rem 1rem;border-radius:50px;border:none;outline:none;width:150px;background:var(--secondary-black);color:#fff;}
 .search-bar input::placeholder{color:rgba(255,255,255,0.5);}
 .search-bar i{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.7);}
-.header-right button{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;cursor:pointer;transition:background var(--transition), transform var(--transition);}
-.header-right button:hover{background:#9d4edd;transform:scale(1.05);}
 
 /* Main */
 main{padding:8rem 3rem 5rem 3rem;}
@@ -110,7 +109,7 @@ main{padding:8rem 3rem 5rem 3rem;}
 }
 .vehicle-card:hover{transform:scale(1.02);box-shadow:0 0 20px var(--primary-purple);}
 
-/* Modal 3D avec background */
+/* Modal 3D avec image du véhicule en fond */
 .modal{
   display:none;
   position:fixed;
@@ -127,14 +126,12 @@ main{padding:8rem 3rem 5rem 3rem;}
   max-width:800px;
   padding:2rem;
   text-align:center;
-  background:none; /* fond transparent pour montrer bestseller */
+  background:none;
   transform: rotateY(-20deg) scale(0.5);
   opacity:0;
   transition: transform 0.6s ease, opacity 0.6s ease;
   box-shadow:0 0 50px rgba(138,43,226,0.8);
 }
-
-/* Fond bestseller + véhicule */
 .modal-bg {
   position:relative;
   width:100%;
@@ -143,7 +140,7 @@ main{padding:8rem 3rem 5rem 3rem;}
   overflow:hidden;
   border-radius:12px;
 }
-.modal-bg-img {
+.modal-vehicle {
   position:absolute;
   top:0;
   left:0;
@@ -152,17 +149,6 @@ main{padding:8rem 3rem 5rem 3rem;}
   object-fit:cover;
   z-index:0;
 }
-.modal-vehicle {
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:300px;
-  height:auto;
-  object-fit:contain;
-  z-index:1;
-}
-
 .modal-title{
   font-family:'Staatliches',sans-serif;
   font-size:2.5rem;
@@ -214,7 +200,7 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
       <input type="text" placeholder="Rechercher...">
       <i class="fas fa-search"></i>
     </div>
-    <button onclick="window.location.href='panier.html'">Panier</button>
+    <button id="panier-btn" onclick="window.location.href='panier.html'">Panier (0)</button>
     <button>Se connecter</button>
     <a href="gcoins.html" class="gcoins-btn">+ Ajouter des GCoins</a>
   </div>
@@ -223,12 +209,11 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
 <main>
   <section class="vehicle-bar">
     <div class="vehicle-text">Véhicules</div>
-    <div class="vehicle-description">Découvrez les véhicules exclusifs pour améliorer votre expérience sur le serveur et dominer les rues ou le ciel. Chaque véhicule a ses caractéristiques uniques et un style inimitable.</div>
+    <div class="vehicle-description">Découvrez les véhicules exclusifs pour améliorer votre expérience sur le serveur et dominer les rues ou le ciel.</div>
   </section>
 
   <section class="vehicle-grid">
-    <!-- Exemple de véhicule -->
-    <div class="vehicle-card" data-title="Comet RS" data-img="assets/images/vehicule1.png" data-desc="La Comet RS est une voiture sportive ultra-rapide, idéale pour les courses en ville et sur l’autoroute. Accélération fulgurante, maniabilité parfaite, design élégant, elle est parfaite pour les joueurs qui aiment la vitesse et l’adrénaline." data-price="1200">
+    <div class="vehicle-card" data-title="Comet RS" data-img="assets/images/vehicule1.png" data-desc="La Comet RS est une voiture sportive ultra-rapide, idéale pour les courses en ville et sur l’autoroute. Accélération fulgurante, maniabilité parfaite, design élégant." data-price="1200">
       <img src="assets/images/vehicule1.png" alt="Comet RS">
       <div class="vehicle-info">
         <h3>Comet RS</h3>
@@ -236,7 +221,7 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
     </div>
-    <div class="vehicle-card" data-title="Rhino" data-img="assets/images/vehicule2.png" data-desc="Le Rhino est un char d’assaut lourd, parfait pour les missions les plus risquées. Son blindage solide et son canon puissant vous permettent de dominer vos adversaires." data-price="5000">
+    <div class="vehicle-card" data-title="Rhino" data-img="assets/images/vehicule2.png" data-desc="Le Rhino est un char puissant et blindé. Idéal pour les combats les plus intenses sur le serveur, résistant aux attaques et extrêmement destructeur." data-price="5000">
       <img src="assets/images/vehicule2.png" alt="Rhino">
       <div class="vehicle-info">
         <h3>Rhino</h3>
@@ -244,7 +229,7 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
     </div>
-    <div class="vehicle-card" data-title="Buzzard" data-img="assets/images/vehicule3.png" data-desc="L’hélicoptère d’attaque Buzzard offre mobilité et puissance de feu. Idéal pour le transport rapide et les combats aériens intenses." data-price="3000">
+    <div class="vehicle-card" data-title="Buzzard" data-img="assets/images/vehicule3.png" data-desc="L’hélicoptère Buzzard offre mobilité et puissance de feu. Idéal pour le transport rapide et les combats aériens intenses." data-price="3000">
       <img src="assets/images/vehicule3.png" alt="Buzzard">
       <div class="vehicle-info">
         <h3>Buzzard</h3>
@@ -252,7 +237,7 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
     </div>
-    <div class="vehicle-card" data-title="T20" data-img="assets/images/vehicule4.png" data-desc="La T20 est une supercar qui combine vitesse et maniabilité, parfaite pour les courses illégales et impressionner vos amis sur le serveur." data-price="3500">
+    <div class="vehicle-card" data-title="T20" data-img="assets/images/vehicule4.png" data-desc="La T20 est une supercar alliant vitesse et maniabilité, parfaite pour les courses illégales et impressionner vos amis." data-price="3500">
       <img src="assets/images/vehicule4.png" alt="T20">
       <div class="vehicle-info">
         <h3>T20</h3>
@@ -260,27 +245,27 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
     </div>
-    <div class="vehicle-card" data-title="Akuma" data-img="assets/images/vehicule5.png" data-desc="La moto Akuma offre vitesse et agilité, idéale pour se faufiler entre les véhicules et parcourir rapidement la ville." data-price="800">
-      <img src="assets/images/vehicule5.png" alt="Akuma">
-      <div class="vehicle-info">
-        <h3>Akuma</h3>
-        <span>800 GCoins</span>
-        <button class="buy-btn">Ajouter au Panier</button>
-      </div>
-    </div>
-    <div class="vehicle-card" data-title="Insurgent" data-img="assets/images/vehicule6.png" data-desc="L’Insurgent est un véhicule blindé robuste qui combine protection et puissance pour dominer toutes les situations." data-price="4000">
-      <img src="assets/images/vehicule6.png" alt="Insurgent">
+    <div class="vehicle-card" data-title="Insurgent" data-img="assets/images/vehicule5.png" data-desc="Le véhicule blindé Insurgent est parfait pour les missions périlleuses et les raids. Très résistant et intimidant." data-price="4000">
+      <img src="assets/images/vehicule5.png" alt="Insurgent">
       <div class="vehicle-info">
         <h3>Insurgent</h3>
         <span>4000 GCoins</span>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
     </div>
-    <div class="vehicle-card" data-title="Hydra" data-img="assets/images/vehicule7.png" data-desc="L’avion de combat Hydra offre des performances incroyables et un arsenal puissant pour des attaques aériennes précises." data-price="7000">
-      <img src="assets/images/vehicule7.png" alt="Hydra">
+    <div class="vehicle-card" data-title="Cargobob" data-img="assets/images/vehicule6.png" data-desc="Le Cargobob est un hélicoptère cargo capable de transporter d’autres véhicules. Essentiel pour les missions de transport lourdes." data-price="4500">
+      <img src="assets/images/vehicule6.png" alt="Cargobob">
       <div class="vehicle-info">
-        <h3>Hydra</h3>
-        <span>7000 GCoins</span>
+        <h3>Cargobob</h3>
+        <span>4500 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
+    <div class="vehicle-card" data-title="Phantom Wedge" data-img="assets/images/vehicule7.png" data-desc="Le Phantom Wedge est un camion modifié, puissant et rapide pour les courses et les missions de destruction. Indispensable pour dominer le serveur." data-price="3800">
+      <img src="assets/images/vehicule7.png" alt="Phantom Wedge">
+      <div class="vehicle-info">
+        <h3>Phantom Wedge</h3>
+        <span>3800 GCoins</span>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
     </div>
@@ -288,16 +273,15 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
 </main>
 
 <!-- Modal -->
-<div class="modal" id="vehicleModal">
+<div class="modal" id="vehicle-modal">
   <div class="modal-content">
     <span class="close-btn">&times;</span>
     <div class="modal-bg">
-      <img src="assets/images/bestseller.png" alt="Bestseller" class="modal-bg-img">
-      <img src="" alt="Vehicle" class="modal-vehicle">
+      <img class="modal-vehicle" src="" alt="Véhicule">
     </div>
-    <div class="modal-title">Nom du véhicule</div>
-    <div class="modal-desc">Description complète du véhicule.</div>
-    <button class="buy-btn">Ajouter au Panier</button>
+    <h2 class="modal-title"></h2>
+    <p class="modal-desc"></p>
+    <button class="buy-btn modal-buy-btn">Ajouter au Panier</button>
   </div>
 </div>
 
@@ -316,22 +300,35 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
 
 <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
 <script>
-// Modal popup
-const modal = document.getElementById('vehicleModal');
+let panierCount = 0;
+const panierBtn = document.getElementById('panier-btn');
+
+// Ouvrir modal
+const modal = document.getElementById('vehicle-modal');
 const modalContent = modal.querySelector('.modal-content');
-const modalVehicleImg = modal.querySelector('.modal-vehicle');
+const modalImg = modal.querySelector('.modal-vehicle');
 const modalTitle = modal.querySelector('.modal-title');
 const modalDesc = modal.querySelector('.modal-desc');
+const modalBuy = modal.querySelector('.modal-buy-btn');
 const closeBtn = modal.querySelector('.close-btn');
 
 document.querySelectorAll('.vehicle-card').forEach(card=>{
+  const btn = card.querySelector('.buy-btn');
+  btn.addEventListener('click',(e)=>{
+    e.stopPropagation();
+    panierCount++;
+    panierBtn.innerText=`Panier (${panierCount})`;
+  });
   card.addEventListener('click',()=>{
-    modalVehicleImg.src = card.dataset.img;
-    modalTitle.textContent = card.dataset.title;
-    modalDesc.textContent = card.dataset.desc;
     modal.style.display='flex';
-    setTimeout(()=>modalContent.style.transform='rotateY(0deg) scale(1)',50);
-    setTimeout(()=>modalContent.style.opacity=1,50);
+    modalImg.src=card.dataset.img;
+    modalTitle.textContent=card.dataset.title;
+    modalDesc.textContent=card.dataset.desc;
+    modalBuy.onclick=()=>{
+      panierCount++;
+      panierBtn.innerText=`Panier (${panierCount})`;
+    };
+    setTimeout(()=>{modalContent.style.transform='rotateY(0deg) scale(1)'; modalContent.style.opacity=1;},50);
   });
 });
 
@@ -349,5 +346,6 @@ window.addEventListener('click',(e)=>{
   }
 });
 </script>
+
 </body>
 </html>
