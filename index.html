@@ -23,6 +23,8 @@ h2::after{content:"";position:absolute;width:50%;height:3px;background:var(--uni
 ul{list-style:none;}
 a{text-decoration:none;color:var(--white);transition:color var(--transition);}
 a:hover{color:var(--unity-red);}
+button{cursor:pointer;border:none;border-radius:50px;padding:0.5rem 1rem;background:var(--unity-red);color:var(--white);transition:background var(--transition);}
+button:hover{background:#f63b5e;}
 
 /* Loader */
 #loader{position:fixed;width:3em;height:3em;border-radius:50%;border-top:0.3em solid rgba(255,255,255,0.4);border-right:0.3em solid transparent;top:50%;left:50%;transform:translate(-50%,-50%);animation:spin 1s linear infinite;z-index:9999;}
@@ -32,14 +34,11 @@ a:hover{color:var(--unity-red);}
 header{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;position:fixed;width:100%;top:0;background:var(--secondary-black);z-index:1000;transition:background var(--transition);}
 header .nav-left{display:flex;align-items:center;gap:2rem;}
 header .nav-left ul{display:flex;gap:1.5rem;}
-header .nav-left ul li a{color:var(--white);}
 header .nav-right{display:flex;align-items:center;gap:1rem;margin-left:auto;}
 .search-bar{position:relative;}
 .search-bar input{padding:0.4rem 1rem;border-radius:50px;border:none;outline:none;width:150px;background:var(--secondary-black);color:var(--white);}
 .search-bar input::placeholder{color:rgba(255,255,255,0.5);}
 .search-bar i{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.7);}
-button{cursor:pointer;border:none;border-radius:50px;padding:0.5rem 1rem;background:var(--unity-red);color:var(--white);transition:background var(--transition);}
-button:hover{background:#f63b5e;}
 .mobile-menu-icon{display:none;font-size:1.5rem;cursor:pointer;}
 .toggle-theme{font-size:1.5rem;}
 
@@ -48,10 +47,18 @@ button:hover{background:#f63b5e;}
 .payment-bar img{height:40px;transition:transform var(--transition);}
 .payment-bar img:hover{transform:scale(1.1);}
 
+/* Presentation + bestseller */
+.hero-section{display:flex;flex-wrap:wrap;justify-content:space-between;margin-bottom:3rem;}
+.hero-text{flex:1;min-width:250px;margin-right:2rem;}
+.hero-text h1{font-family:'Staatliches',sans-serif;font-size:2rem;margin-bottom:1rem;}
+.hero-text p{font-size:1rem;line-height:1.5;}
+.hero-bestseller{flex:1;min-width:250px;}
+.hero-bestseller img{width:100%;border-radius:10px;}
+
 /* Main */
-main{padding:7rem 2rem 3rem 2rem;}
+main{padding:8rem 2rem 3rem 2rem;}
 section{margin-bottom:5rem;}
-.cards{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;overflow-x:auto;padding-bottom:1rem;}
+.cards{display:flex;flex-wrap:nowrap;gap:2rem;overflow-x:auto;padding-bottom:1rem;}
 .card{background:var(--secondary-black);border-radius:10px;overflow:hidden;width:45%;min-width:300px;transition:transform var(--transition),box-shadow var(--transition);cursor:pointer;opacity:0;transform:translateY(20px);animation:fadeUp 0.6s forwards;}
 .card img{width:100%;height:200px;object-fit:cover;}
 .card h3{padding:1rem;font-size:1.5rem;}
@@ -60,7 +67,6 @@ section{margin-bottom:5rem;}
 .card:nth-child(1){animation-delay:0.1s;} .card:nth-child(2){animation-delay:0.2s;}
 .card:nth-child(3){animation-delay:0.3s;} .card:nth-child(4){animation-delay:0.4s;}
 .card:nth-child(5){animation-delay:0.5s;} .card:nth-child(6){animation-delay:0.6s;}
-.card:nth-child(7){animation-delay:0.7s;}
 
 /* Footer */
 footer{text-align:center;padding:2rem 0;background:var(--secondary-black);color:rgba(255,255,255,0.6);}
@@ -100,6 +106,17 @@ footer .socials a:hover{color:var(--unity-red);}
   </div>
 </header>
 
+<!-- Hero Section -->
+<div class="hero-section">
+  <div class="hero-text">
+    <h1>Bienvenue sur UnityRP Shop</h1>
+    <p>Découvrez notre boutique officielle avec tous les véhicules, armes, objets et abonnements disponibles pour votre expérience RP. Achetez facilement et profitez des meilleurs services pour votre serveur.</p>
+  </div>
+  <div class="hero-bestseller">
+    <img src="assets/images/bestseller.png" alt="Bestseller">
+  </div>
+</div>
+
 <!-- Payment bar -->
 <div class="payment-bar">
   <img src="assets/images/payments/visa.png">
@@ -108,7 +125,7 @@ footer .socials a:hover{color:var(--unity-red);}
   <img src="assets/images/payments/applepay.png">
 </div>
 
-<!-- Main -->
+<!-- Categories Section -->
 <main>
 <section id="categories">
 <h2>Nos Catégories</h2>
@@ -146,19 +163,17 @@ window.addEventListener("load",()=>{
 });
 
 // Theme toggle
-const themeToggle=document.querySelector(".toggle-theme");
-themeToggle.addEventListener("click",()=>{
+document.querySelector(".toggle-theme").addEventListener("click",()=>{
   document.body.classList.toggle("dark");
 });
 
 // Mobile menu toggle
-const mobileIcon=document.querySelector(".mobile-menu-icon");
-const navUl=document.querySelector("header .nav-left ul");
-mobileIcon.addEventListener("click",()=>{navUl.classList.toggle("show");});
+document.querySelector(".mobile-menu-icon").addEventListener("click",()=>{
+  document.querySelector("header .nav-left ul").classList.toggle("show");
+});
 
 // Search filter
-const searchInput=document.querySelector(".search-bar input");
-searchInput.addEventListener("input",(e)=>{
+document.querySelector(".search-bar input").addEventListener("input",(e)=>{
   const query=e.target.value.toLowerCase();
   document.querySelectorAll(".card").forEach(card=>{
     const title=card.querySelector("h3").textContent.toLowerCase();
