@@ -24,7 +24,7 @@ header{display:flex;align-items:center;justify-content:space-between;padding:1re
 .logo img{height:75px;}
 .nav-left{display:flex;align-items:center;gap:2rem;}
 .nav-left ul{display:flex;flex-direction:row;gap:2rem;align-items:center;}
-.nav-left ul li a{color:var(--white);font-weight:500;transition:color var(--transition);}
+.nav-left ul li a{color:var(--white);font-weight:500;transition:color var(--transition);text-decoration:none;}
 .nav-left ul li a:hover{color:var(--primary-purple);}
 .gcoins-btn{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;font-weight:600;cursor:pointer;transition:background var(--transition), transform var(--transition);}
 .gcoins-btn:hover{background:#9d4edd;transform:scale(1.05);}
@@ -70,15 +70,18 @@ main{padding:8rem 3rem 5rem 3rem;}
 .vehicle-card{
   display:flex;
   background:var(--secondary-black);
-  border-radius:17px;
+  border-radius:12px;
   overflow:hidden;
   width:100%;
-  max-width:500px;
+  max-width:350px;
   transition:transform var(--transition), box-shadow var(--transition);
+  cursor:pointer;
+  text-decoration:none;
+  color:inherit;
 }
 .vehicle-card img{
-  width:300px;
-  height:175px;
+  width:150px;
+  height:150px;
   object-fit:cover;
 }
 .vehicle-info{
@@ -108,9 +111,9 @@ main{padding:8rem 3rem 5rem 3rem;}
 .buy-btn:hover{
   background:#9d4edd;
   transform:scale(1.05);
-  box-shadow:0 0 12px rgba(138,43,226,0.7);
+  box-shadow:0 0 10px rgba(138,43,226,0.7);
 }
-.vehicle-card:hover{transform:scale(1.02);box-shadow:0 0 25px var(--primary-purple);}
+.vehicle-card:hover{transform:scale(1.02);box-shadow:0 0 20px var(--primary-purple);}
 
 /* Footer */
 footer{text-align:center;padding:2rem 0;background:var(--secondary-black);color:rgba(255,255,255,0.6);margin-top:5rem;}
@@ -142,15 +145,15 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
       <li><a href="packs.html">Packs</a></li>
       <li><a href="vehicules.html">Véhicules</a></li>
     </ul>
-    <a href="gcoins.html" class="gcoins-btn">+ Ajouter des GCoins</a>
   </div>
   <div class="header-right">
     <div class="search-bar">
       <input type="text" placeholder="Rechercher...">
       <i class="fas fa-search"></i>
     </div>
-    <button>Panier</button>
+    <button onclick="window.location.href='panier.html'">Panier</button>
     <button>Se connecter</button>
+    <a href="gcoins.html" class="gcoins-btn">+ Ajouter des GCoins</a>
   </div>
 </header>
 
@@ -161,55 +164,55 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
   </section>
 
   <section class="vehicle-grid">
-    <div class="vehicle-card">
-      <img src="assets/images/vehicule.png" alt="Véhicule 1">
+    <a href="vehicule1.html" class="vehicle-card">
+      <img src="assets/images/vehicule1.png" alt="Véhicule 1">
       <div class="vehicle-info">
         <h3>Véhicule 1</h3>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
-    </div>
-    <div class="vehicle-card">
-      <img src="assets/images/vehicule.png" alt="Véhicule 2">
+    </a>
+    <a href="vehicule2.html" class="vehicle-card">
+      <img src="assets/images/vehicule2.png" alt="Véhicule 2">
       <div class="vehicle-info">
         <h3>Véhicule 2</h3>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
-    </div>
-    <div class="vehicle-card">
-      <img src="assets/images/vehicule.png" alt="Véhicule 3">
+    </a>
+    <a href="vehicule3.html" class="vehicle-card">
+      <img src="assets/images/vehicule3.png" alt="Véhicule 3">
       <div class="vehicle-info">
         <h3>Véhicule 3</h3>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
-    </div>
-    <div class="vehicle-card">
-      <img src="assets/images/vehicule.png" alt="Véhicule 4">
+    </a>
+    <a href="vehicule4.html" class="vehicle-card">
+      <img src="assets/images/vehicule4.png" alt="Véhicule 4">
       <div class="vehicle-info">
         <h3>Véhicule 4</h3>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
-    </div>
-    <div class="vehicle-card">
-      <img src="assets/images/vehicule.png" alt="Véhicule 5">
+    </a>
+    <a href="vehicule5.html" class="vehicle-card">
+      <img src="assets/images/vehicule5.png" alt="Véhicule 5">
       <div class="vehicle-info">
         <h3>Véhicule 5</h3>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
-    </div>
-    <div class="vehicle-card">
-      <img src="assets/images/vehicule.png" alt="Véhicule 6">
+    </a>
+    <a href="vehicule6.html" class="vehicle-card">
+      <img src="assets/images/vehicule6.png" alt="Véhicule 6">
       <div class="vehicle-info">
         <h3>Véhicule 6</h3>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
-    </div>
-    <div class="vehicle-card">
-      <img src="assets/images/vehicule.png" alt="Véhicule 7">
+    </a>
+    <a href="vehicule7.html" class="vehicle-card">
+      <img src="assets/images/vehicule7.png" alt="Véhicule 7">
       <div class="vehicle-info">
         <h3>Véhicule 7</h3>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
-    </div>
+    </a>
   </section>
 </main>
 
