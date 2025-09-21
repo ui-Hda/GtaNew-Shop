@@ -47,7 +47,7 @@ header .nav-right{display:flex;align-items:center;gap:1rem;margin-left:auto;}
 .payment-bar img{height:40px;transition:transform var(--transition);}
 .payment-bar img:hover{transform:scale(1.1);}
 
-/* Presentation + bestseller */
+/* Hero Section */
 .hero-section{display:flex;flex-wrap:wrap;justify-content:space-between;margin-bottom:3rem;}
 .hero-text{flex:1;min-width:250px;margin-right:2rem;}
 .hero-text h1{font-family:'Staatliches',sans-serif;font-size:2rem;margin-bottom:1rem;}
@@ -59,7 +59,7 @@ header .nav-right{display:flex;align-items:center;gap:1rem;margin-left:auto;}
 main{padding:8rem 2rem 3rem 2rem;}
 section{margin-bottom:5rem;}
 .cards{display:flex;flex-wrap:nowrap;gap:2rem;overflow-x:auto;padding-bottom:1rem;}
-.card{background:var(--secondary-black);border-radius:10px;overflow:hidden;width:45%;min-width:300px;transition:transform var(--transition),box-shadow var(--transition);cursor:pointer;opacity:0;transform:translateY(20px);animation:fadeUp 0.6s forwards;}
+.card{background:var(--secondary-black);border-radius:10px;overflow:hidden;width:45%;min-width:300px;transition:transform var(--transition),box-shadow var(--transition);cursor:pointer;opacity:0;transform:translateY(20px);animation:fadeUp 0.6s forwards;text-align:center;}
 .card img{width:100%;height:200px;object-fit:cover;}
 .card h3{padding:1rem;font-size:1.5rem;}
 .card button{margin:0 1rem 1rem 1rem;padding:0.5rem 1rem;}
@@ -81,10 +81,8 @@ footer .socials a:hover{color:var(--unity-red);}
 </head>
 <body id="body-root">
 
-<!-- Loader -->
 <div id="loader"></div>
 
-<!-- Header -->
 <header>
   <div class="nav-left">
     <div class="logo"><img src="assets/images/logo.png" alt="UnityRP Shop"></div>
@@ -106,7 +104,6 @@ footer .socials a:hover{color:var(--unity-red);}
   </div>
 </header>
 
-<!-- Hero Section -->
 <div class="hero-section">
   <div class="hero-text">
     <h1>Bienvenue sur UnityRP Shop</h1>
@@ -117,7 +114,6 @@ footer .socials a:hover{color:var(--unity-red);}
   </div>
 </div>
 
-<!-- Payment bar -->
 <div class="payment-bar">
   <img src="assets/images/payments/visa.png">
   <img src="assets/images/payments/paypal.png">
@@ -125,7 +121,6 @@ footer .socials a:hover{color:var(--unity-red);}
   <img src="assets/images/payments/applepay.png">
 </div>
 
-<!-- Categories Section -->
 <main>
 <section id="categories">
 <h2>Nos Catégories</h2>
@@ -140,7 +135,6 @@ footer .socials a:hover{color:var(--unity-red);}
 </section>
 </main>
 
-<!-- Footer -->
 <footer>
   <div class="links">
     <a href="mentions-legales.html">Mentions légales</a>
@@ -148,11 +142,12 @@ footer .socials a:hover{color:var(--unity-red);}
     <a href="contact.html">Contact</a>
   </div>
   <div class="socials">
-    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
     <a href="#"><i class="fab fa-twitter"></i></a>
     <a href="#"><i class="fab fa-discord"></i></a>
     <a href="#"><i class="fab fa-instagram"></i></a>
   </div>
+  <p>&copy; 2025 UnityRP Shop</p>
 </footer>
 
 <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
