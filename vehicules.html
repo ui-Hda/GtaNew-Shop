@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GTA New Shop - Véhicules</title>
 
-<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Staatliches&display=swap" rel="stylesheet">
 
 <style>
@@ -16,12 +15,9 @@
   --white:#fff;
   --transition:0.3s;
 }
+
 * {margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body {background:var(--primary-black);color:var(--white);overflow-x:hidden;transition: background var(--transition), color var(--transition);}
-h2 {font-family:'Staatliches',sans-serif;margin-bottom:1.5rem;position:relative;}
-h2::after {content:"";position:absolute;width:50%;height:3px;background:var(--primary-purple);left:0;bottom:-5px;border-radius:5px;}
-a{text-decoration:none;color:var(--white);transition:color var(--transition);}
-a:hover{color:var(--primary-purple);}
 
 /* Header */
 header{display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;position:fixed;width:100%;top:0;background:var(--secondary-black);z-index:1000;transition:background var(--transition);}
@@ -64,25 +60,52 @@ main{padding:8rem 3rem 5rem 3rem;}
 .vehicle-description{font-size:1rem;max-width:600px;text-align:right;color:#fff;}
 @keyframes gradientMove{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 
-/* Grille véhicules */
-.vehicle-grid{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;}
+/* Grille véhicules horizontale */
+.vehicle-grid{display:flex;flex-direction:column;gap:2rem;justify-content:center;}
 .vehicle-card{
-  background: var(--secondary-black);
-  border-radius:10px;
-  width:calc(30% - 1rem);
-  aspect-ratio:1/1;
+  display:flex;
+  background:var(--secondary-black);
+  border-radius:12px;
+  overflow:hidden;
+  width:100%;
+  max-width:1200px;
+  margin:auto;
+  transition:transform var(--transition), box-shadow var(--transition);
+}
+.vehicle-card img{
+  width:250px;
+  height:auto;
+  object-fit:cover;
+}
+.vehicle-info{
+  padding:1.5rem;
   display:flex;
   flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-  transition:transform var(--transition), box-shadow var(--transition);
-  overflow:hidden;
-  position:relative;
+  justify-content:space-between;
+  flex:1;
 }
-.vehicle-card img{width:90%;height:auto;border-radius:12px;margin-bottom:1rem;}
-.vehicle-card h3{color:var(--white);font-size:1.2rem;text-align:center;}
-.vehicle-card:hover{transform:scale(1.05);box-shadow:0 0 20px var(--primary-purple);}
+.vehicle-info h3{
+  font-size:1.5rem;
+  margin-bottom:1rem;
+  color:var(--white);
+}
+.buy-btn{
+  background:var(--primary-purple);
+  border:none;
+  padding:0.5rem 1rem;
+  border-radius:50px;
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  width:fit-content;
+  transition:background var(--transition), transform var(--transition), box-shadow 0.3s;
+}
+.buy-btn:hover{
+  background:#9d4edd;
+  transform:scale(1.05);
+  box-shadow:0 0 10px rgba(138,43,226,0.7);
+}
+.vehicle-card:hover{transform:scale(1.02);box-shadow:0 0 20px var(--primary-purple);}
 
 /* Footer */
 footer{text-align:center;padding:2rem 0;background:var(--secondary-black);color:rgba(255,255,255,0.6);margin-top:5rem;}
@@ -124,32 +147,53 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
 
   <section class="vehicle-grid">
     <div class="vehicle-card">
-      <img src="assets/images/vehicule.png" alt="Véhicule 1">
-      <h3>Véhicule 1</h3>
+      <img src="assets/images/vehicule1.png" alt="Véhicule 1">
+      <div class="vehicle-info">
+        <h3>Véhicule 1</h3>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
     </div>
     <div class="vehicle-card">
-      <img src="assets/images/vehicule.png" alt="Véhicule 2">
-      <h3>Véhicule 2</h3>
+      <img src="assets/images/vehicule2.png" alt="Véhicule 2">
+      <div class="vehicle-info">
+        <h3>Véhicule 2</h3>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
     </div>
     <div class="vehicle-card">
-      <img src="assets/images/vehicule.png" alt="Véhicule 3">
-      <h3>Véhicule 3</h3>
+      <img src="assets/images/vehicule3.png" alt="Véhicule 3">
+      <div class="vehicle-info">
+        <h3>Véhicule 3</h3>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
     </div>
     <div class="vehicle-card">
-      <img src="assets/images/vehicule.png" alt="Véhicule 4">
-      <h3>Véhicule 4</h3>
+      <img src="assets/images/vehicule4.png" alt="Véhicule 4">
+      <div class="vehicle-info">
+        <h3>Véhicule 4</h3>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
     </div>
     <div class="vehicle-card">
-      <img src="assets/images/vehicule.png" alt="Véhicule 5">
-      <h3>Véhicule 5</h3>
+      <img src="assets/images/vehicule5.png" alt="Véhicule 5">
+      <div class="vehicle-info">
+        <h3>Véhicule 5</h3>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
     </div>
     <div class="vehicle-card">
-      <img src="assets/images/vehicule.png" alt="Véhicule 6">
-      <h3>Véhicule 6</h3>
+      <img src="assets/images/vehicule6.png" alt="Véhicule 6">
+      <div class="vehicle-info">
+        <h3>Véhicule 6</h3>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
     </div>
     <div class="vehicle-card">
-      <img src="assets/images/vehicule.png" alt="Véhicule 7">
-      <h3>Véhicule 7</h3>
+      <img src="assets/images/vehicule7.png" alt="Véhicule 7">
+      <div class="vehicle-info">
+        <h3>Véhicule 7</h3>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
     </div>
   </section>
 </main>
