@@ -17,7 +17,7 @@
   --transition:0.3s;
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:var(--primary-black);color:var(--white);}
+body{background:var(--primary-black);color:var(--white);padding-top:100px;}
 h2{font-family:'Staatliches',sans-serif;margin:2rem 0;position:relative;text-align:center;}
 h2::after{content:"";position:absolute;width:80px;height:3px;background:var(--primary-purple);left:50%;transform:translateX(-50%);bottom:-8px;border-radius:5px;}
 
@@ -90,7 +90,6 @@ main{padding:8rem 3rem 3rem 3rem;}
   gap:3rem;
   justify-items:center;
 }
-
 .gcoin-card{
   background:var(--secondary-black);
   border-radius:12px;
@@ -138,7 +137,6 @@ main{padding:8rem 3rem 3rem 3rem;}
 </head>
 <body>
 
-<!-- Header identique mais sans bouton GCoins -->
 <header>
   <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="GTA New Shop"></a></div>
 
@@ -164,37 +162,35 @@ main{padding:8rem 3rem 3rem 3rem;}
 </header>
 
 <main>
-  <!-- Barre de présentation -->
   <div class="gcoins-bar">
     <h1>GCoins</h1>
     <p>Acheter des GCoins pour vous servir sur notre boutique</p>
   </div>
 
-  <!-- Cartes GCoins -->
   <div class="gcoins-grid">
-    <div class="gcoin-card">
+    <div class="gcoin-card" data-name="1000 GCoins">
       <img src="assets/images/1000gcoins.png" alt="1000 GCoins">
       <h3>1000 GCoins</h3>
       <p>Pack de base pour commencer.</p>
-      <button onclick="addToCart('1000 GCoins')">Acheter</button>
+      <button>Acheter</button>
     </div>
-    <div class="gcoin-card">
+    <div class="gcoin-card" data-name="2800 GCoins">
       <img src="assets/images/2800gcoins.png" alt="2800 GCoins">
       <h3>2800 GCoins</h3>
       <p>Le meilleur rapport qualité/prix.</p>
-      <button onclick="addToCart('2800 GCoins')">Acheter</button>
+      <button>Acheter</button>
     </div>
-    <div class="gcoin-card">
+    <div class="gcoin-card" data-name="5000 GCoins">
       <img src="assets/images/5000gcoins.png" alt="5000 GCoins">
       <h3>5000 GCoins</h3>
       <p>Pour aller plus loin dans l’aventure.</p>
-      <button onclick="addToCart('5000 GCoins')">Acheter</button>
+      <button>Acheter</button>
     </div>
-    <div class="gcoin-card">
+    <div class="gcoin-card" data-name="13200 GCoins">
       <img src="assets/images/13200gcoins.png" alt="13200 GCoins">
       <h3>13200 GCoins</h3>
       <p>Le pack ultime à prix réduit.</p>
-      <button onclick="addToCart('13200 GCoins')">Acheter</button>
+      <button>Acheter</button>
     </div>
   </div>
 </main>
@@ -222,13 +218,23 @@ function updateCartCount(){
   }
 }
 
-function addToCart(item){
-  const cart = getCart();
-  cart.push(item);
-  saveCart(cart);
-  updateCartCount();
-  alert(item + " a été ajouté au panier !");
-}
+// Ajouter au panier
+document.querySelectorAll('.gcoin-card button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const card = btn.parentElement;
+    const name = card.dataset.name;
+    const cart = getCart();
+    cart.push(name);
+    saveCart(cart);
+    updateCartCount();
+    alert(name + " a été ajouté au panier !");
+  });
+});
+
+// Rediriger vers panier.html
+document.getElementById("cart-btn").addEventListener('click', ()=>{
+  window.location.href = 'panier.html';
+});
 
 // Initialisation au chargement
 document.addEventListener("DOMContentLoaded", updateCartCount);
