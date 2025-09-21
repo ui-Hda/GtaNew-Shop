@@ -91,7 +91,7 @@ main{padding:8rem 3rem 5rem 3rem;}
 }
 
 /* Tableau abonnements */
-.subscription-table {overflow-x:auto; margin-top:2rem;}
+.subscription-table {overflow-x:auto; margin-top:2rem; position:relative;}
 .subscription-table table {
   width:100%;
   border-collapse: collapse;
@@ -101,16 +101,33 @@ main{padding:8rem 3rem 5rem 3rem;}
   overflow:hidden;
   box-shadow:0 0 20px rgba(0,0,0,0.5);
   border: 2px solid rgba(255,255,255,0.1);
+  position:relative;
+  z-index:1;
 }
 .subscription-table th, .subscription-table td {
-  padding:1rem 0.5rem;
+  padding:2rem 0.5rem 1rem; /* plus d'espace en haut pour images */
   border: 1px solid rgba(255,255,255,0.15);
   font-weight:500;
   transition: all 0.3s;
   font-family:'Poppins', sans-serif;
 }
-.subscription-table thead th {background: var(--primary-purple); color: #fff; font-size:1.1rem;}
-.subscription-table th .grade-img { width:300px; height:auto; margin-bottom:0.5rem;}
+.subscription-table thead th {background: var(--primary-purple); color: #fff; font-size:1.1rem; position:relative;}
+
+/* Images grade passent par dessus le tableau */
+.subscription-table th .grade-img {
+  width:120px;
+  height:auto;
+  margin-bottom:0.5rem;
+  position:absolute;
+  top:-60px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:2;
+  transition:transform 0.3s;
+}
+.subscription-table th:hover .grade-img {
+  transform:translateX(-50%) scale(1.1);
+}
 
 /* Hover sur colonne entière */
 .subscription-table tbody td:hover,
@@ -182,6 +199,7 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
 /* Responsive */
 @media screen and (max-width: 768px){
   .subscription-table th, .subscription-table td { font-size:0.9rem; padding:0.8rem 0.3rem; }
+  .subscription-table th .grade-img { width:80px; top:-40px; }
 }
 </style>
 </head>
@@ -225,66 +243,54 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
       <table>
         <thead>
           <tr>
-            <th>Caractéristiques</th>
             <th>
-              <img src="assets/images/g-vip1.png" alt="G-VIP" class="grade-img"><br>
-              G-VIP
+              <img src="assets/images/g-vip1.png" alt="G-VIP" class="grade-img"><br>G-VIP
             </th>
             <th>
-              <img src="assets/images/g-prime.png" alt="G-PRIME" class="grade-img"><br>
-              G-PRIME
+              <img src="assets/images/g-prime.png" alt="G-PRIME" class="grade-img"><br>G-PRIME
             </th>
             <th class="best-grade">
-              <img src="assets/images/g-elite.png" alt="G-ELITE" class="grade-img"><br>
-              G-ELITE
+              <img src="assets/images/g-elite.png" alt="G-ELITE" class="grade-img"><br>G-ELITE
             </th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>GCoins / mois</td>
             <td>1200 <br><button class="buy-btn">Ajouter au Panier</button></td>
             <td>2500 <br><button class="buy-btn">Ajouter au Panier</button></td>
             <td>3000 <br><button class="buy-btn glow-btn">Ajouter au Panier</button></td>
           </tr>
           <tr>
-            <td>Revenu toutes les heures</td>
             <td>100000$</td>
             <td>250000$</td>
             <td>320000$</td>
           </tr>
           <tr>
-            <td>Possibilité de placer une télévision</td>
             <td>✓</td>
             <td>✓</td>
             <td>✓</td>
           </tr>
           <tr>
-            <td>Slots de personnages</td>
             <td>2</td>
             <td>2</td>
             <td>3</td>
           </tr>
           <tr>
-            <td>Accès aux revêtements d'armes</td>
             <td>✓</td>
             <td>✓</td>
             <td>✓</td>
           </tr>
           <tr>
-            <td>Multiplicateur de zone GF</td>
             <td>1,5x</td>
             <td>2,5x</td>
             <td>3,5x</td>
           </tr>
           <tr>
-            <td>Caisse offerte chaque mois</td>
             <td>Gold</td>
             <td>Diamant</td>
             <td>Predator</td>
           </tr>
           <tr>
-            <td>Multiplicateur Zone AFK</td>
             <td>1,5x</td>
             <td>2,5x</td>
             <td>3,5x</td>
