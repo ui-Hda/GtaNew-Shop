@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GTA New Shop - Abonnements</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Staatliches&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary-black:#0f0f0f;
+  --secondary-black:#171717;
+  --primary-purple:#8a2be2;
+  --white:#fff;
+  --hover-gray:#3a3a3a;
+  --transition:0.3s;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:var(--primary-black);color:var(--white);overflow-x:hidden;transition: background var(--transition), color var(--transition);}
+h2{font-family:'Staatliches',sans-serif;margin-bottom:1.5rem;position:relative;}
+h2::after{content:"";position:absolute;width:50%;height:3px;background:var(--primary-purple);left:0;bottom:-5px;border-radius:5px;}
+a{text-decoration:none;color:var(--white);transition:color var(--transition);}
+a:hover{color:var(--primary-purple);}
+
+/* Header */
+header{display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;position:fixed;width:100%;top:0;background:var(--secondary-black);z-index:1000;transition:background var(--transition);}
+.logo img{height:75px;}
+.nav-left{display:flex;align-items:center;gap:2rem;}
+.nav-left ul{display:flex;flex-direction:row;gap:2rem;align-items:center;}
+.nav-left ul li a{color:var(--white);font-weight:500;transition:color var(--transition);}
+.nav-left ul li a:hover{color:var(--primary-purple);}
+.gcoins-btn{
+  background:var(--primary-purple);
+  border:none;
+  padding:0.5rem 1rem;
+  border-radius:50px;
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition:background var(--transition), transform var(--transition);
+}
+.gcoins-btn:hover{
+  background:#9d4edd;
+  transform:scale(1.05);
+}
+.header-right{display:flex;align-items:center;gap:1rem;}
+.search-bar{position:relative;}
+.search-bar input{padding:0.4rem 1rem;border-radius:50px;border:none;outline:none;width:150px;background:var(--secondary-black);color:var(--white);}
+.search-bar input::placeholder{color:rgba(255,255,255,0.5);}
+.search-bar i{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.7);}
+.header-right button{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;cursor:pointer;transition:background var(--transition), transform var(--transition);}
+.header-right button:hover{background:#9d4edd;transform:scale(1.05);}
+
+/* Main */
+main{padding:8rem 3rem 3rem 3rem;}
+section{margin-bottom:5rem;}
+
+/* Tableau abonnements */
+.subscription-table {
+  overflow-x:auto;
+  margin-top:2rem;
+}
+.subscription-table table {
+  width:100%;
+  border-collapse: collapse;
+  text-align:center;
+  background:var(--secondary-black);
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+.subscription-table th,
+.subscription-table td {
+  padding:1rem 0.5rem;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  font-weight:500;
+}
+.subscription-table thead th {
+  background: var(--primary-purple);
+  color: #fff;
+  font-size:1.1rem;
+}
+.subscription-table tbody tr:hover {
+  background: rgba(138,43,226,0.1);
+  transition: background 0.3s;
+}
+.subscription-table td:nth-child(n+2) {
+  font-weight:600;
+  color: var(--primary-purple);
+}
+
+/* Boutons acheter */
+.buy-btn {
+  background:var(--primary-purple);
+  border:none;
+  padding:0.5rem 1rem;
+  border-radius:50px;
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition:background var(--transition), transform var(--transition);
+}
+.buy-btn:hover{
+  background:#9d4edd;
+  transform:scale(1.05);
+}
+
+@media screen and (max-width: 768px){
+  .subscription-table th, .subscription-table td {
+    font-size:0.9rem;
+    padding:0.8rem 0.3rem;
+  }
+}
+</style>
+</head>
+<body id="body-root">
+
+<!-- Header identique à l'index -->
+<header>
+  <div class="logo"><img src="assets/images/logo.png" alt="GTA New Shop"></div>
+
+  <div class="nav-left">
+    <ul>
+      <li><a href="abonnements.html">Abonnements</a></li>
+      <li><a href="objets.html">Objets</a></li>
+      <li><a href="armes.html">Armes</a></li>
+      <li><a href="permissions.html">Permissions IG</a></li>
+      <li><a href="packs.html">Packs</a></li>
+      <li><a href="vehicules.html">Véhicules</a></li>
+    </ul>
+    <a href="gcoins.html" class="gcoins-btn">+ Ajouter des GCoins</a>
+  </div>
+
+  <div class="header-right">
+    <div class="search-bar">
+      <input type="text" placeholder="Rechercher...">
+      <i class="fas fa-search"></i>
+    </div>
+    <button>Panier</button>
+    <button>Se connecter</button>
+  </div>
+</header>
+
+<main>
+  <section id="abonnements">
+    <h2>Nos abonnements</h2>
+    <div class="subscription-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Caractéristiques</th>
+            <th>G-VIP</th>
+            <th>G-PRIME</th>
+            <th>G-ELITE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GCoins / mois</td>
+            <td>1000 <br><button class="buy-btn">Acheter</button></td>
+            <td>1500 <br><button class="buy-btn">Acheter</button></td>
+            <td>2000 <br><button class="buy-btn">Acheter</button></td>
+          </tr>
+          <tr>
+            <td>Revenu toutes les heures</td>
+            <td>100000$</td>
+            <td>250000$</td>
+            <td>320000$</td>
+          </tr>
+          <tr>
+            <td>Possibilité de placer une télévision</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+          </tr>
+          <tr>
+            <td>Slots de personnages</td>
+            <td>2</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>Accès aux revêtements d'armes</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+          </tr>
+          <tr>
+            <td>Multiplicateur de zone GF</td>
+            <td>1,5x</td>
+            <td>2,5x</td>
+            <td>3,5x</td>
+          </tr>
+          <tr>
+            <td>Caisse offerte chaque mois</td>
+            <td>Gold</td>
+            <td>Diamant</td>
+            <td>Predator</td>
+          </tr>
+          <tr>
+            <td>Multiplicateur Zone AFK</td>
+            <td>1,5x</td>
+            <td>2,5x</td>
+            <td>3,5x</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div>
+    <a href="mentions-legales.html">Mentions légales</a>|
+    <a href="confidentialite.html">Confidentialité</a>|
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="footer-socials">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-discord"></i></a>
+  </div>
+</footer>
+
+<script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
+</body>
+</html>
