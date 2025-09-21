@@ -28,7 +28,7 @@ header{display:flex;align-items:center;justify-content:space-between;padding:1re
 .gcoins-btn:hover{background:#9d4edd;transform:scale(1.05);}
 .header-right{display:flex;align-items:center;gap:1rem;}
 .search-bar{position:relative;}
-.search-bar input{padding:0.4rem 1rem;border-radius:50px;border:none;outline:none;width:150px;background:var(--secondary-black);color:var(--white);}
+.search-bar input{padding:0.4rem 1rem;border-radius:50px;border:none;outline:none;width:150px;background:var(--secondary-black);color:#fff;}
 .search-bar input::placeholder{color:rgba(255,255,255,0.5);}
 .search-bar i{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.7);}
 .header-right button{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;cursor:pointer;transition:background var(--transition), transform var(--transition);}
@@ -110,7 +110,7 @@ main{padding:8rem 3rem 5rem 3rem;}
 }
 .vehicle-card:hover{transform:scale(1.02);box-shadow:0 0 20px var(--primary-purple);}
 
-/* Popup modale plus grande avec effet 3D */
+/* Modal 3D avec background */
 .modal{
   display:none;
   position:fixed;
@@ -121,6 +121,7 @@ main{padding:8rem 3rem 5rem 3rem;}
   perspective:1200px;
 }
 .modal-content{
+  position:relative;
   background:var(--secondary-black);
   border-radius:16px;
   width:90%;
@@ -132,21 +133,31 @@ main{padding:8rem 3rem 5rem 3rem;}
   transition: transform 0.6s ease, opacity 0.6s ease;
   box-shadow:0 0 50px rgba(138,43,226,0.8);
 }
-.modal-content.active{
-  transform: rotateY(0deg) scale(1);
-  opacity:1;
-}
-.modal-content img.main-img{
+
+/* Fond bestseller + véhicule */
+.modal-bg{
+  position:relative;
   width:100%;
   height:400px;
+  margin-bottom:1rem;
+}
+.modal-bg img:first-child{
+  width:100%;
+  height:100%;
   object-fit:cover;
   border-radius:12px;
-  margin-bottom:1rem;
 }
-.modal-content img.bestseller{
+.modal-bg img.modal-vehicle{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
   width:300px;
-  margin-bottom:1rem;
+  height:auto;
+  object-fit:contain;
+  border-radius:12px;
 }
+
 .modal-title{
   font-family:'Staatliches',sans-serif;
   font-size:2.5rem;
@@ -211,7 +222,8 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
   </section>
 
   <section class="vehicle-grid">
-    <div class="vehicle-card" data-title="Comet RS" data-img="assets/images/vehicule1.png" data-desc="La Comet RS est une voiture sportive ultra-rapide, idéale pour les courses en ville et sur l’autoroute. Avec une accélération fulgurante, une maniabilité parfaite et un design élégant, elle est parfaite pour les joueurs qui aiment la vitesse et l’adrénaline." data-price="1200">
+    <!-- Véhicule 1 -->
+    <div class="vehicle-card" data-title="Comet RS" data-img="assets/images/vehicule1.png" data-desc="La Comet RS est une voiture sportive ultra-rapide, idéale pour les courses en ville et sur l’autoroute. Accélération fulgurante, maniabilité parfaite, design élégant, elle est parfaite pour les joueurs qui aiment la vitesse et l’adrénaline." data-price="1200">
       <img src="assets/images/vehicule1.png" alt="Comet RS">
       <div class="vehicle-info">
         <h3>Comet RS</h3>
@@ -219,54 +231,69 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
     </div>
-    <div class="vehicle-card" data-title="Faggio" data-img="assets/images/vehicule2.png" data-desc="Le Faggio est un scooter agile et pratique pour les déplacements rapides à travers la ville. Léger et maniable, il est idéal pour éviter la circulation et atteindre rapidement vos objectifs dans le jeu." data-price="500">
-      <img src="assets/images/vehicule2.png" alt="Faggio">
+
+    <!-- Véhicule 2 -->
+    <div class="vehicle-card" data-title="Dubsta 6x6" data-img="assets/images/vehicule2.png" data-desc="Le Dubsta 6x6 est un SUV massif et tout-terrain, capable de franchir les obstacles les plus difficiles. Idéal pour le transport en groupe et les missions extrêmes, avec une puissance et une résistance hors norme." data-price="2500">
+      <img src="assets/images/vehicule2.png" alt="Dubsta 6x6">
       <div class="vehicle-info">
-        <h3>Faggio</h3>
-        <span>500 GCoins</span>
-        <button class="buy-btn">Ajouter au Panier</button>
-      </div>
-    </div>
-    <div class="vehicle-card" data-title="Elegy RH8" data-img="assets/images/vehicule3.png" data-desc="La Elegy RH8 combine vitesse et contrôle parfait dans les virages. Avec son moteur performant et sa tenue de route exceptionnelle, elle est le choix idéal pour les courses et poursuites endiablées." data-price="1500">
-      <img src="assets/images/vehicule3.png" alt="Elegy RH8">
-      <div class="vehicle-info">
-        <h3>Elegy RH8</h3>
-        <span>1500 GCoins</span>
-        <button class="buy-btn">Ajouter au Panier</button>
-      </div>
-    </div>
-    <div class="vehicle-card" data-title="Burrito" data-img="assets/images/vehicule4.png" data-desc="Le Burrito est un van spacieux idéal pour transporter vos équipes et votre équipement. Avec sa robustesse et sa fiabilité, il est parfait pour les missions et les activités nécessitant du transport sécurisé." data-price="1000">
-      <img src="assets/images/vehicule4.png" alt="Burrito">
-      <div class="vehicle-info">
-        <h3>Burrito</h3>
-        <span>1000 GCoins</span>
-        <button class="buy-btn">Ajouter au Panier</button>
-      </div>
-    </div>
-    <div class="vehicle-card" data-title="Insurgent" data-img="assets/images/vehicule5.png" data-desc="L’Insurgent est un véhicule blindé conçu pour affronter les missions les plus risquées. Avec une protection maximale et une puissance de feu impressionnante, il est idéal pour les opérations de groupe." data-price="2500">
-      <img src="assets/images/vehicule5.png" alt="Insurgent">
-      <div class="vehicle-info">
-        <h3>Insurgent</h3>
+        <h3>Dubsta 6x6</h3>
         <span>2500 GCoins</span>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
     </div>
-    <div class="vehicle-card" data-title="Cargobob" data-img="assets/images/vehicule6.png" data-desc="Le Cargobob est un hélicoptère puissant capable de transporter de lourdes charges et vos véhicules. Idéal pour des missions logistiques ou stratégiques, sa maniabilité et sa puissance sont incomparables." data-price="3000">
-      <img src="assets/images/vehicule6.png" alt="Cargobob">
+
+    <!-- Véhicule 3 -->
+    <div class="vehicle-card" data-title="Akula" data-img="assets/images/vehicule3.png" data-desc="L’Akula est un hélicoptère furtif avancé, idéal pour les missions discrètes ou les combats aériens. Rapide, maniable et équipé d’armement sophistiqué, il donne un avantage stratégique en toutes situations." data-price="3500">
+      <img src="assets/images/vehicule3.png" alt="Akula">
       <div class="vehicle-info">
-        <h3>Cargobob</h3>
-        <span>3000 GCoins</span>
+        <h3>Akula</h3>
+        <span>3500 GCoins</span>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
     </div>
-    <div class="vehicle-card" data-title="Oppressor Mk II" data-img="assets/images/vehicule7.png" data-desc="L’Oppressor Mk II est une moto volante ultra-rapide. Parfaite pour les évasions et missions rapides, elle combine vitesse, maniabilité et puissance de feu, faisant d’elle un choix incontournable pour les joueurs ambitieux." data-price="4000">
-      <img src="assets/images/vehicule7.png" alt="Oppressor Mk II">
+
+    <!-- Véhicule 4 -->
+    <div class="vehicle-card" data-title="T20" data-img="assets/images/vehicule4.png" data-desc="La T20 est une supercar de luxe, alliant vitesse, design futuriste et confort. Idéale pour les courses sur route et les missions de prestige, elle impressionne autant par sa puissance que par son style." data-price="4000">
+      <img src="assets/images/vehicule4.png" alt="T20">
       <div class="vehicle-info">
-        <h3>Oppressor Mk II</h3>
+        <h3>T20</h3>
         <span>4000 GCoins</span>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
     </div>
+
+    <!-- Véhicule 5 -->
+    <div class="vehicle-card" data-title="Rhino" data-img="assets/images/vehicule5.png" data-desc="Le Rhino est un char d’assaut lourd, parfait pour les missions de combat et les affrontements intenses. Son blindage massif et son canon puissant permettent de dominer le champ de bataille
+    <!-- Véhicule 5 -->
+    <div class="vehicle-card" data-title="Rhino" data-img="assets/images/vehicule5.png" data-desc="Le Rhino est un char d’assaut lourd, parfait pour les missions de combat et les affrontements intenses. Son blindage massif et son canon puissant permettent de dominer le champ de bataille, idéal pour les joueurs qui veulent imposer leur puissance." data-price="5000">
+      <img src="assets/images/vehicule5.png" alt="Rhino">
+      <div class="vehicle-info">
+        <h3>Rhino</h3>
+        <span>5000 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
+
+    <!-- Véhicule 6 -->
+    <div class="vehicle-card" data-title="Buzzard" data-img="assets/images/vehicule6.png" data-desc="Le Buzzard est un hélicoptère léger et rapide, équipé de mitrailleuses et de missiles. Idéal pour des missions rapides et l’attaque de cibles mobiles, il allie vitesse, maniabilité et armement destructeur." data-price="3200">
+      <img src="assets/images/vehicule6.png" alt="Buzzard">
+      <div class="vehicle-info">
+        <h3>Buzzard</h3>
+        <span>3200 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
+
+    <!-- Véhicule 7 -->
+    <div class="vehicle-card" data-title="Sanchez" data-img="assets/images/vehicule7.png" data-desc="La Sanchez est une moto tout-terrain parfaite pour explorer les montagnes et les sentiers difficiles. Rapide, maniable et résistante, elle permet de parcourir de longues distances en toute liberté et d’échapper à vos ennemis." data-price="800">
+      <img src="assets/images/vehicule7.png" alt="Sanchez">
+      <div class="vehicle-info">
+        <h3>Sanchez</h3>
+        <span>800 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
+
   </section>
 </main>
 
@@ -274,11 +301,13 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
 <div class="modal" id="vehicleModal">
   <div class="modal-content">
     <span class="close-btn">&times;</span>
-    <img src="assets/images/bestseller.png" alt="Bestseller" class="bestseller">
-    <h2 class="modal-title" id="modal-title"></h2>
-    <img src="" alt="Véhicule" class="main-img" id="modal-img">
-    <p class="modal-desc" id="modal-desc"></p>
-    <button class="buy-btn" id="modal-buy">Ajouter au Panier</button>
+    <div class="modal-bg">
+      <img src="assets/images/bestseller.png" alt="Bestseller">
+      <img src="" alt="Vehicle" class="modal-vehicle">
+    </div>
+    <div class="modal-title">Nom du véhicule</div>
+    <div class="modal-desc">Description complète du véhicule.</div>
+    <button class="buy-btn">Ajouter au Panier</button>
   </div>
 </div>
 
@@ -297,32 +326,35 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
 
 <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
 <script>
+// Modal popup
 const modal = document.getElementById('vehicleModal');
-const modalImg = document.getElementById('modal-img');
-const modalTitle = document.getElementById('modal-title');
-const modalDesc = document.getElementById('modal-desc');
-const modalBuy = document.getElementById('modal-buy');
-const closeBtn = document.querySelector('.close-btn');
-const modalContent = document.querySelector('.modal-content');
+const modalContent = modal.querySelector('.modal-content');
+const modalVehicleImg = modal.querySelector('.modal-vehicle');
+const modalTitle = modal.querySelector('.modal-title');
+const modalDesc = modal.querySelector('.modal-desc');
+const closeBtn = modal.querySelector('.close-btn');
 
 document.querySelectorAll('.vehicle-card').forEach(card=>{
-  card.addEventListener('click', ()=>{
+  card.addEventListener('click',()=>{
+    modalVehicleImg.src = card.dataset.img;
+    modalTitle.textContent = card.dataset.title;
+    modalDesc.textContent = card.dataset.desc;
     modal.style.display='flex';
-    setTimeout(()=>modalContent.classList.add('active'),50);
-    modalImg.src=card.dataset.img;
-    modalTitle.textContent=card.dataset.title;
-    modalDesc.textContent=card.dataset.desc;
-    modalBuy.onclick=()=>{alert(card.dataset.title+' ajouté au panier !');};
+    setTimeout(()=>modalContent.style.transform='rotateY(0deg) scale(1)',50);
+    setTimeout(()=>modalContent.style.opacity=1,50);
   });
 });
 
-closeBtn.addEventListener('click', ()=>{
-  modalContent.classList.remove('active');
+closeBtn.addEventListener('click',()=>{
+  modalContent.style.transform='rotateY(-20deg) scale(0.5)';
+  modalContent.style.opacity=0;
   setTimeout(()=>modal.style.display='none',300);
 });
+
 window.addEventListener('click',(e)=>{
   if(e.target==modal){
-    modalContent.classList.remove('active');
+    modalContent.style.transform='rotateY(-20deg) scale(0.5)';
+    modalContent.style.opacity=0;
     setTimeout(()=>modal.style.display='none',300);
   }
 });
