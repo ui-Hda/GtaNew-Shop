@@ -98,37 +98,43 @@ main{padding:8rem 3rem 5rem 3rem;}
   text-align:center;
   background:var(--secondary-black);
   border-radius:10px;
-  overflow:hidden;
   box-shadow:0 0 20px rgba(0,0,0,0.5);
   border: 2px solid rgba(255,255,255,0.1);
   position:relative;
-  z-index:1;
 }
+
 .subscription-table th, .subscription-table td {
-  padding:2rem 0.5rem 1rem; /* espace en haut pour images */
+  padding:3rem 1rem 1rem 1rem; /* top padding pour images */
   border: 1px solid rgba(255,255,255,0.15);
   font-weight:500;
-  transition: all 0.3s;
   font-family:'Poppins', sans-serif;
+  vertical-align:top;
 }
-.subscription-table thead th {background: var(--primary-purple); color: #fff; font-size:1.1rem; position:relative;}
 
-/* Images grade flottantes au dessus du tableau */
-.subscription-table th .grade-img {
+.grade-wrapper {
+  position:relative;
+}
+
+.grade-img {
   width:120px;
-  height:auto;
-  margin-bottom:0.5rem;
   position:absolute;
-  top:-60px;
+  top:-70px;
   left:50%;
   transform:translateX(-50%);
   z-index:5;
-  transition:transform 0.3s, box-shadow 0.3s;
+  border-radius:12px;
   box-shadow:0 10px 25px rgba(138,43,226,0.7);
-  border-radius:15px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-.subscription-table th:hover .grade-img {
-  transform:translateX(-50%) scale(1.1) rotateY(5deg) rotateX(3deg);
+
+.grade-wrapper span {
+  display:block;
+  margin-top:60px; /* laisse de la place pour l’image */
+  font-weight:600;
+}
+
+.grade-wrapper:hover .grade-img {
+  transform:translateX(-50%) scale(1.1) rotateX(5deg) rotateY(5deg);
   box-shadow:0 15px 35px rgba(138,43,226,0.9);
 }
 
@@ -197,8 +203,9 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
 
 /* Responsive */
 @media screen and (max-width: 768px){
-  .subscription-table th, .subscription-table td { font-size:0.9rem; padding:0.8rem 0.3rem; }
-  .subscription-table th .grade-img { width:80px; top:-40px; }
+  .subscription-table th, .subscription-table td { font-size:0.9rem; padding:1.5rem 0.3rem 1rem 0.3rem; }
+  .grade-img { width:80px; top:-50px; }
+  .grade-wrapper span { margin-top:50px; }
 }
 </style>
 </head>
@@ -241,23 +248,32 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
         <thead>
           <tr>
             <th>Caractéristiques</th>
-            <th>
-              <img src="assets/images/g-vip1.png" alt="G-VIP" class="grade-img"><br>G-VIP
+            <th class="grade-column">
+              <div class="grade-wrapper">
+                <img src="assets/images/g-vip1.png" alt="G-VIP" class="grade-img">
+                <span>G-VIP</span>
+              </div>
             </th>
-            <th>
-              <img src="assets/images/g-prime.png" alt="G-PRIME" class="grade-img"><br>G-PRIME
+            <th class="grade-column">
+              <div class="grade-wrapper">
+                <img src="assets/images/g-prime.png" alt="G-PRIME" class="grade-img">
+                <span>G-PRIME</span>
+              </div>
             </th>
-            <th class="best-grade">
-              <img src="assets/images/g-elite.png" alt="G-ELITE" class="grade-img"><br>G-ELITE
+            <th class="grade-column best-grade">
+              <div class="grade-wrapper">
+                <img src="assets/images/g-elite.png" alt="G-ELITE" class="grade-img">
+                <span>G-ELITE</span>
+              </div>
             </th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>GCoins / mois</td>
-            <td>1200 <br><button class="buy-btn">Ajouter au Panier</button></td>
-            <td>2500 <br><button class="buy-btn">Ajouter au Panier</button></td>
-            <td>3000 <br><button class="buy-btn glow-btn">Ajouter au Panier</button></td>
+            <td>1000 <br><button class="buy-btn">Ajouter au Panier</button></td>
+            <td>1500 <br><button class="buy-btn">Ajouter au Panier</button></td>
+            <td>2000 <br><button class="buy-btn glow-btn">Ajouter au Panier</button></td>
           </tr>
           <tr>
             <td>Revenu toutes les heures</td>
