@@ -57,7 +57,7 @@ header{display:flex;align-items:center;justify-content:space-between;padding:1re
 main{padding:8rem 3rem 3rem 3rem;}
 section{margin-bottom:5rem;}
 
-/* Tableau abonnements */
+/* Tableau abonnements avec quadrillage et glow */
 .subscription-table {
   overflow-x:auto;
   margin-top:2rem;
@@ -70,11 +70,12 @@ section{margin-bottom:5rem;}
   border-radius:10px;
   overflow:hidden;
   box-shadow:0 0 20px rgba(0,0,0,0.5);
+  border: 2px solid rgba(255,255,255,0.1);
 }
 .subscription-table th,
 .subscription-table td {
   padding:1rem 0.5rem;
-  border-bottom:1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
   font-weight:500;
 }
 .subscription-table thead th {
@@ -84,11 +85,34 @@ section{margin-bottom:5rem;}
 }
 .subscription-table tbody tr:hover {
   background: rgba(138,43,226,0.1);
-  transition: background 0.3s;
+  transform: scale(1.02);
+  transition: background 0.3s, transform 0.3s;
 }
 .subscription-table td:nth-child(n+2) {
   font-weight:600;
   color: var(--primary-purple);
+}
+
+/* Image des grades */
+.subscription-table th .grade-img {
+  width:60px;
+  height:auto;
+  margin-bottom:0.5rem;
+}
+
+/* Surlignage du meilleur abonnement */
+.best-grade {
+  background: rgba(138,43,226,0.2);
+}
+
+/* Glow pour le bouton Acheter du meilleur abonnement */
+.glow-btn {
+  box-shadow: 0 0 15px rgba(138,43,226,0.7);
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  0% { box-shadow: 0 0 15px rgba(138,43,226,0.7); }
+  100% { box-shadow: 0 0 25px rgba(138,43,226,1); }
 }
 
 /* Boutons acheter */
@@ -151,9 +175,18 @@ section{margin-bottom:5rem;}
         <thead>
           <tr>
             <th>Caractéristiques</th>
-            <th>G-VIP</th>
-            <th>G-PRIME</th>
-            <th>G-ELITE</th>
+            <th>
+              <img src="assets/images/g-vip.png" alt="G-VIP" class="grade-img"><br>
+              G-VIP
+            </th>
+            <th>
+              <img src="assets/images/g-prime.png" alt="G-PRIME" class="grade-img"><br>
+              G-PRIME
+            </th>
+            <th class="best-grade">
+              <img src="assets/images/g-elite.png" alt="G-ELITE" class="grade-img"><br>
+              G-ELITE
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -161,7 +194,7 @@ section{margin-bottom:5rem;}
             <td>GCoins / mois</td>
             <td>1000 <br><button class="buy-btn">Acheter</button></td>
             <td>1500 <br><button class="buy-btn">Acheter</button></td>
-            <td>2000 <br><button class="buy-btn">Acheter</button></td>
+            <td>2000 <br><button class="buy-btn glow-btn">Acheter</button></td>
           </tr>
           <tr>
             <td>Revenu toutes les heures</td>
