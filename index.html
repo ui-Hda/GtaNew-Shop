@@ -59,14 +59,16 @@ main{padding:8rem 3rem 3rem 3rem;}
 .hero-card img{max-width:100%;border-radius:10px;}
 
 /* Payment bar */
-.payments{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;}
-.payments img{height:40px;transition:transform var(--transition);}
+.payments{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;padding:1rem 0;background:var(--unity-red);border-radius:10px;}
+.payments img{height:50px;transition:transform var(--transition);}
 .payments img:hover{transform:scale(1.1);}
 
-/* Category cards */
-.categories{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;}
-.category-card{background:var(--secondary-black);border-radius:15px;width:250px;height:150px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;transition:transform var(--transition), background var(--transition), box-shadow var(--transition);box-shadow:0 4px 6px rgba(0,0,0,0.3);}
+/* Category cards 2x scroll */
+.categories-wrapper{overflow-x:auto;scroll-behavior:smooth;}
+.categories{display:flex;gap:2rem;padding-bottom:1rem;}
+.category-card{flex:0 0 45%;height:200px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;border-radius:15px;cursor:pointer;transition:transform var(--transition), background var(--transition), box-shadow var(--transition);background:var(--secondary-black);box-shadow:0 4px 6px rgba(0,0,0,0.3);}
 .category-card:hover{transform:scale(1.05);background:var(--hover-gray);box-shadow:0 8px 12px rgba(0,0,0,0.5);}
+@media(max-width:768px){.category-card{flex:0 0 80%;}}
 
 /* FOOTER */
 footer{text-align:center;padding:2rem 0;background:var(--secondary-black);color:rgba(255,255,255,0.6);margin-top:5rem;}
@@ -83,12 +85,12 @@ footer{text-align:center;padding:2rem 0;background:var(--secondary-black);color:
 <nav>
 <i class="fas fa-bars mobile-menu-icon"></i>
 <ul>
-<li><a href="#abonnements">Abonnements</a></li>
-<li><a href="#objets">Objets</a></li>
-<li><a href="#armes">Armes</a></li>
-<li><a href="#permissions">Permissions IG</a></li>
-<li><a href="#packs">Packs</a></li>
-<li><a href="#divers">Divers</a></li>
+<li><a href="abonnements.html">Abonnements</a></li>
+<li><a href="objets.html">Objets</a></li>
+<li><a href="armes.html">Armes</a></li>
+<li><a href="permissions.html">Permissions IG</a></li>
+<li><a href="packs.html">Packs</a></li>
+<li><a href="divers.html">Divers</a></li>
 </ul>
 <div class="search-bar"><input type="text" placeholder="Rechercher..."><i class="fas fa-search"></i></div>
 <button class="login-btn">Se connecter</button>
@@ -115,13 +117,15 @@ footer{text-align:center;padding:2rem 0;background:var(--secondary-black);color:
 <img src="assets/images/payments/applepay.png" alt="Apple Pay">
 </div>
 
+<div class="categories-wrapper">
 <div class="categories">
-<div class="category-card" id="abonnements">Abonnements</div>
-<div class="category-card" id="objets">Objets</div>
-<div class="category-card" id="armes">Armes</div>
-<div class="category-card" id="permissions">Permissions IG</div>
-<div class="category-card" id="packs">Packs</div>
-<div class="category-card" id="divers">Divers</div>
+<a href="abonnements.html" class="category-card">Abonnements</a>
+<a href="objets.html" class="category-card">Objets</a>
+<a href="armes.html" class="category-card">Armes</a>
+<a href="permissions.html" class="category-card">Permissions IG</a>
+<a href="packs.html" class="category-card">Packs</a>
+<a href="divers.html" class="category-card">Divers</a>
+</div>
 </div>
 </main>
 
@@ -160,3 +164,4 @@ searchInput.addEventListener("input",(e)=>{
 </script>
 </body>
 </html>
+
