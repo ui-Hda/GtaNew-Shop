@@ -32,16 +32,16 @@ a:hover{color:var(--unity-red);}
 /* HEADER */
 header{display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;position:fixed;width:100%;top:0;background:var(--secondary-black);z-index:1000;transition:background var(--transition);}
 .logo img{height:50px;}
-nav{display:flex;align-items:center;gap:2rem;position:relative;}
-nav ul{display:flex;gap:1.5rem;}
+nav{display:flex;align-items:center;gap:1rem;position:relative;}
+nav ul{display:flex;gap:1.5rem;align-items:center;}
 .toggle-theme{cursor:pointer;font-size:1.5rem;margin-left:1rem;}
 .mobile-menu-icon{display:none;font-size:1.5rem;cursor:pointer;}
 .search-bar{position:relative;}
 .search-bar input{padding:0.4rem 1rem;border-radius:50px;border:none;outline:none;width:150px;background:var(--secondary-black);color:var(--white);}
 .search-bar input::placeholder{color:rgba(255,255,255,0.5);}
 .search-bar i{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.7);}
-.login-btn{padding:0.5rem 1rem;border-radius:50px;background:var(--unity-red);border:none;color:var(--white);cursor:pointer;transition:background var(--transition);}
-.login-btn:hover{background:#f63b5e;}
+.login-btn, .cart-btn{padding:0.5rem 1rem;border-radius:50px;background:var(--unity-red);border:none;color:var(--white);cursor:pointer;transition:background var(--transition);}
+.login-btn:hover, .cart-btn:hover{background:#f63b5e;}
 @media(max-width:768px){
 nav ul{display:none;flex-direction:column;position:absolute;top:70px;right:0;background:var(--secondary-black);width:200px;padding:1rem;border-radius:0 0 5px 5px;}
 nav ul.show{display:flex;}
@@ -59,19 +59,23 @@ main{padding:8rem 3rem 3rem 3rem;}
 .hero-card img{max-width:100%;border-radius:10px;}
 
 /* Payment bar */
-.payments{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;padding:1rem 0;background:var(--unity-red);border-radius:10px;}
-.payments img{height:50px;transition:transform var(--transition);}
+.payments{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;padding:1.5rem 0;background:var(--unity-red);border-radius:10px;}
+.payments img{height:60px;transition:transform var(--transition);}
 .payments img:hover{transform:scale(1.1);}
 
-/* Category cards 2x scroll */
-.categories-wrapper{overflow-x:auto;scroll-behavior:smooth;}
-.categories{display:flex;gap:2rem;padding-bottom:1rem;}
-.category-card{flex:0 0 45%;height:200px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;border-radius:15px;cursor:pointer;transition:transform var(--transition), background var(--transition), box-shadow var(--transition);background:var(--secondary-black);box-shadow:0 4px 6px rgba(0,0,0,0.3);}
-.category-card:hover{transform:scale(1.05);background:var(--hover-gray);box-shadow:0 8px 12px rgba(0,0,0,0.5);}
-@media(max-width:768px){.category-card{flex:0 0 80%;}}
+/* Category cards vertical scroll */
+.categories-wrapper{max-height:600px;overflow-y:auto;padding-right:5px;}
+.categories{display:flex;flex-direction:column;gap:1.5rem;}
+.category-card{height:150px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;border-radius:15px;cursor:pointer;transition:transform var(--transition), background var(--transition), box-shadow var(--transition);background:var(--secondary-black);box-shadow:0 4px 6px rgba(0,0,0,0.3);}
+.category-card:hover{transform:scale(1.02);background:var(--hover-gray);box-shadow:0 8px 12px rgba(0,0,0,0.5);}
+@media(max-width:768px){.category-card{height:120px;}}
 
 /* FOOTER */
-footer{text-align:center;padding:2rem 0;background:var(--secondary-black);color:rgba(255,255,255,0.6);margin-top:5rem;}
+footer{display:flex;justify-content:space-between;align-items:center;padding:2rem 3rem;background:var(--secondary-black);color:rgba(255,255,255,0.6);margin-top:5rem;flex-wrap:wrap;gap:1rem;}
+.footer-links a{margin-right:1.5rem;color:rgba(255,255,255,0.6);}
+.footer-links a:hover{color:var(--unity-red);}
+.footer-socials a{margin-left:1rem;color:rgba(255,255,255,0.6);}
+.footer-socials a:hover{color:var(--unity-red);}
 </style>
 </head>
 <body id="body-root">
@@ -91,6 +95,7 @@ footer{text-align:center;padding:2rem 0;background:var(--secondary-black);color:
 <li><a href="permissions.html">Permissions IG</a></li>
 <li><a href="packs.html">Packs</a></li>
 <li><a href="divers.html">Divers</a></li>
+<li><button class="cart-btn"><i class="fas fa-shopping-cart"></i> Panier</button></li>
 </ul>
 <div class="search-bar"><input type="text" placeholder="Rechercher..."><i class="fas fa-search"></i></div>
 <button class="login-btn">Se connecter</button>
@@ -130,7 +135,17 @@ footer{text-align:center;padding:2rem 0;background:var(--secondary-black);color:
 </main>
 
 <footer>
-<p>&copy; 2025 UnityRP Shop</p>
+<div class="footer-links">
+<a href="mentions-legales.html">Mentions légales</a>
+<a href="confidentialite.html">Confidentialité</a>
+<a href="contact.html">Contact</a>
+</div>
+<div class="footer-socials">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-discord"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+</div>
 </footer>
 
 <!-- JS -->
@@ -143,9 +158,7 @@ window.addEventListener("load",()=>{
 
 // Theme toggle
 const themeToggle=document.querySelector(".toggle-theme");
-themeToggle.addEventListener("click",()=>{
-  document.body.classList.toggle("dark");
-});
+themeToggle.addEventListener("click",()=>{document.body.classList.toggle("dark");});
 
 // Mobile menu toggle
 const mobileIcon=document.querySelector(".mobile-menu-icon");
@@ -164,4 +177,3 @@ searchInput.addEventListener("input",(e)=>{
 </script>
 </body>
 </html>
-
