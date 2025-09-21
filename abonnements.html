@@ -17,39 +17,26 @@
   --transition:0.3s;
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:var(--primary-black);color:var(--white);overflow-x:hidden;transition: background var(--transition), color var(--transition);}
+body{background:var(--primary-black);color:var(--white);overflow-x:hidden;}
 h2{font-family:'Staatliches',sans-serif;margin-bottom:1.5rem;position:relative;}
-h2::after{content:"";position:absolute;width:50%;height:3px;background:var(--primary-purple);left:0;bottom:-5px;border-radius:5px;}
 a{text-decoration:none;color:var(--white);transition:color var(--transition);}
 a:hover{color:var(--primary-purple);}
 
 /* Header */
-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;position:fixed;width:100%;top:0;background:var(--secondary-black);z-index:1000;transition:background var(--transition);}
+header{display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;position:fixed;width:100%;top:0;background:var(--secondary-black);z-index:1000;}
 .logo img{height:75px;}
 .nav-left{display:flex;align-items:center;gap:2rem;}
-.nav-left ul{display:flex;flex-direction:row;gap:2rem;align-items:center;}
-.nav-left ul li a{color:var(--white);font-weight:500;transition:color var(--transition);}
+.nav-left ul{display:flex;gap:2rem;align-items:center;list-style:none;}
+.nav-left ul li a{color:var(--white);font-weight:500;}
 .nav-left ul li a:hover{color:var(--primary-purple);}
-.gcoins-btn{
-  background:var(--primary-purple);
-  border:none;
-  padding:0.5rem 1rem;
-  border-radius:50px;
-  color:#fff;
-  font-weight:600;
-  cursor:pointer;
-  transition:background var(--transition), transform var(--transition);
-}
-.gcoins-btn:hover{
-  background:#9d4edd;
-  transform:scale(1.05);
-}
+.gcoins-btn{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;font-weight:600;cursor:pointer;transition:0.3s;}
+.gcoins-btn:hover{background:#9d4edd;transform:scale(1.05);}
 .header-right{display:flex;align-items:center;gap:1rem;}
 .search-bar{position:relative;}
 .search-bar input{padding:0.4rem 1rem;border-radius:50px;border:none;outline:none;width:150px;background:var(--secondary-black);color:var(--white);}
 .search-bar input::placeholder{color:rgba(255,255,255,0.5);}
 .search-bar i{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.7);}
-.header-right button{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;cursor:pointer;transition:background var(--transition), transform var(--transition);}
+.header-right button{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;cursor:pointer;transition:0.3s;}
 .header-right button:hover{background:#9d4edd;transform:scale(1.05);}
 
 /* Main */
@@ -67,31 +54,16 @@ main{padding:8rem 3rem 5rem 3rem;}
   max-width:1400px;
   margin-left:auto;
   margin-right:auto;
-  box-sizing:border-box;
   background: linear-gradient(-45deg, #8a2be2, #4b0082, #171717, #0f0f0f);
   background-size:400% 400%;
   animation: gradientMove 12s ease infinite;
-  color: #fff;
 }
-.subscription-text{
-  font-family:'Staatliches',sans-serif;
-  font-size:2rem;
-  font-weight:500;
-}
-.subscription-description{
-  font-size:1rem;
-  max-width:600px;
-  text-align:right;
-  color:#fff;
-}
-@keyframes gradientMove {
-  0% {background-position:0% 50%;}
-  50% {background-position:100% 50%;}
-  100% {background-position:0% 50%;}
-}
+.subscription-text{font-family:'Staatliches',sans-serif;font-size:2rem;font-weight:500;}
+.subscription-description{font-size:1rem;max-width:600px;text-align:right;color:#fff;}
+@keyframes gradientMove{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 
 /* Tableau abonnements */
-.subscription-table {overflow-x:auto; margin-top:2rem; position:relative;}
+.subscription-table {overflow-x:auto; margin-top:2rem;}
 .subscription-table table {
   width:100%;
   border-collapse: collapse;
@@ -102,114 +74,47 @@ main{padding:8rem 3rem 5rem 3rem;}
   border: 2px solid rgba(255,255,255,0.1);
   position:relative;
 }
-
 .subscription-table th, .subscription-table td {
-  padding:3rem 1rem 1rem 1rem; /* top padding pour images */
+  padding:4rem 1rem 1rem 1rem; /* espace pour images */
   border: 1px solid rgba(255,255,255,0.15);
   font-weight:500;
   font-family:'Poppins', sans-serif;
   vertical-align:top;
+  color:#fff;
 }
-
-.grade-wrapper {
-  position:relative;
-}
-
+.subscription-table thead th {background: var(--primary-purple); color: #fff; font-size:1.1rem; position:relative;}
+.grade-wrapper {position:relative; padding-top:50px;}
 .grade-img {
-  width:120px;
+  width:100px;
   position:absolute;
-  top:-70px;
+  top:-40px;
   left:50%;
   transform:translateX(-50%);
-  z-index:5;
+  z-index:10;
   border-radius:12px;
-  box-shadow:0 10px 25px rgba(138,43,226,0.7);
+  box-shadow:0 10px 20px rgba(138,43,226,0.7);
   transition: transform 0.3s, box-shadow 0.3s;
 }
+.grade-img:hover{transform:translateX(-50%) scale(1.1); box-shadow:0 15px 25px rgba(138,43,226,1);}
+.grade-name {margin-top:60px; font-weight:700;}
 
-.grade-wrapper span {
-  display:block;
-  margin-top:60px; /* laisse de la place pour l’image */
-  font-weight:600;
-}
+/* Highlight Elite */
+.best-grade {background: linear-gradient(90deg, #8a2be2, #4b0082, #8a2be2);}
+.glow-btn {box-shadow: 0 0 15px rgba(138,43,226,0.7); animation: glow 1.5s ease-in-out infinite alternate;}
+@keyframes glow {0% {box-shadow: 0 0 15px rgba(138,43,226,0.7);}100% {box-shadow: 0 0 25px rgba(138,43,226,1);}}
 
-.grade-wrapper:hover .grade-img {
-  transform:translateX(-50%) scale(1.1) rotateX(5deg) rotateY(5deg);
-  box-shadow:0 15px 35px rgba(138,43,226,0.9);
-}
-
-/* Hover sur colonne entière avec effet 3D */
-.subscription-table tbody td {
-  opacity:0;
-  transform: translateY(20px);
-  transition: transform 0.3s, box-shadow 0.3s, opacity 0.6s ease;
-  transform-style: preserve-3d;
-  perspective: 1000px;
-}
-.subscription-table tbody td:hover,
-.subscription-table tbody td:hover ~ td {
-  transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
-  box-shadow: 0 15px 25px rgba(138,43,226,0.4);
-}
-
-/* Surlignage meilleur abonnement */
-.best-grade {
-  background: linear-gradient(90deg, #8a2be2, #4b0082, #8a2be2);
-  background-size:200% 200%;
-  animation: gradientMove 3s ease infinite;
-}
-.best-grade:hover {
-  box-shadow: 0 0 25px rgba(138,43,226,0.7);
-}
-
-/* Glow pour le bouton Acheter du meilleur abonnement */
-.glow-btn {
-  box-shadow: 0 0 15px rgba(138,43,226,0.7);
-  animation: glow 1.5s ease-in-out infinite alternate;
-}
-@keyframes glow {
-  0% { box-shadow: 0 0 15px rgba(138,43,226,0.7); }
-  100% { box-shadow: 0 0 25px rgba(138,43,226,1); }
-}
-
-/* Boutons acheter */
-.buy-btn {
-  background:var(--primary-purple);
-  border:none;
-  padding:0.5rem 1rem;
-  border-radius:50px;
-  color:#fff;
-  font-weight:600;
-  cursor:pointer;
-  transition:background var(--transition), transform var(--transition), box-shadow 0.3s;
-}
-.buy-btn:hover{
-  background:#9d4edd;
-  transform:scale(1.05);
-  box-shadow:0 0 10px rgba(138,43,226,0.7);
-}
+/* Boutons */
+.buy-btn{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;font-weight:600;cursor:pointer;transition:0.3s;}
+.buy-btn:hover{background:#9d4edd;transform:scale(1.05);box-shadow:0 0 10px rgba(138,43,226,0.7);}
 
 /* Footer */
-footer{
-  text-align:center;
-  padding:2rem 0;
-  background:var(--secondary-black);
-  color:rgba(255,255,255,0.6);
-  margin-top:5rem;
-}
+footer{text-align:center;padding:2rem 0;background:var(--secondary-black);color:rgba(255,255,255,0.6);margin-top:5rem;}
 footer a{margin:0 1rem;color:rgba(255,255,255,0.6);}
 footer a:hover{color:var(--primary-purple);}
 footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1rem;}
-
-/* Responsive */
-@media screen and (max-width: 768px){
-  .subscription-table th, .subscription-table td { font-size:0.9rem; padding:1.5rem 0.3rem 1rem 0.3rem; }
-  .grade-img { width:80px; top:-50px; }
-  .grade-wrapper span { margin-top:50px; }
-}
 </style>
 </head>
-<body id="body-root">
+<body>
 
 <header>
   <div class="logo"><img src="assets/images/logo.png" alt="GTA New Shop"></div>
@@ -236,34 +141,34 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
 
 <main>
   <section id="abonnements">
+    <!-- Barre abonnements -->
     <div class="subscription-bar">
       <div class="subscription-text">Abonnements</div>
-      <div class="subscription-description">
-        Tentez votre chance en prenant un des abonnements qui vous permettra d'avancer plus rapidement
-      </div>
+      <div class="subscription-description">Tentez votre chance en prenant un des abonnements qui vous permettra d'avancer plus rapidement</div>
     </div>
 
+    <!-- Tableau -->
     <div class="subscription-table">
       <table>
         <thead>
           <tr>
             <th>Caractéristiques</th>
-            <th class="grade-column">
+            <th>
               <div class="grade-wrapper">
                 <img src="assets/images/g-vip1.png" alt="G-VIP" class="grade-img">
-                <span>G-VIP</span>
+                <div class="grade-name">G-VIP</div>
               </div>
             </th>
-            <th class="grade-column">
+            <th>
               <div class="grade-wrapper">
                 <img src="assets/images/g-prime.png" alt="G-PRIME" class="grade-img">
-                <span>G-PRIME</span>
+                <div class="grade-name">G-PRIME</div>
               </div>
             </th>
-            <th class="grade-column best-grade">
+            <th class="best-grade">
               <div class="grade-wrapper">
                 <img src="assets/images/g-elite.png" alt="G-ELITE" class="grade-img">
-                <span>G-ELITE</span>
+                <div class="grade-name">G-ELITE</div>
               </div>
             </th>
           </tr>
@@ -275,48 +180,13 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
             <td>1500 <br><button class="buy-btn">Ajouter au Panier</button></td>
             <td>2000 <br><button class="buy-btn glow-btn">Ajouter au Panier</button></td>
           </tr>
-          <tr>
-            <td>Revenu toutes les heures</td>
-            <td>100000$</td>
-            <td>250000$</td>
-            <td>320000$</td>
-          </tr>
-          <tr>
-            <td>Possibilité de placer une télévision</td>
-            <td>✓</td>
-            <td>✓</td>
-            <td>✓</td>
-          </tr>
-          <tr>
-            <td>Slots de personnages</td>
-            <td>2</td>
-            <td>2</td>
-            <td>3</td>
-          </tr>
-          <tr>
-            <td>Accès aux revêtements d'armes</td>
-            <td>✓</td>
-            <td>✓</td>
-            <td>✓</td>
-          </tr>
-          <tr>
-            <td>Multiplicateur de zone GF</td>
-            <td>1,5x</td>
-            <td>2,5x</td>
-            <td>3,5x</td>
-          </tr>
-          <tr>
-            <td>Caisse offerte chaque mois</td>
-            <td>Gold</td>
-            <td>Diamant</td>
-            <td>Predator</td>
-          </tr>
-          <tr>
-            <td>Multiplicateur Zone AFK</td>
-            <td>1,5x</td>
-            <td>2,5x</td>
-            <td>3,5x</td>
-          </tr>
+          <tr><td>Revenu toutes les heures</td><td>100000$</td><td>250000$</td><td>320000$</td></tr>
+          <tr><td>Possibilité de placer une télévision</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Slots de personnages</td><td>2</td><td>2</td><td>3</td></tr>
+          <tr><td>Accès aux revêtements d'armes</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Multiplicateur de zone GF</td><td>1,5x</td><td>2,5x</td><td>3,5x</td></tr>
+          <tr><td>Caisse offerte chaque mois</td><td>Gold</td><td>Diamant</td><td>Predator</td></tr>
+          <tr><td>Multiplicateur Zone AFK</td><td>1,5x</td><td>2,5x</td><td>3,5x</td></tr>
         </tbody>
       </table>
     </div>
@@ -337,17 +207,5 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
 </footer>
 
 <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
-<script>
-// Animation apparition au scroll
-const tds = document.querySelectorAll('.subscription-table tbody td');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-    }
-  });
-},{threshold:0.2});
-tds.forEach(td => observer.observe(td));
-</script>
 </body>
 </html>
