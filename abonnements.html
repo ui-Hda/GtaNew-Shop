@@ -57,41 +57,52 @@ main{padding:8rem 3rem 5rem 3rem;}
   background:var(--secondary-black);
   border-radius:10px;
   box-shadow:0 0 20px rgba(0,0,0,0.5);
-  border: 3px solid var(--primary-purple); /* Bordure extérieure */
+  border: 3px solid var(--primary-purple);
   position:relative;
 }
 .subscription-table th, .subscription-table td {
   padding:4rem 1rem 1rem 1rem;
-  border: 2px solid var(--primary-purple); /* Quadrillage violet élargi */
+  border: 2px solid var(--primary-purple);
   font-weight:500;
   font-family:'Poppins', sans-serif;
-  vertical-align:top;
+  vertical-align:middle;
 }
 .subscription-table thead th {
   font-size:1.1rem;
   position:relative;
-  padding-top:6rem; /* espace pour l'image */
+  padding-top:6rem;
 }
 .subscription-table thead th:first-child {
-  background:var(--primary-black); /* case Caractéristiques en noir */
+  background:var(--primary-black);
   color:#fff;
   padding-top:1rem;
+  text-align:center; /* centrer Caractéristiques */
+  vertical-align:middle;
 }
 
-/* Images grades */
-.grade-wrapper {position:relative;}
+/* Images grades avec fond noir */
+.grade-wrapper {
+  position:relative;
+  text-align:center;
+}
 .grade-img {
   width:100px;
+  background: var(--primary-black);
+  padding:10px;
+  border-radius:50%;
   position:absolute;
   top:-60px;
   left:50%;
   transform:translateX(-50%);
   z-index:10;
-  border-radius:12px;
   box-shadow:0 10px 20px rgba(138,43,226,0.7);
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.grade-name {margin-top:0.5rem;font-weight:700;}
+.grade-name {
+  margin-top:0.5rem;
+  font-weight:700;
+  text-align:center;
+}
 
 /* Boutons acheter */
 .buy-btn{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;font-weight:600;cursor:pointer;transition:background var(--transition), transform var(--transition), box-shadow 0.3s;}
