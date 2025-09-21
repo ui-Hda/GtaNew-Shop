@@ -17,7 +17,7 @@
   --transition:0.3s;
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:var(--primary-black);color:var(--white);overflow-x:hidden;}
+body{background:var(--primary-black);color:var(--white);overflow-x:hidden;transition: background var(--transition), color var(--transition);}
 h2{font-family:'Staatliches',sans-serif;margin-bottom:1.5rem;position:relative;}
 a{text-decoration:none;color:var(--white);transition:color var(--transition);}
 a:hover{color:var(--primary-purple);}
@@ -26,38 +26,24 @@ a:hover{color:var(--primary-purple);}
 header{display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;position:fixed;width:100%;top:0;background:var(--secondary-black);z-index:1000;}
 .logo img{height:75px;}
 .nav-left{display:flex;align-items:center;gap:2rem;}
-.nav-left ul{display:flex;gap:2rem;align-items:center;list-style:none;}
-.nav-left ul li a{color:var(--white);font-weight:500;}
+.nav-left ul{display:flex;flex-direction:row;gap:2rem;align-items:center;}
+.nav-left ul li a{color:var(--white);font-weight:500;transition:color var(--transition);}
 .nav-left ul li a:hover{color:var(--primary-purple);}
-.gcoins-btn{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;font-weight:600;cursor:pointer;transition:0.3s;}
+.gcoins-btn{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;font-weight:600;cursor:pointer;transition:background var(--transition), transform var(--transition);}
 .gcoins-btn:hover{background:#9d4edd;transform:scale(1.05);}
 .header-right{display:flex;align-items:center;gap:1rem;}
 .search-bar{position:relative;}
 .search-bar input{padding:0.4rem 1rem;border-radius:50px;border:none;outline:none;width:150px;background:var(--secondary-black);color:var(--white);}
 .search-bar input::placeholder{color:rgba(255,255,255,0.5);}
 .search-bar i{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.7);}
-.header-right button{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;cursor:pointer;transition:0.3s;}
+.header-right button{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;cursor:pointer;transition:background var(--transition), transform var(--transition);}
 .header-right button:hover{background:#9d4edd;transform:scale(1.05);}
 
 /* Main */
 main{padding:8rem 3rem 5rem 3rem;}
 
 /* Barre abonnements animée */
-.subscription-bar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:2rem 3rem;
-  border-radius:12px;
-  margin-bottom:3rem;
-  width:100%;
-  max-width:1400px;
-  margin-left:auto;
-  margin-right:auto;
-  background: linear-gradient(-45deg, #8a2be2, #4b0082, #171717, #0f0f0f);
-  background-size:400% 400%;
-  animation: gradientMove 12s ease infinite;
-}
+.subscription-bar{display:flex;justify-content:space-between;align-items:center;padding:2rem 3rem;border-radius:12px;margin-bottom:3rem;width:100%;max-width:1400px;margin-left:auto;margin-right:auto;background:linear-gradient(-45deg, #8a2be2, #4b0082, #171717, #0f0f0f);background-size:400% 400%;animation: gradientMove 12s ease infinite;color:#fff;}
 .subscription-text{font-family:'Staatliches',sans-serif;font-size:2rem;font-weight:500;}
 .subscription-description{font-size:1rem;max-width:600px;text-align:right;color:#fff;}
 @keyframes gradientMove{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
@@ -71,42 +57,47 @@ main{padding:8rem 3rem 5rem 3rem;}
   background:var(--secondary-black);
   border-radius:10px;
   box-shadow:0 0 20px rgba(0,0,0,0.5);
-  border: 2px solid rgba(255,255,255,0.1);
+  border: 3px solid var(--primary-purple); /* Bordure extérieure */
   position:relative;
 }
 .subscription-table th, .subscription-table td {
-  padding:4rem 1rem 1rem 1rem; /* espace pour images */
-  border: 1px solid rgba(255,255,255,0.15);
+  padding:4rem 1rem 1rem 1rem;
+  border: 2px solid var(--primary-purple); /* Quadrillage violet élargi */
   font-weight:500;
   font-family:'Poppins', sans-serif;
   vertical-align:top;
-  color:#fff;
 }
-.subscription-table thead th {background: var(--primary-purple); color: #fff; font-size:1.1rem; position:relative;}
-.grade-wrapper {position:relative; padding-top:50px; perspective:1000px;}
+.subscription-table thead th {
+  font-size:1.1rem;
+  position:relative;
+  padding-top:6rem; /* espace pour l'image */
+}
+.subscription-table thead th:first-child {
+  background:var(--primary-black); /* case Caractéristiques en noir */
+  color:#fff;
+  padding-top:1rem;
+}
+
+/* Images grades */
+.grade-wrapper {position:relative;}
 .grade-img {
   width:100px;
   position:absolute;
-  top:-40px;
+  top:-60px;
   left:50%;
-  transform:translateX(-50%) rotateY(0deg);
+  transform:translateX(-50%);
   z-index:10;
   border-radius:12px;
   box-shadow:0 10px 20px rgba(138,43,226,0.7);
-  transition: transform 0.5s, box-shadow 0.3s;
-  transform-style:preserve-3d;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-.grade-img:hover{transform:translateX(-50%) rotateY(15deg) scale(1.1); box-shadow:0 15px 25px rgba(138,43,226,1);}
-.grade-name {margin-top:60px; font-weight:700;}
+.grade-name {margin-top:0.5rem;font-weight:700;}
 
-/* Highlight Elite */
-.best-grade {background: linear-gradient(90deg, #8a2be2, #4b0082, #8a2be2);}
-.glow-btn {box-shadow: 0 0 15px rgba(138,43,226,0.7); animation: glow 1.5s ease-in-out infinite alternate;}
-@keyframes glow {0% {box-shadow: 0 0 15px rgba(138,43,226,0.7);}100% {box-shadow: 0 0 25px rgba(138,43,226,1);}}
-
-/* Boutons */
-.buy-btn{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;font-weight:600;cursor:pointer;transition:0.3s;}
+/* Boutons acheter */
+.buy-btn{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;font-weight:600;cursor:pointer;transition:background var(--transition), transform var(--transition), box-shadow 0.3s;}
 .buy-btn:hover{background:#9d4edd;transform:scale(1.05);box-shadow:0 0 10px rgba(138,43,226,0.7);}
+.glow-btn {animation: glow 1.5s ease-in-out infinite alternate;}
+@keyframes glow {0%{box-shadow:0 0 15px rgba(138,43,226,0.7);}100%{box-shadow:0 0 25px rgba(138,43,226,1);}}
 
 /* Footer */
 footer{text-align:center;padding:2rem 0;background:var(--secondary-black);color:rgba(255,255,255,0.6);margin-top:5rem;}
@@ -115,7 +106,7 @@ footer a:hover{color:var(--primary-purple);}
 footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1rem;}
 </style>
 </head>
-<body>
+<body id="body-root">
 
 <header>
   <div class="logo"><img src="assets/images/logo.png" alt="GTA New Shop"></div>
@@ -142,13 +133,15 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
 
 <main>
   <section id="abonnements">
-    <!-- Barre abonnements -->
+    <!-- Barre abonnements animée -->
     <div class="subscription-bar">
       <div class="subscription-text">Abonnements</div>
-      <div class="subscription-description">Tentez votre chance en prenant un des abonnements qui vous permettra d'avancer plus rapidement</div>
+      <div class="subscription-description">
+        Tentez votre chance en prenant un des abonnements qui vous permettra d'avancer plus rapidement
+      </div>
     </div>
 
-    <!-- Tableau -->
+    <!-- Tableau abonnements -->
     <div class="subscription-table">
       <table>
         <thead>
@@ -166,7 +159,7 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
                 <div class="grade-name">G-PRIME</div>
               </div>
             </th>
-            <th class="best-grade">
+            <th>
               <div class="grade-wrapper">
                 <img src="assets/images/g-elite.png" alt="G-ELITE" class="grade-img">
                 <div class="grade-name">G-ELITE</div>
@@ -181,13 +174,48 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
             <td>1500 <br><button class="buy-btn">Ajouter au Panier</button></td>
             <td>2000 <br><button class="buy-btn glow-btn">Ajouter au Panier</button></td>
           </tr>
-          <tr><td>Revenu toutes les heures</td><td>100000$</td><td>250000$</td><td>320000$</td></tr>
-          <tr><td>Possibilité de placer une télévision</td><td>✓</td><td>✓</td><td>✓</td></tr>
-          <tr><td>Slots de personnages</td><td>2</td><td>2</td><td>3</td></tr>
-          <tr><td>Accès aux revêtements d'armes</td><td>✓</td><td>✓</td><td>✓</td></tr>
-          <tr><td>Multiplicateur de zone GF</td><td>1,5x</td><td>2,5x</td><td>3,5x</td></tr>
-          <tr><td>Caisse offerte chaque mois</td><td>Gold</td><td>Diamant</td><td>Predator</td></tr>
-          <tr><td>Multiplicateur Zone AFK</td><td>1,5x</td><td>2,5x</td><td>3,5x</td></tr>
+          <tr>
+            <td>Revenu toutes les heures</td>
+            <td>100000$</td>
+            <td>250000$</td>
+            <td>320000$</td>
+          </tr>
+          <tr>
+            <td>Possibilité de placer une télévision</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+          </tr>
+          <tr>
+            <td>Slots de personnages</td>
+            <td>2</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>Accès aux revêtements d'armes</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+          </tr>
+          <tr>
+            <td>Multiplicateur de zone GF</td>
+            <td>1,5x</td>
+            <td>2,5x</td>
+            <td>3,5x</td>
+          </tr>
+          <tr>
+            <td>Caisse offerte chaque mois</td>
+            <td>Gold</td>
+            <td>Diamant</td>
+            <td>Predator</td>
+          </tr>
+          <tr>
+            <td>Multiplicateur Zone AFK</td>
+            <td>1,5x</td>
+            <td>2,5x</td>
+            <td>3,5x</td>
+          </tr>
         </tbody>
       </table>
     </div>
