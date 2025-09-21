@@ -115,6 +115,42 @@ main{padding:8rem 3rem 5rem 3rem;}
 }
 .vehicle-card:hover{transform:scale(1.02);box-shadow:0 0 20px var(--primary-purple);}
 
+/* Popup modale */
+.modal{
+  display:none;
+  position:fixed;
+  z-index:2000;
+  left:0;top:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.7);
+  justify-content:center;align-items:center;
+}
+.modal-content{
+  background:var(--secondary-black);
+  border-radius:12px;
+  width:90%;
+  max-width:500px;
+  padding:2rem;
+  text-align:center;
+  position:relative;
+}
+.modal-content img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  border-radius:12px;
+  margin-bottom:1rem;
+}
+.modal-content h2{margin-bottom:1rem;}
+.modal-content p{margin-bottom:1.5rem;}
+.close-btn{
+  position:absolute;
+  top:10px;
+  right:15px;
+  font-size:1.5rem;
+  color:#fff;
+  cursor:pointer;
+}
+
 /* Footer */
 footer{text-align:center;padding:2rem 0;background:var(--secondary-black);color:rgba(255,255,255,0.6);margin-top:5rem;}
 footer a{margin:0 1rem;color:rgba(255,255,255,0.6);}
@@ -164,57 +200,69 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
   </section>
 
   <section class="vehicle-grid">
-    <a href="vehicule1.html" class="vehicle-card">
+    <!-- Exemple véhicule -->
+    <div class="vehicle-card" data-title="Véhicule 1" data-img="assets/images/vehicule1.png" data-desc="Description complète du Véhicule 1." data-price="1200">
       <img src="assets/images/vehicule1.png" alt="Véhicule 1">
       <div class="vehicle-info">
         <h3>Véhicule 1</h3>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
-    </a>
-    <a href="vehicule2.html" class="vehicle-card">
+    </div>
+    <div class="vehicle-card" data-title="Véhicule 2" data-img="assets/images/vehicule2.png" data-desc="Description complète du Véhicule 2." data-price="1500">
       <img src="assets/images/vehicule2.png" alt="Véhicule 2">
       <div class="vehicle-info">
         <h3>Véhicule 2</h3>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
-    </a>
-    <a href="vehicule3.html" class="vehicle-card">
+    </div>
+    <div class="vehicle-card" data-title="Véhicule 3" data-img="assets/images/vehicule3.png" data-desc="Description complète du Véhicule 3." data-price="2000">
       <img src="assets/images/vehicule3.png" alt="Véhicule 3">
       <div class="vehicle-info">
         <h3>Véhicule 3</h3>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
-    </a>
-    <a href="vehicule4.html" class="vehicle-card">
+    </div>
+    <div class="vehicle-card" data-title="Véhicule 4" data-img="assets/images/vehicule4.png" data-desc="Description complète du Véhicule 4." data-price="1800">
       <img src="assets/images/vehicule4.png" alt="Véhicule 4">
       <div class="vehicle-info">
         <h3>Véhicule 4</h3>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
-    </a>
-    <a href="vehicule5.html" class="vehicle-card">
+    </div>
+    <div class="vehicle-card" data-title="Véhicule 5" data-img="assets/images/vehicule5.png" data-desc="Description complète du Véhicule 5." data-price="2200">
       <img src="assets/images/vehicule5.png" alt="Véhicule 5">
       <div class="vehicle-info">
         <h3>Véhicule 5</h3>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
-    </a>
-    <a href="vehicule6.html" class="vehicle-card">
+    </div>
+    <div class="vehicle-card" data-title="Véhicule 6" data-img="assets/images/vehicule6.png" data-desc="Description complète du Véhicule 6." data-price="2100">
       <img src="assets/images/vehicule6.png" alt="Véhicule 6">
       <div class="vehicle-info">
         <h3>Véhicule 6</h3>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
-    </a>
-    <a href="vehicule7.html" class="vehicle-card">
+    </div>
+    <div class="vehicle-card" data-title="Véhicule 7" data-img="assets/images/vehicule7.png" data-desc="Description complète du Véhicule 7." data-price="2500">
       <img src="assets/images/vehicule7.png" alt="Véhicule 7">
       <div class="vehicle-info">
         <h3>Véhicule 7</h3>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
-    </a>
+    </div>
   </section>
 </main>
+
+<!-- Popup modal -->
+<div class="modal" id="vehicleModal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <img src="" alt="Véhicule" id="modal-img">
+    <h2 id="modal-title"></h2>
+    <p id="modal-desc"></p>
+    <button class="buy-btn" id="modal-buy">Ajouter au Panier</button>
+  </div>
+</div>
 
 <footer>
   <div>
@@ -230,5 +278,27 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
 </footer>
 
 <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
+<script>
+// Modal logic
+const modal = document.getElementById('vehicleModal');
+const modalImg = document.getElementById('modal-img');
+const modalTitle = document.getElementById('modal-title');
+const modalDesc = document.getElementById('modal-desc');
+const modalBuy = document.getElementById('modal-buy');
+const closeBtn = document.querySelector('.close-btn');
+
+document.querySelectorAll('.vehicle-card').forEach(card=>{
+  card.addEventListener('click', ()=>{
+    modal.style.display='flex';
+    modalImg.src=card.dataset.img;
+    modalTitle.textContent=card.dataset.title;
+    modalDesc.textContent=card.dataset.desc;
+    modalBuy.onclick=()=>{alert(card.dataset.title + ' ajouté au panier !');};
+  });
+});
+
+closeBtn.addEventListener('click', ()=>{modal.style.display='none';});
+window.addEventListener('click', (e)=>{if(e.target==modal){modal.style.display='none';}});
+</script>
 </body>
 </html>
