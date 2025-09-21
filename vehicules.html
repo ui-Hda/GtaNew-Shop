@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GTA New Shop - Véhicules</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Staatliches&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary-black:#0f0f0f;
+  --secondary-black:#171717;
+  --primary-purple:#8a2be2;
+  --white:#fff;
+  --transition:0.3s;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:var(--primary-black);color:var(--white);overflow-x:hidden;}
+a{text-decoration:none;color:var(--white);transition:color var(--transition);}
+a:hover{color:var(--primary-purple);}
+
+/* Header */
+header{display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;position:fixed;width:100%;top:0;background:var(--secondary-black);z-index:1000;}
+.logo img{height:75px;}
+.nav-left{display:flex;align-items:center;gap:2rem;}
+.nav-left ul{display:flex;gap:2rem;}
+.nav-left ul li a{color:var(--white);font-weight:500;}
+.nav-left ul li a:hover{color:var(--primary-purple);}
+.gcoins-btn{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;font-weight:600;cursor:pointer;}
+.gcoins-btn:hover{background:#9d4edd;transform:scale(1.05);}
+.header-right{display:flex;align-items:center;gap:1rem;}
+.search-bar{position:relative;}
+.search-bar input{padding:0.4rem 1rem;border-radius:50px;border:none;outline:none;width:150px;background:var(--secondary-black);color:var(--white);}
+.search-bar input::placeholder{color:rgba(255,255,255,0.5);}
+.search-bar i{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.7);}
+.header-right button{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;cursor:pointer;}
+.header-right button:hover{background:#9d4edd;transform:scale(1.05);}
+
+/* Main */
+main{padding:8rem 3rem 5rem 3rem;}
+
+/* Barre véhicules animée */
+.vehicle-bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:2rem 3rem;
+  border-radius:12px;
+  margin-bottom:3rem;
+  width:100%;
+  max-width:1400px;
+  margin-left:auto;
+  margin-right:auto;
+  background: linear-gradient(-45deg, #8a2be2, #4b0082, #171717, #0f0f0f);
+  background-size:400% 400%;
+  animation: gradientMove 12s ease infinite;
+  color: #fff;
+}
+.vehicle-text{font-family:'Staatliches',sans-serif;font-size:2rem;font-weight:500;}
+.vehicle-description{font-size:1rem;max-width:600px;text-align:right;color:#fff;}
+@keyframes gradientMove {0% {background-position:0% 50%;}50% {background-position:100% 50%;}100% {background-position:0% 50%;}}
+
+/* Tableau véhicules */
+.vehicle-table {
+  margin-top:2rem;
+  border: 3px solid var(--primary-purple);
+  border-radius:10px;
+  overflow:hidden;
+}
+.vehicle-table table {
+  width:100%;
+  border-collapse: collapse;
+  text-align:center;
+  background:var(--secondary-black);
+}
+.vehicle-table thead th {
+  background:var(--primary-black);
+  color:#fff;
+  font-size:1.1rem;
+  padding:3.5rem 1rem 1rem 1rem;
+  border:2px solid var(--primary-purple);
+  position:sticky;
+  top:0;
+  z-index:2;
+}
+.vehicle-table .grade-img {
+  width:100px;
+  background:var(--primary-black);
+  padding:8px;
+  border-radius:10px;
+  display:block;
+  margin:0 auto 10px auto;
+  box-shadow:0 6px 12px rgba(138,43,226,0.6);
+}
+.vehicle-table tbody {
+  display:block;
+  max-height:500px;
+  overflow-y:auto;
+}
+.vehicle-table thead, 
+.vehicle-table tbody tr {
+  display:table;
+  width:100%;
+  table-layout:fixed;
+}
+.vehicle-table td {
+  padding:1rem;
+  border:2px solid var(--primary-purple);
+  font-weight:500;
+  font-family:'Poppins', sans-serif;
+}
+.buy-btn {
+  margin-top:0.5rem;
+  background:var(--primary-purple);
+  border:none;
+  padding:0.5rem 1rem;
+  border-radius:50px;
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+}
+.buy-btn:hover{background:#9d4edd;transform:scale(1.05);}
+
+/* Footer */
+footer{text-align:center;padding:2rem 0;background:var(--secondary-black);color:rgba(255,255,255,0.6);margin-top:5rem;}
+footer a{margin:0 1rem;color:rgba(255,255,255,0.6);}
+footer a:hover{color:var(--primary-purple);}
+footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1rem;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><img src="assets/images/logo.png" alt="GTA New Shop"></div>
+  <div class="nav-left">
+    <ul>
+      <li><a href="abonnements.html">Abonnements</a></li>
+      <li><a href="objets.html">Objets</a></li>
+      <li><a href="armes.html">Armes</a></li>
+      <li><a href="permissions.html">Permissions IG</a></li>
+      <li><a href="packs.html">Packs</a></li>
+      <li><a href="vehicules.html">Véhicules</a></li>
+    </ul>
+    <a href="gcoins.html" class="gcoins-btn">+ Ajouter des GCoins</a>
+  </div>
+  <div class="header-right">
+    <div class="search-bar">
+      <input type="text" placeholder="Rechercher...">
+      <i class="fas fa-search"></i>
+    </div>
+    <button>Panier</button>
+    <button>Se connecter</button>
+  </div>
+</header>
+
+<main>
+  <!-- Barre véhicules -->
+  <div class="vehicle-bar">
+    <div class="vehicle-text">Véhicules</div>
+    <div class="vehicle-description">
+      Découvrez nos véhicules exclusifs pour rouler avec style et dominer les rues de GTA New RP.
+    </div>
+  </div>
+
+  <!-- Tableau véhicules -->
+  <div class="vehicle-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Caractéristiques</th>
+          <th><img src="assets/images/vehicule1.png" class="grade-img"><br>Sport</th>
+          <th><img src="assets/images/vehicule2.png" class="grade-img"><br>Super</th>
+          <th><img src="assets/images/vehicule3.png" class="grade-img"><br>Hypercar</th>
+          <th><img src="assets/images/vehicule4.png" class="grade-img"><br>Moto</th>
+          <th><img src="assets/images/vehicule5.png" class="grade-img"><br>SUV</th>
+          <th><img src="assets/images/vehicule6.png" class="grade-img"><br>Classique</th>
+          <th><img src="assets/images/vehicule7.png" class="grade-img"><br>Spécial</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Prix</td>
+          <td>2,000 GCoins<br><button class="buy-btn">Acheter</button></td>
+          <td>5,000 GCoins<br><button class="buy-btn">Acheter</button></td>
+          <td>10,000 GCoins<br><button class="buy-btn">Acheter</button></td>
+          <td>1,500 GCoins<br><button class="buy-btn">Acheter</button></td>
+          <td>3,500 GCoins<br><button class="buy-btn">Acheter</button></td>
+          <td>2,500 GCoins<br><button class="buy-btn">Acheter</button></td>
+          <td>7,500 GCoins<br><button class="buy-btn">Acheter</button></td>
+        </tr>
+        <tr>
+          <td>Vitesse max</td>
+          <td>280 km/h</td>
+          <td>330 km/h</td>
+          <td>400 km/h</td>
+          <td>220 km/h</td>
+          <td>240 km/h</td>
+          <td>200 km/h</td>
+          <td>300 km/h</td>
+        </tr>
+        <tr>
+          <td>Accélération</td>
+          <td>Rapide</td>
+          <td>Très rapide</td>
+          <td>Extrême</td>
+          <td>Moyenne</td>
+          <td>Bonne</td>
+          <td>Normale</td>
+          <td>Variable</td>
+        </tr>
+        <tr>
+          <td>Nombre de places</td>
+          <td>2</td>
+          <td>2</td>
+          <td>2</td>
+          <td>2</td>
+          <td>4</td>
+          <td>2</td>
+          <td>2-4</td>
+        </tr>
+        <tr>
+          <td>Exclusivité</td>
+          <td>Disponible</td>
+          <td>Rare</td>
+          <td>Très rare</td>
+          <td>Disponible</td>
+          <td>Populaire</td>
+          <td>Collector</td>
+          <td>Légendaire</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<footer>
+  <div>
+    <a href="mentions-legales.html">Mentions légales</a>|
+    <a href="confidentialite.html">Confidentialité</a>|
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="footer-socials">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-discord"></i></a>
+  </div>
+</footer>
+
+<script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
+</body>
+</html>
