@@ -1,5 +1,0 @@
-[
-  { "id": "vip_starter", "title": "Pack VIP Starter", "price": 9.99, "currency": "EUR", "description": "Accès VIP + 10 000 crédits", "image": "https://placehold.co/400x250?text=VIP+Starter" },
-  { "id": "car_sport", "title": "Voiture Sportive", "price": 14.99, "currency": "EUR", "description": "Véhicule esthétique exclusif", "image": "https://placehold.co/400x250?text=Sport+Car" },
-  { "id": "outfit_legend", "title": "Tenue Légendaire", "price": 4.99, "currency": "EUR", "description": "Skin unique pour ton personnage", "image": "https://placehold.co/400x250?text=Outfit" }
-]
