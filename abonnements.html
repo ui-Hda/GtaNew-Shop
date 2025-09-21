@@ -105,7 +105,7 @@ main{padding:8rem 3rem 5rem 3rem;}
   z-index:1;
 }
 .subscription-table th, .subscription-table td {
-  padding:2rem 0.5rem 1rem; /* plus d'espace en haut pour images */
+  padding:2rem 0.5rem 1rem; /* espace en haut pour images */
   border: 1px solid rgba(255,255,255,0.15);
   font-weight:500;
   transition: all 0.3s;
@@ -113,7 +113,7 @@ main{padding:8rem 3rem 5rem 3rem;}
 }
 .subscription-table thead th {background: var(--primary-purple); color: #fff; font-size:1.1rem; position:relative;}
 
-/* Images grade passent par dessus le tableau */
+/* Images grade flottantes au dessus du tableau */
 .subscription-table th .grade-img {
   width:120px;
   height:auto;
@@ -122,18 +122,28 @@ main{padding:8rem 3rem 5rem 3rem;}
   top:-60px;
   left:50%;
   transform:translateX(-50%);
-  z-index:2;
-  transition:transform 0.3s;
+  z-index:5;
+  transition:transform 0.3s, box-shadow 0.3s;
+  box-shadow:0 10px 25px rgba(138,43,226,0.7);
+  border-radius:15px;
 }
 .subscription-table th:hover .grade-img {
-  transform:translateX(-50%) scale(1.1);
+  transform:translateX(-50%) scale(1.1) rotateY(5deg) rotateX(3deg);
+  box-shadow:0 15px 35px rgba(138,43,226,0.9);
 }
 
-/* Hover sur colonne entière */
+/* Hover sur colonne entière avec effet 3D */
+.subscription-table tbody td {
+  opacity:0;
+  transform: translateY(20px);
+  transition: transform 0.3s, box-shadow 0.3s, opacity 0.6s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
 .subscription-table tbody td:hover,
 .subscription-table tbody td:hover ~ td {
-  transform: scale(1.02);
-  background: rgba(138,43,226,0.1);
+  transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+  box-shadow: 0 15px 25px rgba(138,43,226,0.4);
 }
 
 /* Surlignage meilleur abonnement */
@@ -171,17 +181,6 @@ main{padding:8rem 3rem 5rem 3rem;}
   background:#9d4edd;
   transform:scale(1.05);
   box-shadow:0 0 10px rgba(138,43,226,0.7);
-}
-
-/* Animation apparition colonne */
-.subscription-table tbody td {
-  opacity:0;
-  transform: translateY(20px);
-}
-.subscription-table tbody td.visible {
-  opacity:1;
-  transform: translateY(0);
-  transition: all 0.6s ease;
 }
 
 /* Footer */
@@ -230,7 +229,6 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
 
 <main>
   <section id="abonnements">
-    <!-- Barre abonnements animée -->
     <div class="subscription-bar">
       <div class="subscription-text">Abonnements</div>
       <div class="subscription-description">
@@ -238,11 +236,11 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
       </div>
     </div>
 
-    <!-- Tableau abonnements -->
     <div class="subscription-table">
       <table>
         <thead>
           <tr>
+            <th>Caractéristiques</th>
             <th>
               <img src="assets/images/g-vip1.png" alt="G-VIP" class="grade-img"><br>G-VIP
             </th>
@@ -256,41 +254,49 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
         </thead>
         <tbody>
           <tr>
+            <td>GCoins / mois</td>
             <td>1200 <br><button class="buy-btn">Ajouter au Panier</button></td>
             <td>2500 <br><button class="buy-btn">Ajouter au Panier</button></td>
             <td>3000 <br><button class="buy-btn glow-btn">Ajouter au Panier</button></td>
           </tr>
           <tr>
+            <td>Revenu toutes les heures</td>
             <td>100000$</td>
             <td>250000$</td>
             <td>320000$</td>
           </tr>
           <tr>
+            <td>Possibilité de placer une télévision</td>
             <td>✓</td>
             <td>✓</td>
             <td>✓</td>
           </tr>
           <tr>
+            <td>Slots de personnages</td>
             <td>2</td>
             <td>2</td>
             <td>3</td>
           </tr>
           <tr>
+            <td>Accès aux revêtements d'armes</td>
             <td>✓</td>
             <td>✓</td>
             <td>✓</td>
           </tr>
           <tr>
+            <td>Multiplicateur de zone GF</td>
             <td>1,5x</td>
             <td>2,5x</td>
             <td>3,5x</td>
           </tr>
           <tr>
+            <td>Caisse offerte chaque mois</td>
             <td>Gold</td>
             <td>Diamant</td>
             <td>Predator</td>
           </tr>
           <tr>
+            <td>Multiplicateur Zone AFK</td>
             <td>1,5x</td>
             <td>2,5x</td>
             <td>3,5x</td>
