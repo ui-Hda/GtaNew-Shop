@@ -33,8 +33,11 @@ a:hover{color:var(--unity-red);}
 /* Header */
 header{display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;position:fixed;width:100%;top:0;background:var(--secondary-black);z-index:1000;transition:background var(--transition);}
 .logo img{height:50px;}
-nav{display:flex;align-items:center;gap:2rem;position:relative;}
-nav ul{display:flex;gap:2rem;} /* Horizontal */
+nav{display:flex;align-items:center;gap:2rem;position:relative;flex:1;}
+nav ul{display:flex;flex-direction:row;gap:2rem;align-items:center;margin-left:2rem;} /* Horizontal categories */
+nav ul li{list-style:none;}
+nav ul li a{color:var(--white);font-weight:500;transition:color var(--transition);}
+nav ul li a:hover{color:var(--unity-red);}
 .toggle-theme, .mobile-menu-icon{cursor:pointer;font-size:1.5rem;}
 .search-bar input{padding:0.4rem 1rem;border-radius:50px;border:none;outline:none;width:150px;background:var(--secondary-black);color:var(--white);}
 .search-bar input::placeholder{color:rgba(255,255,255,0.5);}
@@ -56,7 +59,7 @@ section{margin-bottom:5rem;}
   justify-content:space-between;
   align-items:center;
   background:var(--unity-red);
-  padding:2rem 3rem;
+  padding:3rem 3rem;
   border-radius:12px;
   margin-bottom:3rem;
   width:100%;
@@ -67,16 +70,16 @@ section{margin-bottom:5rem;}
 }
 .payment-text{
   font-family:'Staatliches',sans-serif;
-  font-size:2rem;
+  font-size:2.5rem;
   color:#fff;
   font-weight:400;
 }
 .payment-logos{
   display:flex;
-  gap:1.5rem;
+  gap:2rem;
 }
 .payment-logos img{
-  height:70px;
+  height:80px;
   object-fit:contain;
 }
 
