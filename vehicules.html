@@ -137,22 +137,23 @@ main{padding:8rem 3rem 5rem 3rem;}
   transform: scale(1);
   opacity:1;
 }
-.modal-content img{
+.modal-content img.main-img{
   width:100%;
   height:300px;
   object-fit:cover;
   border-radius:12px;
   margin-bottom:1rem;
 }
-.modal-logo{
-  position:absolute;
-  top:15px;
-  right:15px;
-  width:80px;
-  height:auto;
+.modal-content img.bestseller{
+  width:150px;
+  margin-bottom:1rem;
 }
-.modal-content h2{margin-bottom:1rem;}
-.modal-content p{margin-bottom:1.5rem;}
+.modal-title{
+  font-family:'Staatliches',sans-serif;
+  font-size:2rem;
+  color:var(--primary-purple);
+  margin-bottom:1rem;
+}
 .close-btn{
   position:absolute;
   top:10px;
@@ -206,56 +207,56 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
 
   <section class="vehicle-grid">
     <!-- Exemple de véhicule -->
-    <div class="vehicle-card" data-title="Comet RS" data-img="assets/images/vehicule.png" data-desc="Voiture sportive rapide idéale pour les courses en ville." data-price="1200">
-      <img src="assets/images/vehicule.png" alt="Comet RS">
+    <div class="vehicle-card" data-title="Comet RS" data-img="assets/images/vehicule1.png" data-desc="Voiture sportive rapide idéale pour les courses en ville." data-price="1200">
+      <img src="assets/images/vehicule1.png" alt="Comet RS">
       <div class="vehicle-info">
         <h3>Comet RS</h3>
         <span>1200 GCoins</span>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
     </div>
-    <div class="vehicle-card" data-title="Faggio" data-img="assets/images/vehicule.png" data-desc="Scooter agile et pratique pour se déplacer rapidement." data-price="500">
-      <img src="assets/images/vehicule.png" alt="Faggio">
+    <div class="vehicle-card" data-title="Faggio" data-img="assets/images/vehicule2.png" data-desc="Scooter agile et pratique pour se déplacer rapidement." data-price="500">
+      <img src="assets/images/vehicule2.png" alt="Faggio">
       <div class="vehicle-info">
         <h3>Faggio</h3>
         <span>500 GCoins</span>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
     </div>
-    <div class="vehicle-card" data-title="Elegy RH8" data-img="assets/images/vehicule.png" data-desc="Supercar rapide avec excellent contrôle dans les virages." data-price="1500">
-      <img src="assets/images/vehicule.png" alt="Elegy RH8">
+    <div class="vehicle-card" data-title="Elegy RH8" data-img="assets/images/vehicule3.png" data-desc="Supercar rapide avec excellent contrôle dans les virages." data-price="1500">
+      <img src="assets/images/vehicule3.png" alt="Elegy RH8">
       <div class="vehicle-info">
         <h3>Elegy RH8</h3>
         <span>1500 GCoins</span>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
     </div>
-    <div class="vehicle-card" data-title="Burrito" data-img="assets/images/vehicule.png" data-desc="Van spacieux idéal pour transporter des équipes et du matériel." data-price="1000">
-      <img src="assets/images/vehicule.png" alt="Burrito">
+    <div class="vehicle-card" data-title="Burrito" data-img="assets/images/vehicule4.png" data-desc="Van spacieux idéal pour transporter des équipes et du matériel." data-price="1000">
+      <img src="assets/images/vehicule4.png" alt="Burrito">
       <div class="vehicle-info">
         <h3>Burrito</h3>
         <span>1000 GCoins</span>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
     </div>
-    <div class="vehicle-card" data-title="Insurgent" data-img="assets/images/vehicule.png" data-desc="Véhicule blindé robuste pour les missions à risque." data-price="2500">
-      <img src="assets/images/vehicule.png" alt="Insurgent">
+    <div class="vehicle-card" data-title="Insurgent" data-img="assets/images/vehicule5.png" data-desc="Véhicule blindé robuste pour les missions à risque." data-price="2500">
+      <img src="assets/images/vehicule5.png" alt="Insurgent">
       <div class="vehicle-info">
         <h3>Insurgent</h3>
         <span>2500 GCoins</span>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
     </div>
-    <div class="vehicle-card" data-title="Cargobob" data-img="assets/images/vehicule.png" data-desc="Hélicoptère puissant capable de transporter de lourdes charges." data-price="3000">
-      <img src="assets/images/vehicule.png" alt="Cargobob">
+    <div class="vehicle-card" data-title="Cargobob" data-img="assets/images/vehicule6.png" data-desc="Hélicoptère puissant capable de transporter de lourdes charges." data-price="3000">
+      <img src="assets/images/vehicule6.png" alt="Cargobob">
       <div class="vehicle-info">
         <h3>Cargobob</h3>
         <span>3000 GCoins</span>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
     </div>
-    <div class="vehicle-card" data-title="Oppressor Mk II" data-img="assets/images/vehicule.png" data-desc="Moto volante ultra-rapide, parfaite pour échapper aux poursuites." data-price="4000">
-      <img src="assets/images/vehicule.png" alt="Oppressor Mk II">
+    <div class="vehicle-card" data-title="Oppressor Mk II" data-img="assets/images/vehicule7.png" data-desc="Moto volante ultra-rapide, parfaite pour échapper aux poursuites." data-price="4000">
+      <img src="assets/images/vehicule7.png" alt="Oppressor Mk II">
       <div class="vehicle-info">
         <h3>Oppressor Mk II</h3>
         <span>4000 GCoins</span>
@@ -268,10 +269,10 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
 <!-- Modal -->
 <div class="modal" id="vehicleModal">
   <div class="modal-content">
-    <img src="assets/images/logo.png" alt="Logo" class="modal-logo">
     <span class="close-btn">&times;</span>
-    <img src="" alt="Véhicule" id="modal-img">
-    <h2 id="modal-title"></h2>
+    <img src="assets/images/bestseller.png" alt="Bestseller" class="bestseller">
+    <h2 class="modal-title" id="modal-title"></h2>
+    <img src="" alt="Véhicule" class="main-img" id="modal-img">
     <p id="modal-desc"></p>
     <button class="buy-btn" id="modal-buy">Ajouter au Panier</button>
   </div>
@@ -299,7 +300,6 @@ const modalDesc = document.getElementById('modal-desc');
 const modalBuy = document.getElementById('modal-buy');
 const closeBtn = document.querySelector('.close-btn');
 const modalContent = document.querySelector('.modal-content');
-const modalLogo = document.querySelector('.modal-logo');
 
 document.querySelectorAll('.vehicle-card').forEach(card=>{
   card.addEventListener('click', ()=>{
