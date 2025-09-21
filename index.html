@@ -33,9 +33,27 @@ a:hover{color:var(--primary-purple);}
 /* Header */
 header{display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;position:fixed;width:100%;top:0;background:var(--secondary-black);z-index:1000;transition:background var(--transition);}
 .logo img{height:75px;}
+.nav-left{display:flex;align-items:center;gap:2rem;}
 .nav-left ul{display:flex;flex-direction:row;gap:2rem;align-items:center;}
 .nav-left ul li a{color:var(--white);font-weight:500;transition:color var(--transition);}
 .nav-left ul li a:hover{color:var(--primary-purple);}
+
+/* Nouveau bouton GCoins */
+.gcoins-btn{
+  background:var(--primary-purple);
+  border:none;
+  padding:0.5rem 1rem;
+  border-radius:50px;
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition:background var(--transition), transform var(--transition);
+}
+.gcoins-btn:hover{
+  background:#9d4edd; /* violet un peu plus clair au hover */
+  transform:scale(1.05);
+}
+
 .header-right{display:flex;align-items:center;gap:1rem;}
 .search-bar{position:relative;}
 .search-bar input{padding:0.4rem 1rem;border-radius:50px;border:none;outline:none;width:150px;background:var(--secondary-black);color:var(--white);}
@@ -57,7 +75,7 @@ section{margin-bottom:5rem;}
 .category-card {
   background: var(--secondary-black);
   border-radius: 10px;
-  width: calc(35% - 1rem); /* un peu plus petites que 50% */
+  width: calc(35% - 1rem);
   aspect-ratio: 1/1;
   display: flex;
   align-items: center;
@@ -133,6 +151,7 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
       <li><a href="#packs">Packs</a></li>
       <li><a href="#divers">Divers</a></li>
     </ul>
+    <button class="gcoins-btn">+ Ajouter des GCoins</button>
   </div>
 
   <div class="header-right">
@@ -190,7 +209,7 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
         <img src="assets/images/packs.png" alt="Packs">
       </div>
       <div class="category-card" onclick="window.location.href='vehicules.html'">
-        <img src="assets/images/vehicules.png" alt="véhicules">
+        <img src="assets/images/vehicules.png" alt="Véhicules">
       </div>
     </div>
   </section>
