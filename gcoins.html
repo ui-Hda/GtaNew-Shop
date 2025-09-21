@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GCoins - GTA New Shop</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Staatliches&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary-black:#0f0f0f;
+  --secondary-black:#171717;
+  --primary-purple:#8a2be2;
+  --white:#fff;
+  --transition:0.3s;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:var(--primary-black);color:var(--white);}
+h2{font-family:'Staatliches',sans-serif;margin:2rem 0;position:relative;text-align:center;}
+h2::after{content:"";position:absolute;width:80px;height:3px;background:var(--primary-purple);left:50%;transform:translateX(-50%);bottom:-8px;border-radius:5px;}
+
+/* Header */
+header{display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;position:fixed;width:100%;top:0;background:var(--secondary-black);z-index:1000;}
+.logo img{height:75px;}
+.nav-left{display:flex;align-items:center;gap:2rem;}
+.nav-left ul{display:flex;flex-direction:row;gap:2rem;align-items:center;}
+.nav-left ul li a{color:var(--white);font-weight:500;transition:color var(--transition);}
+.nav-left ul li a:hover{color:var(--primary-purple);}
+.header-right{display:flex;align-items:center;gap:1rem;}
+.search-bar{position:relative;}
+.search-bar input{padding:0.4rem 1rem;border-radius:50px;border:none;outline:none;width:150px;background:var(--secondary-black);color:var(--white);}
+.search-bar input::placeholder{color:rgba(255,255,255,0.5);}
+.search-bar i{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.7);}
+.header-right button{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;cursor:pointer;transition:background var(--transition), transform var(--transition);}
+.header-right button:hover{background:#9d4edd;transform:scale(1.05);}
+
+main{padding:8rem 3rem 3rem 3rem;}
+
+/* Cartes GCoins */
+.gcoins-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+  gap:2rem;
+  justify-items:center;
+}
+
+.gcoin-card{
+  background:var(--secondary-black);
+  border-radius:12px;
+  padding:1rem;
+  text-align:center;
+  width:260px;
+  cursor:pointer;
+  transition:transform var(--transition), box-shadow var(--transition);
+}
+.gcoin-card img{
+  width:100%;
+  height:200px;
+  object-fit:contain;
+  border-radius:10px;
+  margin-bottom:1rem;
+}
+.gcoin-card h3{
+  font-family:'Staatliches',sans-serif;
+  font-size:1.5rem;
+  margin-bottom:0.5rem;
+}
+.gcoin-card p{
+  font-size:1rem;
+  margin-bottom:1rem;
+}
+.gcoin-card button{
+  background:var(--primary-purple);
+  border:none;
+  padding:0.5rem 1rem;
+  border-radius:50px;
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition:background var(--transition), transform var(--transition);
+}
+.gcoin-card button:hover{
+  background:#9d4edd;
+  transform:scale(1.05);
+}
+.gcoin-card:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 20px var(--primary-purple);
+}
+</style>
+</head>
+<body>
+
+<!-- Header identique mais sans bouton GCoins -->
+<header>
+  <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="GTA New Shop"></a></div>
+
+  <div class="nav-left">
+    <ul>
+      <li><a href="index.html#abonnements">Abonnements</a></li>
+      <li><a href="index.html#objets">Objets</a></li>
+      <li><a href="index.html#armes">Armes</a></li>
+      <li><a href="index.html#permissions">Permissions IG</a></li>
+      <li><a href="index.html#packs">Packs</a></li>
+      <li><a href="index.html#divers">Divers</a></li>
+    </ul>
+  </div>
+
+  <div class="header-right">
+    <div class="search-bar">
+      <input type="text" placeholder="Rechercher...">
+      <i class="fas fa-search"></i>
+    </div>
+    <button>Panier</button>
+    <button>Se connecter</button>
+  </div>
+</header>
+
+<main>
+  <h2>Choisissez vos GCoins</h2>
+  <div class="gcoins-grid">
+    <div class="gcoin-card">
+      <img src="assets/images/1000gcoins.png" alt="1000 GCoins">
+      <h3>1000 GCoins</h3>
+      <p>Pack de base pour commencer.</p>
+      <button>Acheter</button>
+    </div>
+    <div class="gcoin-card">
+      <img src="assets/images/2800gcoins.png" alt="2800 GCoins">
+      <h3>2800 GCoins</h3>
+      <p>Le meilleur rapport qualité/prix.</p>
+      <button>Acheter</button>
+    </div>
+    <div class="gcoin-card">
+      <img src="assets/images/5000gcoins.png" alt="5000 GCoins">
+      <h3>5000 GCoins</h3>
+      <p>Pour aller plus loin dans l’aventure.</p>
+      <button>Acheter</button>
+    </div>
+    <div class="gcoin-card">
+      <img src="assets/images/13200gcoins.png" alt="13200 GCoins">
+      <h3>13200 GCoins</h3>
+      <p>Le pack ultime à prix réduit.</p>
+      <button>Acheter</button>
+    </div>
+  </div>
+</main>
+
+<script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
+</body>
+</html>
