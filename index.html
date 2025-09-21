@@ -3,317 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GTANew Shop - Premium</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<title>GTANew Shop - UnityRP Style</title>
+
+<!-- Fonts CSS -->
+<link rel="stylesheet" href="fonts.css">
+
+<!-- Style CSS -->
+<link rel="stylesheet" href="style.css">
+
+<!-- FontAwesome -->
 <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
 
-<style>
-/* ===================== VARIABLES ===================== */
-:root{
-  --primary-color:#8a2be2;
-  --secondary-color:#5d1a8b;
-  --bg-color:#1a0d2e;
-  --card-bg:#2d0f4b;
-  --text-color:#f0e6ff;
-  --hover-color:#a64fff;
-  --transition-speed:0.3s;
-}
-
-/* ===================== RESET ===================== */
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;}
-body{background-color:var(--bg-color);color:var(--text-color);overflow-x:hidden;}
-a{text-decoration:none;color:inherit;transition:color var(--transition-speed);}
-a:hover{color:var(--hover-color);}
-ul{list-style:none;}
-img{display:block;max-width:100%;border-radius:10px;}
-button{cursor:pointer;border:none;outline:none;font-weight:700;}
-p{font-size:0.9rem;color:#ccc;margin-bottom:0.5rem;}
-
-/* ===================== PARTICLES BACKGROUND ===================== */
-#particles-js{position:fixed;width:100%;height:100%;z-index:-1;top:0;left:0;}
-
-/* ===================== HEADER / NAVBAR ===================== */
-header{
-  position:fixed;
-  top:0;
-  width:100%;
-  background:var(--card-bg);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:1rem 2rem;
-  z-index:1000;
-  box-shadow:0 4px 10px rgba(0,0,0,0.5);
-  transition:background var(--transition-speed);
-}
-header .logo{width:150px;cursor:pointer;transition:transform var(--transition-speed);}
-header .logo:hover{transform:scale(1.1);}
-nav{display:flex;align-items:center;gap:1.5rem;position:relative;}
-nav ul{display:flex;gap:1.5rem;}
-nav ul li a{font-weight:700;font-size:1rem;padding:0.5rem;border-radius:5px;transition:background var(--transition-speed);}
-nav ul li a:hover{background:var(--hover-color);color:#fff;}
-.search-bar{position:relative;margin-left:2rem;}
-.search-bar input{
-  padding:0.5rem 2.5rem 0.5rem 1rem;
-  border-radius:30px;
-  border:none;
-  outline:none;
-  background:var(--bg-color);
-  color:var(--text-color);
-  transition:background var(--transition-speed);
-}
-.search-bar input::placeholder{color:#ccc;}
-.search-bar i{
-  position:absolute;
-  right:10px;
-  top:50%;
-  transform:translateY(-50%);
-  color:var(--hover-color);
-}
-.toggle-theme{cursor:pointer;font-size:1.2rem;margin-left:1.5rem;transition:transform 0.3s;}
-.toggle-theme:hover{transform:rotate(20deg);}
-.mobile-menu-icon{display:none;font-size:1.5rem;cursor:pointer;color:var(--primary-color);}
-.menu-action{position:relative;}
-.menu-action ul{position:absolute;top:35px;right:0;background:var(--card-bg);border-radius:10px;padding:1rem;display:none;flex-direction:column;gap:0.5rem;box-shadow:0 0 15px rgba(0,0,0,0.5);}
-.menu-action ul li a{padding:0.5rem 1rem;border-radius:8px;transition:all var(--transition-speed);}
-.menu-action ul li a:hover{background:var(--hover-color);color:#fff;}
-.menu-action.active ul{display:flex;}
-@media(max-width:768px){
-  nav ul{display:none;flex-direction:column;background:var(--card-bg);position:absolute;top:70px;right:0;width:220px;border-radius:10px;padding:1rem;}
-  nav ul.active{display:flex;}
-  .mobile-menu-icon{display:block;}
-}
-
-/* ===================== MAIN ===================== */
-main{padding:160px 2rem 50px 2rem;}
-section{margin-bottom:80px;}
-section h2{text-align:center;font-size:2rem;margin-bottom:1.5rem;color:var(--primary-color);text-shadow:0 0 10px #a64fff;}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;}
-.card{
-  background:var(--card-bg);
-  padding:1rem;
-  border-radius:15px;
-  text-align:center;
-  transition:transform var(--transition-speed),box-shadow var(--transition-speed);
-  cursor:pointer;
-  position:relative;
-  overflow:hidden;
-  animation:fadeInUp 0.7s ease forwards;
-  opacity:0;
-}
-
-/* ==== Animations individuelles par carte (gonflées pour >2000 lignes) ==== */
-.card:nth-child(1){animation-name:fadeInUp1;}
-.card:nth-child(2){animation-name:fadeInUp2;}
-.card:nth-child(3){animation-name:fadeInUp3;}
-.card:nth-child(4){animation-name:fadeInUp4;}
-.card:nth-child(5){animation-name:fadeInUp5;}
-.card:nth-child(6){animation-name:fadeInUp6;}
-.card:nth-child(7){animation-name:fadeInUp7;}
-/* Chaque animation ci-dessous contient 10+ keyframes pour gonfler les lignes */
-@keyframes fadeInUp1{0%{opacity:0;transform:translateY(50px) rotate(-5deg);}10%{opacity:0.2;transform:translateY(45px) rotate(-4deg);}20%{opacity:0.4;transform:translateY(40px) rotate(-3deg);}30%{opacity:0.6;transform:translateY(35px) rotate(-2deg);}40%{opacity:0.7;transform:translateY(30px) rotate(-1deg);}50%{opacity:0.8;transform:translateY(25px) rotate(0deg);}60%{opacity:0.85;transform:translateY(20px) rotate(1deg);}70%{opacity:0.9;transform:translateY(15px) rotate(2deg);}80%{opacity:0.95;transform:translateY(10px) rotate(3deg);}90%{opacity:0.98;transform:translateY(5px) rotate(4deg);}100%{opacity:1;transform:translateY(0) rotate(5deg);}}
-@keyframes fadeInUp2{0%{opacity:0;transform:translateY(50px) rotate(5deg);}10%{opacity:0.2;transform:translateY(45px) rotate(4deg);}20%{opacity:0.4;transform:translateY(40px) rotate(3deg);}30%{opacity:0.6;transform:translateY(35px) rotate(2deg);}40%{opacity:0.7;transform:translateY(30px) rotate(1deg);}50%{opacity:0.8;transform:translateY(25px) rotate(0deg);}60%{opacity:0.85;transform:translateY(20px) rotate(-1deg);}70%{opacity:0.9;transform:translateY(15px) rotate(-2deg);}80%{opacity:0.95;transform:translateY(10px) rotate(-3deg);}90%{opacity:0.98;transform:translateY(5px) rotate(-4deg);}100%{opacity:1;transform:translateY(0) rotate(-5deg);}}
-/* Les fadeInUp3 à fadeInUp7 suivent le même principe avec keyframes étendues... */
-
-/* Card hover, glow et pulsation */
-.card img{transition:transform 0.5s,filter 0.5s;}
-.card:hover img{transform:scale(1.05);filter:drop-shadow(0 0 10px var(--hover-color));}
-.card h3{margin-bottom:0.5rem;color:var(--primary-color);font-weight:700;text-shadow:0 0 5px var(--hover-color);}
-.card p{color:#ccc;font-size:0.85rem;margin-bottom:0.5rem;line-height:1.2rem;}
-.card button{
-  padding:0.5rem 1rem;
-  border-radius:30px;
-  background:var(--primary-color);
-  color:#fff;
-  font-weight:700;
-  transition:all 0.3s;
-  position:relative;
-}
-.card button:hover{
-  background:var(--hover-color);
-  transform:scale(1.1);
-  box-shadow:0 0 15px var(--hover-color);
-}
-.card button::after{
-  content:'Acheter maintenant';
-  position:absolute;
-  top:-25px;
-  left:50%;
-  transform:translateX(-50%);
-  background:var(--hover-color);
-  padding:0.2rem 0.5rem;
-  border-radius:5px;
-  font-size:0.7rem;
-  opacity:0;
-  transition:opacity 0.3s;
-}
-.card button:hover::after{opacity:1;}
-
-/* Footer */
-footer{text-align:center;padding:2rem;background:var(--card-bg);color:#aaa;font-size:0.9rem;border-top:1px solid var(--primary-color);}
-
-/* Dark mode */
-body.dark{
-  --bg-color:#f4f4f9;
-  --card-bg:#d9d0ff;
-  --text-color:#2d0f4b;
-  --primary-color:#5d1a8b;
-  --hover-color:#8a2be2;
-}
-</style>
 </head>
-<body>
+<body id="body-root">
 
-<!-- Particles Background -->
-<div id="particles-js"></div>
+<!-- Loader -->
+<div id="loader" class="loader"></div>
 
-<header>
-<img src="assets/images/logo.png" class="logo" alt="GTANew Shop">
-<nav>
-<i class="fas fa-bars mobile-menu-icon"></i>
-<ul>
-<li><a href="#">Accueil</a></li>
-<li><a href="#vehicules">Véhicules</a></li>
-<li><a href="#vip">VIP</a></li>
-<li><a href="#armes">Armes</a></li>
-<li><a href="#permissions">Permissions IG</a></li>
-</ul>
-<div class="search-bar">
-<input type="text" placeholder="Rechercher...">
-<i class="fas fa-search"></i>
-</div>
-<i class="fas fa-moon toggle-theme"></i>
-<div class="menu-action">
-<i class="fas fa-user-circle" style="font-size:1.5rem;cursor:pointer;"></i>
-<ul>
-<li><a href="#" id="login-btn">Connexion</a></li>
-<li><a href="#" id="register-btn">Inscription</a></li>
-<li><a href="#">Profil</a></li>
-<li><a href="#">Déconnexion</a></li>
-</ul>
-</div>
-</nav>
+<!-- Navbar -->
+<header class="navbar-unity-style">
+  <div class="logo">
+    <img src="assets/images/logo.png" alt="GTANew Shop">
+  </div>
+  <nav>
+    <i class="fas fa-bars mobile-menu-icon"></i>
+    <ul>
+      <li><a href="#">Accueil</a></li>
+      <li><a href="#vehicules">Véhicules</a></li>
+      <li><a href="#vip">VIP</a></li>
+      <li><a href="#armes">Armes</a></li>
+      <li><a href="#permissions">Permissions IG</a></li>
+    </ul>
+    <div class="search-bar">
+      <input type="text" placeholder="Rechercher...">
+      <i class="fas fa-search"></i>
+    </div>
+    <i class="fas fa-moon toggle-theme"></i>
+    <div class="menu-action">
+      <i class="fas fa-user-circle"></i>
+      <ul>
+        <li><a href="#">Connexion</a></li>
+        <li><a href="#">Inscription</a></li>
+        <li><a href="#">Profil</a></li>
+        <li><a href="#">Déconnexion</a></li>
+      </ul>
+    </div>
+  </nav>
 </header>
 
+<!-- Main -->
 <main>
-<!-- Vehicles Section -->
-<section id="vehicules">
-<h2>Véhicules</h2>
-<div class="cards">
-<div class="card"><img src="assets/images/vehicules/vehicule1.png"><h3>Vehicule 1</h3><p>Voiture rapide avec maniabilité exceptionnelle et design futuriste.</p><button>Acheter</button></div>
-<div class="card"><img src="assets/images/vehicules/vehicule2.png"><h3>Vehicule 2</h3><p>Véhicule blindé, parfait pour missions risquées et combats.</p><button>Acheter</button></div>
-<div class="card"><img src="assets/images/vehicules/vehicule3.png"><h3>Vehicule 3</h3><p>Voiture classique de luxe avec confort ultime.</p><button>Acheter</button></div>
-<div class="card"><img src="assets/images/vehicules/vehicule4.png"><h3>Vehicule 4</h3><p>Véhicule tout-terrain, idéal pour explorer.</p><button>Acheter</button></div>
-<div class="card"><img src="assets/images/vehicules/vehicule5.png"><h3>Vehicule 5</h3><p>Sportive rapide pour les courses en ligne.</p><button>Acheter</button></div>
-<div class="card"><img src="assets/images/vehicules/vehicule6.png"><h3>Vehicule 6</h3><p>Camion robuste pour transporter marchandises.</p><button>Acheter</button></div>
-<div class="card"><img src="assets/images/vehicules/vehicule7.png"><h3>Vehicule 7</h3><p>Voiture futuriste avec boost et design VIP.</p><button>Acheter</button></div>
-</div>
-</section>
+  <section id="vehicules">
+    <h2 class="redline-strikethrough" data-herostr="Véhicules">Véhicules</h2>
+    <div class="cards">
+      <div class="card"><img src="assets/images/vehicules/vehicule1.png"><h3>Vehicule 1</h3><button>Acheter</button></div>
+      <div class="card"><img src="assets/images/vehicules/vehicule2.png"><h3>Vehicule 2</h3><button>Acheter</button></div>
+      <div class="card"><img src="assets/images/vehicules/vehicule3.png"><h3>Vehicule 3</h3><button>Acheter</button></div>
+      <div class="card"><img src="assets/images/vehicules/vehicule4.png"><h3>Vehicule 4</h3><button>Acheter</button></div>
+      <div class="card"><img src="assets/images/vehicules/vehicule5.png"><h3>Vehicule 5</h3><button>Acheter</button></div>
+      <div class="card"><img src="assets/images/vehicules/vehicule6.png"><h3>Vehicule 6</h3><button>Acheter</button></div>
+      <div class="card"><img src="assets/images/vehicules/vehicule7.png"><h3>Vehicule 7</h3><button>Acheter</button></div>
+    </div>
+  </section>
 
-<!-- VIP Section -->
-<section id="vip">
-<h2>Grades VIP</h2>
-<div class="cards">
-<div class="card"><img src="assets/images/vip/vip1.png"><h3>VIP 1</h3><p>Accès aux véhicules exclusifs et bonus XP.</p><p><span style="color:var(--hover-color)">Bonus :</span> 50% de réduction sur certaines missions.</p><button>Acheter</button></div>
-<div class="card"><img src="assets/images/vip/vip2.png"><h3>VIP 2</h3><p>Bonus véhicules et événements privés.</p><p><span style="color:var(--hover-color)">Accès :</span> missions secrètes et véhicules uniques.</p><button>Acheter</button></div>
-<div class="card"><img src="assets/images/vip/vip3.png"><h3>VIP 3</h3><p>Accès complet à tous contenus VIP et véhicules uniques.</p><p><span style="color:var(--hover-color)">Avantage :</span> invitations aux événements exclusifs.</p><button>Acheter</button></div>
-</div>
-</section>
+  <section id="vip">
+    <h2 class="redline-strikethrough" data-herostr="Grades VIP">Grades VIP</h2>
+    <div class="cards">
+      <div class="card"><img src="assets/images/vip/vip1.png"><h3>VIP 1</h3><button>Acheter</button></div>
+      <div class="card"><img src="assets/images/vip/vip2.png"><h3>VIP 2</h3><button>Acheter</button></div>
+      <div class="card"><img src="assets/images/vip/vip3.png"><h3>VIP 3</h3><button>Acheter</button></div>
+    </div>
+  </section>
 
-<!-- Arme Section -->
-<section id="armes">
-<h2>Armes</h2>
-<div class="cards">
-<div class="card"><img src="assets/images/armes/arme1.png"><h3>Arme 1</h3><p>Pistolet de précision pour missions discrètes.</p><p><span style="color:var(--hover-color)">Bonus :</span> silencieux intégré.</p><button>Acheter</button></div>
-<div class="card"><img src="assets/images/armes/arme2.png"><h3>Arme 2</h3><p>Fusil d'assaut puissant pour combats rapprochés.</p><p><span style="color:var(--hover-color)">Bonus :</span> viseur amélioré.</p><button>Acheter</button></div>
-<div class="card"><img src="assets/images/armes/arme3.png"><h3>Arme 3</h3><p>Arme lourde pour véhicules et groupes d’ennemis.</p><p><span style="color:var(--hover-color)">Avantage :</span> explosion contrôlée.</p><button>Acheter</button></div>
-<div class="card"><img src="assets/images/armes/arme4.png"><h3>Arme 4</h3><p>Shotgun pour combat rapproché.</p><p><span style="color:var(--hover-color)">Bonus :</span> cadence améliorée.</p><button>Acheter</button></div>
-<div class="card"><img src="assets/images/armes/arme5.png"><h3>Arme 5</h3><p>Sniper longue portée.</p><p><span style="color:var(--hover-color)">Avantage :</span> zoom x10.</p><button>Acheter</button></div>
-<div class="card"><img src="assets/images/armes/arme6.png"><h3>Arme 6</h3><p>Lance-roquettes pour missions spéciales.</p><p><span style="color:var(--hover-color)">Bonus :</span> dégâts élargis.</p><button>Acheter</button></div>
-<div class="card"><img src="assets/images/armes/arme7.png"><h3>Arme 7</h3><p>Arme exotique avec effets spéciaux VIP.</p><p><span style="color:var(--hover-color)">Avantage :</span> projectiles lumineux.</p><button>Acheter</button></div>
-</div>
-</section>
+  <section id="armes">
+    <h2 class="redline-strikethrough" data-herostr="Armes">Armes</h2>
+    <div class="cards">
+      <div class="card"><img src="assets/images/armes/arme1.png"><h3>Arme 1</h3><button>Acheter</button></div>
+      <div class="card"><img src="assets/images/armes/arme2.png"><h3>Arme 2</h3><button>Acheter</button></div>
+      <div class="card"><img src="assets/images/armes/arme3.png"><h3>Arme 3</h3><button>Acheter</button></div>
+      <div class="card"><img src="assets/images/armes/arme4.png"><h3>Arme 4</h3><button>Acheter</button></div>
+      <div class="card"><img src="assets/images/armes/arme5.png"><h3>Arme 5</h3><button>Acheter</button></div>
+      <div class="card"><img src="assets/images/armes/arme6.png"><h3>Arme 6</h3><button>Acheter</button></div>
+      <div class="card"><img src="assets/images/armes/arme7.png"><h3>Arme 7</h3><button>Acheter</button></div>
+    </div>
+  </section>
 
-<!-- Permissions Section -->
-<section id="permissions">
-<h2>Permissions IG</h2>
-<div class="cards">
-<div class="card"><img src="assets/images/permissions/staff1.png"><h3>Staff 1</h3><p>Modération de base, outils limités.</p><p><span style="color:var(--hover-color)">Accès :</span> logs et modération simple.</p><button>Acheter</button></div>
-<div class="card"><img src="assets/images/permissions/staff2.png"><h3>Staff 2</h3><p>Accès complet outils modération et événements.</p><p><span style="color:var(--hover-color)">Bonus :</span> créer événements VIP.</p><button>Acheter</button></div>
-<div class="card"><img src="assets/images/permissions/staff3.png"><h3>Staff 3</h3><p>Grade VIP Staff, accès total outils admin.</p><p><span style="color:var(--hover-color)">Avantage :</span> modifier permissions IG.</p><button>Acheter</button></div>
-<div class="card"><img src="assets/images/permissions/staff4.png"><h3>Staff 4</h3><p>Accès exclusif à toutes les permissions IG.</p><p><span style="color:var(--hover-color)">Bonus :</span> accès complet au serveur.</p><button>Acheter</button></div>
-</div>
-</section>
+  <section id="permissions">
+    <h2 class="redline-strikethrough" data-herostr="Permissions IG">Permissions IG</h2>
+    <div class="cards">
+      <div class="card"><img src="assets/images/permissions/staff1.png"><h3>Staff 1</h3><button>Acheter</button></div>
+      <div class="card"><img src="assets/images/permissions/staff2.png"><h3>Staff 2</h3><button>Acheter</button></div>
+      <div class="card"><img src="assets/images/permissions/staff3.png"><h3>Staff 3</h3><button>Acheter</button></div>
+      <div class="card"><img src="assets/images/permissions/staff4.png"><h3>Staff 4</h3><button>Acheter</button></div>
+    </div>
+  </section>
+</main>
 
+<!-- Footer -->
 <footer>&copy; 2025 GTANew Shop. Tous droits réservés.</footer>
 
-<!-- Login/Register Modal -->
-<div id="login-register" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);justify-content:center;align-items:center;z-index:2000;">
-<div class="form-container" style="background:var(--card-bg);padding:2rem;border-radius:20px;width:300px;text-align:center;position:relative;">
-<h3 id="form-title">Connexion</h3>
-<input type="text" placeholder="Nom d'utilisateur" id="username" style="width:90%;padding:0.5rem;margin:0.5rem 0;border-radius:10px;border:none;outline:none;">
-<input type="password" placeholder="Mot de passe" id="password" style="width:90%;padding:0.5rem;margin:0.5rem 0;border-radius:10px;border:none;outline:none;">
-<button id="submit-btn" style="padding:0.5rem 1rem;border-radius:30px;background:var(--primary-color);color:#fff;font-weight:700;">Se connecter</button>
-<p style="margin-top:0.5rem;color:#ccc;font-size:0.8rem;" id="toggle-form">Pas de compte ? <span style="color:var(--hover-color);cursor:pointer;">Inscription</span></p>
-<i class="fas fa-times" id="close-modal" style="position:absolute;top:10px;right:10px;cursor:pointer;"></i>
-</div>
-</div>
-
-<script>
-/* ===================== MENU MOBILE ===================== */
-const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
-const navUl = document.querySelector('nav ul');
-mobileMenuIcon.addEventListener('click',()=>{navUl.classList.toggle('active');});
-
-/* ===================== TOGGLE THEME ===================== */
-const toggleThemeBtn = document.querySelector('.toggle-theme');
-toggleThemeBtn.addEventListener('click',()=>{
-  document.body.classList.toggle('dark');
-});
-
-/* ===================== MENU ACTION ===================== */
-const menuAction = document.querySelector('.menu-action');
-menuAction.addEventListener('click',()=>{menuAction.classList.toggle('active');});
-
-/* ===================== LOGIN / REGISTER ===================== */
-const loginModal = document.getElementById('login-register');
-document.getElementById('login-btn').addEventListener('click',(e)=>{e.preventDefault();loginModal.style.display='flex';document.getElementById('form-title').textContent='Connexion';});
-document.getElementById('toggle-form').addEventListener('click',()=>{document.getElementById('form-title').textContent=(document.getElementById('form-title').textContent==='Connexion')?'Inscription':'Connexion';});
-document.getElementById('close-modal').addEventListener('click',()=>{loginModal.style.display='none';});
-
-/* ===================== SEARCH BAR ===================== */
-const searchInput = document.querySelector('.search-bar input');
-searchInput.addEventListener('input',()=>{
-  const filter = searchInput.value.toLowerCase();
-  document.querySelectorAll('.cards .card').forEach(card=>{
-    const text = card.textContent.toLowerCase();
-    card.style.display = text.includes(filter)?'block':'none';
-  });
-});
-
-/* ===================== SCROLL REVEAL ===================== */
-const cards = document.querySelectorAll('.card');
-window.addEventListener('scroll',()=>{
-  cards.forEach(card=>{
-    const top = card.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-    if(top < windowHeight - 100){card.style.opacity='1';card.style.transform='translateY(0)';}
-  });
-});
-
-/* ===================== NOTIFICATIONS ACHAT ===================== */
-cards.forEach(card=>{
-  const btn = card.querySelector('button');
-  btn.addEventListener('click',()=>{
-    const notif = document.createElement('div');
-    notif.textContent = `Vous avez acheté ${card.querySelector('h3').textContent}!`;
-    notif.style.position='fixed';notif.style.bottom='20px';notif.style.right='20px';
-    notif.style.background='var(--hover-color)';notif.style.color='#fff';notif.style.padding='1rem';
-    notif.style.borderRadius='10px';notif.style.boxShadow='0 0 15px rgba(0,0,0,0.5)';
-    document.body.appendChild(notif);
-    setTimeout(()=>{notif.remove();},2500);
-  });
-});
-</script>
+<script src="main.js"></script>
 </body>
 </html>
