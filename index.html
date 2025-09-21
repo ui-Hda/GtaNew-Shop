@@ -97,6 +97,37 @@
 
 <footer>&copy; 2025 UnityRP Shop. Tous droits réservés.</footer>
 
-<script src="main.js"></script>
+<!-- JS intégré -->
+<script>
+  // Loader
+  window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      if(loader) loader.style.display = 'none';
+  });
+
+  // Dark / Light Toggle
+  const toggle = document.querySelector('.toggle-theme');
+  toggle?.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+  });
+
+  // Mobile Menu Toggle
+  const menuIcon = document.querySelector('.mobile-menu-icon');
+  const navUl = document.querySelector('nav ul');
+  menuIcon?.addEventListener('click', () => {
+      navUl.classList.toggle('show');
+  });
+
+  // Search Filter
+  const searchInput = document.querySelector('.search-bar input');
+  searchInput?.addEventListener('input', e => {
+      const value = e.target.value.toLowerCase();
+      document.querySelectorAll('.cards .card').forEach(card => {
+          const text = card.querySelector('h3').textContent.toLowerCase();
+          card.style.display = text.includes(value) ? 'block' : 'none';
+      });
+  });
+</script>
+
 </body>
 </html>
