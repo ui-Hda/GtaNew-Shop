@@ -46,9 +46,10 @@ header{display:flex;align-items:center;justify-content:space-between;padding:1re
 main{padding:8rem 3rem 3rem 3rem;}
 section{margin-bottom:5rem;}
 
-/* Grosses cartes catégories (2x2 carrées) */
+/* Grosses cartes catégories (2x2 carrées avec images) */
 .category-grid{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;}
-.category-card{background:var(--secondary-black);border-radius:10px;width:calc(50% - 1rem);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-family:'Staatliches',sans-serif;font-size:1.5rem;color:var(--white);cursor:pointer;transition:transform var(--transition), box-shadow var(--transition);}
+.category-card{background:var(--secondary-black);border-radius:10px;width:calc(50% - 1rem);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform var(--transition), box-shadow var(--transition);}
+.category-card img{width:80%;height:80%;object-fit:cover;border-radius:12px;}
 .category-card:hover{transform:scale(1.05);box-shadow:0 0 20px var(--primary-purple);}
 
 /* Barre de paiement */
@@ -147,12 +148,24 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
   <section id="categories">
     <h2>Nos catégories</h2>
     <div class="category-grid">
-      <div class="category-card" onclick="window.location.href='abonnements.html'">Abonnements</div>
-      <div class="category-card" onclick="window.location.href='objets.html'">Objets</div>
-      <div class="category-card" onclick="window.location.href='armes.html'">Armes</div>
-      <div class="category-card" onclick="window.location.href='permissions.html'">Permissions IG</div>
-      <div class="category-card" onclick="window.location.href='packs.html'">Packs</div>
-      <div class="category-card" onclick="window.location.href='divers.html'">Divers</div>
+      <div class="category-card" onclick="window.location.href='abonnements.html'">
+        <img src="assets/images/abonnements.png" alt="Abonnements">
+      </div>
+      <div class="category-card" onclick="window.location.href='objets.html'">
+        <img src="assets/images/objets.png" alt="Objets">
+      </div>
+      <div class="category-card" onclick="window.location.href='armes.html'">
+        <img src="assets/images/armes.png" alt="Armes">
+      </div>
+      <div class="category-card" onclick="window.location.href='permissions.html'">
+        <img src="assets/images/permissions.png" alt="Permissions IG">
+      </div>
+      <div class="category-card" onclick="window.location.href='packs.html'">
+        <img src="assets/images/packs.png" alt="Packs">
+      </div>
+      <div class="category-card" onclick="window.location.href='divers.html'">
+        <img src="assets/images/divers.png" alt="Divers">
+      </div>
     </div>
   </section>
 </main>
