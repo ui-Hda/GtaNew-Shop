@@ -11,114 +11,119 @@
   --secondary-black:#171717;
   --unity-red:#f2163e;
   --white:#fff;
+  --hover-gray:#3a3a3a;
   --transition:0.3s;
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:var(--primary-black);color:var(--white);transition:background var(--transition), color var(--transition);}
-body.dark{background:var(--secondary-black);color:var(--white);}
-header{position:fixed;width:100%;top:0;background:var(--secondary-black);z-index:1000;}
-nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;}
-.nav-left{display:flex;align-items:center;gap:1rem;}
-.logo img{height:50px;}
-.nav-categories{display:flex;gap:1rem;}
-.nav-categories li a{color:var(--white);text-decoration:none;transition:color var(--transition);}
-.nav-categories li a:hover{color:var(--unity-red);}
-.search-bar{position:relative;}
-.search-bar input{padding:0.4rem 1rem;border-radius:50px;border:none;background:var(--secondary-black);color:var(--white);}
-.search-bar i{position:absolute;right:10px;top:50%;transform:translateY(-50%);}
-button.cart, button.login{padding:0.5rem 1rem;border:none;border-radius:50px;background:var(--unity-red);cursor:pointer;color:var(--white);}
-button.cart:hover, button.login:hover{background:#f63b5e;}
-.nav-right{display:flex;gap:1rem;align-items:center;}
-.mobile-menu-icon{display:none;font-size:1.5rem;cursor:pointer;}
+body{background:var(--primary-black);color:var(--white);overflow-x:hidden;transition: background var(--transition), color var(--transition);}
+body.dark{background:var(--primary-black);color:var(--white);}
+h2{font-family:'Staatliches',sans-serif;margin-bottom:1.5rem;position:relative;}
+h2::after{content:"";position:absolute;width:50%;height:3px;background:var(--unity-red);left:0;bottom:-5px;border-radius:5px;}
+ul{list-style:none;}
+a{text-decoration:none;color:var(--white);transition:color var(--transition);}
+a:hover{color:var(--unity-red);}
+
+/* HEADER */
+header{position:fixed;top:0;width:100%;background:var(--secondary-black);z-index:1000;padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:background var(--transition);}
+.nav-left{display:flex;align-items:center;gap:2rem;}
+.nav-left ul{display:flex;gap:1.5rem;}
+.nav-right{display:flex;gap:1rem;align-items:center;margin-left:auto;}
+.nav-right .search-bar{position:relative;}
+.nav-right .search-bar input{padding:0.4rem 1rem;border-radius:50px;border:none;outline:none;width:150px;background:var(--primary-black);color:var(--white);}
+.nav-right .search-bar i{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.7);}
+.nav-right button{padding:0.5rem 1rem;border:none;border-radius:50px;background:var(--unity-red);color:#fff;cursor:pointer;transition:background var(--transition);}
+.nav-right button:hover{background:#f63b5e;}
+.mobile-menu-icon{display:none;cursor:pointer;font-size:1.5rem;}
 .toggle-theme{cursor:pointer;font-size:1.5rem;}
 
-@media(max-width:768px){
-  .nav-categories{display:none;flex-direction:column;position:absolute;top:70px;left:0;width:100%;background:var(--secondary-black);}
-  .nav-categories.show{display:flex;}
-  .mobile-menu-icon{display:block;}
-}
-
-main{padding:8rem 2rem 3rem 2rem;}
-.hero{display:flex;gap:2rem;margin-bottom:3rem;}
-.hero .text{flex:1;}
-.hero .text h2{font-family:'Staatliches',sans-serif;margin-bottom:1rem;}
-.hero .card{flex:1;background:var(--secondary-black);border-radius:10px;display:flex;align-items:center;justify-content:center;height:250px;}
-.hero .card img{width:80%;height:auto;}
-.payment-bar{display:flex;gap:2rem;overflow-x:auto;background:var(--unity-red);padding:2rem;border-radius:10px;margin-bottom:3rem;}
-.payment-bar img{height:80px;}
-.category-scroll{display:flex;gap:2rem;overflow-x:auto;padding-bottom:2rem;scroll-behavior:smooth;}
-.category-card{min-width:400px;height:400px;background:var(--secondary-black);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;cursor:pointer;transition:transform var(--transition);}
+/* MAIN */
+main{padding:8rem 3rem 3rem 3rem;}
+.presentation{display:flex;gap:2rem;margin-bottom:3rem;}
+.presentation .desc{flex:1;}
+.presentation .bestseller{flex:1;display:flex;justify-content:center;align-items:center;}
+.presentation .bestseller img{width:80%;border-radius:10px;}
+.payment-bar{display:flex;gap:1rem;background:var(--unity-red);padding:1rem;border-radius:10px;margin-bottom:3rem;overflow-x:auto;}
+.payment-bar img{height:50px;}
+.category-scroll{display:flex;flex-wrap:wrap;gap:1rem;overflow-x:auto;height:500px;}
+.category-card{min-width:48%;aspect-ratio:1/1;background:var(--secondary-black);border-radius:15px;display:flex;justify-content:center;align-items:center;font-size:1.2rem;font-weight:700;cursor:pointer;transition:transform var(--transition);flex-shrink:0;}
 .category-card:hover{transform:scale(1.05);}
-footer{background:var(--secondary-black);color:rgba(255,255,255,0.6);padding:2rem 0;text-align:center;}
-footer ul{display:flex;gap:1rem;justify-content:center;margin-bottom:1rem;}
-footer .socials{display:flex;gap:1rem;justify-content:center;}
+
+/* FOOTER */
+footer{padding:2rem 3rem;background:var(--secondary-black);color:rgba(255,255,255,0.6);display:flex;justify-content:space-between;flex-wrap:wrap;}
+footer .links{text-align:center;width:100%;margin-bottom:1rem;}
+footer .links a{margin:0 1rem;color:rgba(255,255,255,0.7);}
+footer .socials a{margin-left:1rem;color:rgba(255,255,255,0.7);}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.category-card{min-width:48%;}}
+@media(max-width:600px){.category-card{min-width:100%;} .nav-left ul{display:none;} .mobile-menu-icon{display:block;color:#fff;}}
 </style>
 </head>
-<body>
+<body id="body-root">
 
+<!-- HEADER -->
 <header>
-<nav>
-  <div class="nav-left">
-    <div class="logo"><img src="assets/images/logo.png" alt="UnityRP Shop"></div>
-    <ul class="nav-categories">
-      <li><a href="#abonnements">Abonnements</a></li>
-      <li><a href="#objets">Objets</a></li>
-      <li><a href="#armes">Armes</a></li>
-      <li><a href="#permissions">Permissions IG</a></li>
-      <li><a href="#packs">Packs</a></li>
-      <li><a href="#divers">Divers</a></li>
-    </ul>
-    <div class="search-bar">
-      <input type="text" placeholder="Rechercher...">
-      <i class="fas fa-search"></i>
-    </div>
-    <button class="cart">Panier</button>
-    <button class="login">Se connecter</button>
-  </div>
-  <div class="nav-right">
-    <i class="fas fa-moon toggle-theme"></i>
-    <i class="fas fa-bars mobile-menu-icon"></i>
-  </div>
-</nav>
+<div class="nav-left">
+<div class="logo"><img src="assets/images/logo.png" alt="UnityRP Shop"></div>
+<ul>
+<li><a href="#abonnements">Abonnements</a></li>
+<li><a href="#objets">Objets</a></li>
+<li><a href="#armes">Armes</a></li>
+<li><a href="#permissions">Permissions IG</a></li>
+<li><a href="#packs">Packs</a></li>
+<li><a href="#divers">Divers</a></li>
+</ul>
+</div>
+<div class="nav-right">
+<div class="search-bar"><input type="text" placeholder="Rechercher..."><i class="fas fa-search"></i></div>
+<button class="cart">Panier</button>
+<button class="login">Se connecter</button>
+<i class="fas fa-moon toggle-theme"></i>
+<i class="fas fa-bars mobile-menu-icon"></i>
+</div>
 </header>
 
+<!-- MAIN -->
 <main>
-<section class="hero">
-  <div class="text">
-    <h2>Bienvenue sur UnityRP Shop</h2>
-    <p>Découvrez nos meilleures offres et produits exclusifs pour votre serveur.</p>
-  </div>
-  <div class="card"><img src="assets/images/bestseller.png" alt="Bestseller"></div>
-</section>
+<div class="presentation">
+<div class="desc">
+<h2>Bienvenue sur UnityRP Shop</h2>
+<p>Découvrez les meilleurs produits pour votre expérience sur notre serveur. Achetez facilement et profitez de nos services premium.</p>
+</div>
+<div class="bestseller">
+<img src="assets/images/bestseller.png" alt="Bestseller">
+</div>
+</div>
 
-<section class="payment-bar">
-  <img src="assets/images/payments/visa.png" alt="Visa">
-  <img src="assets/images/payments/paypal.png" alt="PayPal">
-  <img src="assets/images/payments/mastercard.png" alt="Mastercard">
-  <img src="assets/images/payments/applepay.png" alt="Apple Pay">
-</section>
+<div class="payment-bar">
+<img src="assets/images/payments/visa.png" alt="Visa">
+<img src="assets/images/payments/paypal.png" alt="PayPal">
+<img src="assets/images/payments/mastercard.png" alt="Mastercard">
+<img src="assets/images/payments/applepay.png" alt="Apple Pay">
+</div>
 
 <section class="category-scroll">
-  <a href="abonnements.html" class="category-card">Abonnements</a>
-  <a href="objets.html" class="category-card">Objets</a>
-  <a href="armes.html" class="category-card">Armes</a>
-  <a href="permissions.html" class="category-card">Permissions IG</a>
-  <a href="packs.html" class="category-card">Packs</a>
-  <a href="divers.html" class="category-card">Divers</a>
+<div class="category-card" onclick="location.href='abonnements.html'">Abonnements</div>
+<div class="category-card" onclick="location.href='objets.html'">Objets</div>
+<div class="category-card" onclick="location.href='armes.html'">Armes</div>
+<div class="category-card" onclick="location.href='permissions.html'">Permissions IG</div>
+<div class="category-card" onclick="location.href='packs.html'">Packs</div>
+<div class="category-card" onclick="location.href='divers.html'">Divers</div>
 </section>
-
 </main>
 
+<!-- FOOTER -->
 <footer>
-<ul>
-  <li><a href="mentions-legales.html">Mentions légales</a></li>
-  <li><a href="confidentialite.html">Confidentialité</a></li>
-  <li><a href="contact.html">Contact</a></li>
-</ul>
+<div class="links">
+<a href="mentions-legales.html">Mentions légales</a> |
+<a href="confidentialite.html">Confidentialité</a> |
+<a href="contact.html">Contact</a>
+</div>
 <div class="socials">
-  <a href="#"><img src="assets/images/socials/discord.png" alt="Discord"></a>
-  <a href="#"><img src="assets/images/socials/twitter.png" alt="Twitter"></a>
-  <a href="#"><img src="assets/images/socials/facebook.png" alt="Facebook"></a>
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-discord"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
 </div>
 </footer>
 
@@ -126,33 +131,13 @@ footer .socials{display:flex;gap:1rem;justify-content:center;}
 <script>
 // Theme toggle
 document.querySelector(".toggle-theme").addEventListener("click",()=>{
-  document.body.classList.toggle("dark");
+document.body.classList.toggle("dark");
 });
-
 // Mobile menu toggle
 document.querySelector(".mobile-menu-icon").addEventListener("click",()=>{
-  document.querySelector(".nav-categories").classList.toggle("show");
-});
-
-// Horizontal scroll for category cards
-const categoryScroll = document.querySelector('.category-scroll');
-let isDown = false, startX, scrollLeft;
-categoryScroll.addEventListener('mousedown', (e)=>{
-  isDown = true;
-  startX = e.pageX - categoryScroll.offsetLeft;
-  scrollLeft = categoryScroll.scrollLeft;
-});
-categoryScroll.addEventListener('mouseleave', ()=>{isDown=false;});
-categoryScroll.addEventListener('mouseup', ()=>{isDown=false;});
-categoryScroll.addEventListener('mousemove', (e)=>{
-  if(!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - categoryScroll.offsetLeft;
-  const walk = (x - startX) * 2;
-  categoryScroll.scrollLeft = scrollLeft - walk;
+document.querySelector(".nav-left ul").classList.toggle("show");
 });
 </script>
 
 </body>
 </html>
-
