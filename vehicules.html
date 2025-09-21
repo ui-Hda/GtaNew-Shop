@@ -122,12 +122,12 @@ main{padding:8rem 3rem 5rem 3rem;}
 }
 .modal-content{
   position:relative;
-  background:var(--secondary-black);
   border-radius:16px;
   width:90%;
   max-width:800px;
   padding:2rem;
   text-align:center;
+  background:none; /* fond transparent pour montrer bestseller */
   transform: rotateY(-20deg) scale(0.5);
   opacity:0;
   transition: transform 0.6s ease, opacity 0.6s ease;
@@ -135,19 +135,24 @@ main{padding:8rem 3rem 5rem 3rem;}
 }
 
 /* Fond bestseller + véhicule */
-.modal-bg{
+.modal-bg {
   position:relative;
   width:100%;
   height:400px;
   margin-bottom:1rem;
+  overflow:hidden;
+  border-radius:12px;
 }
-.modal-bg img:first-child{
+.modal-bg-img {
+  position:absolute;
+  top:0;
+  left:0;
   width:100%;
   height:100%;
   object-fit:cover;
-  border-radius:12px;
+  z-index:0;
 }
-.modal-bg img.modal-vehicle{
+.modal-vehicle {
   position:absolute;
   top:50%;
   left:50%;
@@ -155,7 +160,7 @@ main{padding:8rem 3rem 5rem 3rem;}
   width:300px;
   height:auto;
   object-fit:contain;
-  border-radius:12px;
+  z-index:1;
 }
 
 .modal-title{
@@ -222,7 +227,7 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
   </section>
 
   <section class="vehicle-grid">
-    <!-- Véhicule 1 -->
+    <!-- Exemple de véhicule -->
     <div class="vehicle-card" data-title="Comet RS" data-img="assets/images/vehicule1.png" data-desc="La Comet RS est une voiture sportive ultra-rapide, idéale pour les courses en ville et sur l’autoroute. Accélération fulgurante, maniabilité parfaite, design élégant, elle est parfaite pour les joueurs qui aiment la vitesse et l’adrénaline." data-price="1200">
       <img src="assets/images/vehicule1.png" alt="Comet RS">
       <div class="vehicle-info">
@@ -231,69 +236,54 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
     </div>
-
-    <!-- Véhicule 2 -->
-    <div class="vehicle-card" data-title="Dubsta 6x6" data-img="assets/images/vehicule2.png" data-desc="Le Dubsta 6x6 est un SUV massif et tout-terrain, capable de franchir les obstacles les plus difficiles. Idéal pour le transport en groupe et les missions extrêmes, avec une puissance et une résistance hors norme." data-price="2500">
-      <img src="assets/images/vehicule2.png" alt="Dubsta 6x6">
-      <div class="vehicle-info">
-        <h3>Dubsta 6x6</h3>
-        <span>2500 GCoins</span>
-        <button class="buy-btn">Ajouter au Panier</button>
-      </div>
-    </div>
-
-    <!-- Véhicule 3 -->
-    <div class="vehicle-card" data-title="Akula" data-img="assets/images/vehicule3.png" data-desc="L’Akula est un hélicoptère furtif avancé, idéal pour les missions discrètes ou les combats aériens. Rapide, maniable et équipé d’armement sophistiqué, il donne un avantage stratégique en toutes situations." data-price="3500">
-      <img src="assets/images/vehicule3.png" alt="Akula">
-      <div class="vehicle-info">
-        <h3>Akula</h3>
-        <span>3500 GCoins</span>
-        <button class="buy-btn">Ajouter au Panier</button>
-      </div>
-    </div>
-
-    <!-- Véhicule 4 -->
-    <div class="vehicle-card" data-title="T20" data-img="assets/images/vehicule4.png" data-desc="La T20 est une supercar de luxe, alliant vitesse, design futuriste et confort. Idéale pour les courses sur route et les missions de prestige, elle impressionne autant par sa puissance que par son style." data-price="4000">
-      <img src="assets/images/vehicule4.png" alt="T20">
-      <div class="vehicle-info">
-        <h3>T20</h3>
-        <span>4000 GCoins</span>
-        <button class="buy-btn">Ajouter au Panier</button>
-      </div>
-    </div>
-
-    <!-- Véhicule 5 -->
-    <div class="vehicle-card" data-title="Rhino" data-img="assets/images/vehicule5.png" data-desc="Le Rhino est un char d’assaut lourd, parfait pour les missions de combat et les affrontements intenses. Son blindage massif et son canon puissant permettent de dominer le champ de bataille
-    <!-- Véhicule 5 -->
-    <div class="vehicle-card" data-title="Rhino" data-img="assets/images/vehicule5.png" data-desc="Le Rhino est un char d’assaut lourd, parfait pour les missions de combat et les affrontements intenses. Son blindage massif et son canon puissant permettent de dominer le champ de bataille, idéal pour les joueurs qui veulent imposer leur puissance." data-price="5000">
-      <img src="assets/images/vehicule5.png" alt="Rhino">
+    <div class="vehicle-card" data-title="Rhino" data-img="assets/images/vehicule2.png" data-desc="Le Rhino est un char d’assaut lourd, parfait pour les missions les plus risquées. Son blindage solide et son canon puissant vous permettent de dominer vos adversaires." data-price="5000">
+      <img src="assets/images/vehicule2.png" alt="Rhino">
       <div class="vehicle-info">
         <h3>Rhino</h3>
         <span>5000 GCoins</span>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
     </div>
-
-    <!-- Véhicule 6 -->
-    <div class="vehicle-card" data-title="Buzzard" data-img="assets/images/vehicule6.png" data-desc="Le Buzzard est un hélicoptère léger et rapide, équipé de mitrailleuses et de missiles. Idéal pour des missions rapides et l’attaque de cibles mobiles, il allie vitesse, maniabilité et armement destructeur." data-price="3200">
-      <img src="assets/images/vehicule6.png" alt="Buzzard">
+    <div class="vehicle-card" data-title="Buzzard" data-img="assets/images/vehicule3.png" data-desc="L’hélicoptère d’attaque Buzzard offre mobilité et puissance de feu. Idéal pour le transport rapide et les combats aériens intenses." data-price="3000">
+      <img src="assets/images/vehicule3.png" alt="Buzzard">
       <div class="vehicle-info">
         <h3>Buzzard</h3>
-        <span>3200 GCoins</span>
+        <span>3000 GCoins</span>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
     </div>
-
-    <!-- Véhicule 7 -->
-    <div class="vehicle-card" data-title="Sanchez" data-img="assets/images/vehicule7.png" data-desc="La Sanchez est une moto tout-terrain parfaite pour explorer les montagnes et les sentiers difficiles. Rapide, maniable et résistante, elle permet de parcourir de longues distances en toute liberté et d’échapper à vos ennemis." data-price="800">
-      <img src="assets/images/vehicule7.png" alt="Sanchez">
+    <div class="vehicle-card" data-title="T20" data-img="assets/images/vehicule4.png" data-desc="La T20 est une supercar qui combine vitesse et maniabilité, parfaite pour les courses illégales et impressionner vos amis sur le serveur." data-price="3500">
+      <img src="assets/images/vehicule4.png" alt="T20">
       <div class="vehicle-info">
-        <h3>Sanchez</h3>
+        <h3>T20</h3>
+        <span>3500 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
+    <div class="vehicle-card" data-title="Akuma" data-img="assets/images/vehicule5.png" data-desc="La moto Akuma offre vitesse et agilité, idéale pour se faufiler entre les véhicules et parcourir rapidement la ville." data-price="800">
+      <img src="assets/images/vehicule5.png" alt="Akuma">
+      <div class="vehicle-info">
+        <h3>Akuma</h3>
         <span>800 GCoins</span>
         <button class="buy-btn">Ajouter au Panier</button>
       </div>
     </div>
-
+    <div class="vehicle-card" data-title="Insurgent" data-img="assets/images/vehicule6.png" data-desc="L’Insurgent est un véhicule blindé robuste qui combine protection et puissance pour dominer toutes les situations." data-price="4000">
+      <img src="assets/images/vehicule6.png" alt="Insurgent">
+      <div class="vehicle-info">
+        <h3>Insurgent</h3>
+        <span>4000 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
+    <div class="vehicle-card" data-title="Hydra" data-img="assets/images/vehicule7.png" data-desc="L’avion de combat Hydra offre des performances incroyables et un arsenal puissant pour des attaques aériennes précises." data-price="7000">
+      <img src="assets/images/vehicule7.png" alt="Hydra">
+      <div class="vehicle-info">
+        <h3>Hydra</h3>
+        <span>7000 GCoins</span>
+        <button class="buy-btn">Ajouter au Panier</button>
+      </div>
+    </div>
   </section>
 </main>
 
@@ -302,7 +292,7 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
   <div class="modal-content">
     <span class="close-btn">&times;</span>
     <div class="modal-bg">
-      <img src="assets/images/bestseller.png" alt="Bestseller">
+      <img src="assets/images/bestseller.png" alt="Bestseller" class="modal-bg-img">
       <img src="" alt="Vehicle" class="modal-vehicle">
     </div>
     <div class="modal-title">Nom du véhicule</div>
@@ -352,7 +342,7 @@ closeBtn.addEventListener('click',()=>{
 });
 
 window.addEventListener('click',(e)=>{
-  if(e.target==modal){
+  if(e.target===modal){
     modalContent.style.transform='rotateY(-20deg) scale(0.5)';
     modalContent.style.opacity=0;
     setTimeout(()=>modal.style.display='none',300);
