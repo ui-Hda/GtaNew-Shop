@@ -10,7 +10,6 @@
 
 <!-- Styles -->
 <style>
-/* ===== COLORS ===== */
 :root{
   --primary-black:#0f0f0f;
   --secondary-black:#171717;
@@ -19,21 +18,18 @@
   --hover-gray:#3a3a3a;
   --transition:0.3s;
 }
-/* ===== GLOBAL ===== */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{background:var(--primary-black);color:var(--white);overflow-x:hidden;transition: background var(--transition), color var(--transition);}
-body.dark{background:var(--primary-black);color:var(--white);}
+body.dark{background:var(--secondary-black);color:var(--white);}
 h2{font-family:'Staatliches',sans-serif;margin-bottom:1.5rem;position:relative;}
 h2::after{content:"";position:absolute;width:50%;height:3px;background:var(--unity-red);left:0;bottom:-5px;border-radius:5px;}
 ul{list-style:none;}
 a{text-decoration:none;color:var(--white);transition:color var(--transition);}
 a:hover{color:var(--unity-red);}
-
-/* ===== LOADER ===== */
 #loader{position:fixed;width:3em;height:3em;border-radius:50%;border-top:0.3em solid rgba(255,255,255,0.4);border-right:0.3em solid transparent;top:50%;left:50%;transform:translate(-50%,-50%);animation:spin 1s linear infinite;z-index:9999;}
 @keyframes spin{0%{transform:translate(-50%,-50%) rotate(0deg);}100%{transform:translate(-50%,-50%) rotate(360deg);}}
 
-/* ===== HEADER ===== */
+/* HEADER */
 header{display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;position:fixed;width:100%;top:0;background:var(--secondary-black);z-index:1000;transition:background var(--transition);}
 .logo img{height:50px;}
 nav{display:flex;align-items:center;gap:2rem;position:relative;}
@@ -44,35 +40,36 @@ nav ul{display:flex;gap:1.5rem;}
 .search-bar input{padding:0.4rem 1rem;border-radius:50px;border:none;outline:none;width:150px;background:var(--secondary-black);color:var(--white);}
 .search-bar input::placeholder{color:rgba(255,255,255,0.5);}
 .search-bar i{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.7);}
-
+.login-btn{padding:0.5rem 1rem;border-radius:50px;background:var(--unity-red);border:none;color:var(--white);cursor:pointer;transition:background var(--transition);}
+.login-btn:hover{background:#f63b5e;}
 @media(max-width:768px){
 nav ul{display:none;flex-direction:column;position:absolute;top:70px;right:0;background:var(--secondary-black);width:200px;padding:1rem;border-radius:0 0 5px 5px;}
 nav ul.show{display:flex;}
 .mobile-menu-icon{display:block;color:var(--white);}
+.search-bar input{width:100px;}
 }
 
-/* ===== MAIN ===== */
+/* MAIN */
 main{padding:8rem 3rem 3rem 3rem;}
-section{margin-bottom:5rem;}
-.cards{display:flex;flex-wrap:wrap;gap:2rem;}
-.card{background:var(--secondary-black);border-radius:10px;overflow:hidden;width:calc(33.333% - 1.33rem);transition:transform var(--transition), box-shadow var(--transition);cursor:pointer;opacity:0;transform:translateY(20px);animation:fadeUp 0.6s forwards;}
-.card img{width:100%;height:150px;object-fit:cover;}
-.card h3{padding:1rem;font-size:1.2rem;}
-.card button{margin:0 1rem 1rem 1rem;padding:0.5rem 1rem;border:none;border-radius:50px;background:var(--unity-red);color:var(--white);cursor:pointer;transition:background var(--transition);}
-.card button:hover{background:#f63b5e;}
-@keyframes fadeUp{0%{opacity:0;transform:translateY(20px);}100%{opacity:1;transform:translateY(0);}}
+.hero{display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:3rem;align-items:center;}
+.hero-text{flex:1;min-width:250px;}
+.hero-text h1{font-family:'Staatliches',sans-serif;font-size:2.5rem;margin-bottom:1rem;}
+.hero-text p{font-size:1rem;color:rgba(255,255,255,0.7);}
+.hero-card{flex:1;min-width:250px;background:var(--secondary-black);border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:1rem;}
+.hero-card img{max-width:100%;border-radius:10px;}
 
-.card:nth-child(1){animation-delay:0.1s;} .card:nth-child(2){animation-delay:0.2s;}
-.card:nth-child(3){animation-delay:0.3s;} .card:nth-child(4){animation-delay:0.4s;}
-.card:nth-child(5){animation-delay:0.5s;} .card:nth-child(6){animation-delay:0.6s;}
-.card:nth-child(7){animation-delay:0.7s;}
+/* Payment bar */
+.payments{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;}
+.payments img{height:40px;transition:transform var(--transition);}
+.payments img:hover{transform:scale(1.1);}
 
-/* ===== FOOTER ===== */
+/* Category cards */
+.categories{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;}
+.category-card{background:var(--secondary-black);border-radius:15px;width:250px;height:150px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;transition:transform var(--transition), background var(--transition), box-shadow var(--transition);box-shadow:0 4px 6px rgba(0,0,0,0.3);}
+.category-card:hover{transform:scale(1.05);background:var(--hover-gray);box-shadow:0 8px 12px rgba(0,0,0,0.5);}
+
+/* FOOTER */
 footer{text-align:center;padding:2rem 0;background:var(--secondary-black);color:rgba(255,255,255,0.6);margin-top:5rem;}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:1024px){.card{width:calc(50% - 1rem);}}
-@media(max-width:600px){.card{width:100%;} .search-bar input{width:100px;}}
 </style>
 </head>
 <body id="body-root">
@@ -86,62 +83,46 @@ footer{text-align:center;padding:2rem 0;background:var(--secondary-black);color:
 <nav>
 <i class="fas fa-bars mobile-menu-icon"></i>
 <ul>
-<li><a href="#">Accueil</a></li>
-<li><a href="#vehicules">Véhicules</a></li>
-<li><a href="#vip">VIP</a></li>
+<li><a href="#abonnements">Abonnements</a></li>
+<li><a href="#objets">Objets</a></li>
 <li><a href="#armes">Armes</a></li>
 <li><a href="#permissions">Permissions IG</a></li>
+<li><a href="#packs">Packs</a></li>
+<li><a href="#divers">Divers</a></li>
 </ul>
 <div class="search-bar"><input type="text" placeholder="Rechercher..."><i class="fas fa-search"></i></div>
+<button class="login-btn">Se connecter</button>
 <i class="fas fa-moon toggle-theme"></i>
 </nav>
 </header>
 
 <!-- Main -->
 <main>
-<section id="vehicules">
-<h2>Véhicules</h2>
-<div class="cards">
-<div class="card"><img src="assets/images/vehicules/vehicule1.png"><h3>Vehicule 1</h3><button>Acheter</button></div>
-<div class="card"><img src="assets/images/vehicules/vehicule2.png"><h3>Vehicule 2</h3><button>Acheter</button></div>
-<div class="card"><img src="assets/images/vehicules/vehicule3.png"><h3>Vehicule 3</h3><button>Acheter</button></div>
-<div class="card"><img src="assets/images/vehicules/vehicule4.png"><h3>Vehicule 4</h3><button>Acheter</button></div>
-<div class="card"><img src="assets/images/vehicules/vehicule5.png"><h3>Vehicule 5</h3><button>Acheter</button></div>
-<div class="card"><img src="assets/images/vehicules/vehicule6.png"><h3>Vehicule 6</h3><button>Acheter</button></div>
-<div class="card"><img src="assets/images/vehicules/vehicule7.png"><h3>Vehicule 7</h3><button>Acheter</button></div>
+<div class="hero">
+<div class="hero-text">
+<h1>Bienvenue sur UnityRP Shop</h1>
+<p>Découvrez les meilleurs objets, abonnements et bonus pour votre serveur UnityRP !</p>
 </div>
-</section>
+<div class="hero-card">
+<img src="assets/images/bestseller.png" alt="Bestseller">
+</div>
+</div>
 
-<section id="vip">
-<h2>Grades VIP</h2>
-<div class="cards">
-<div class="card"><img src="assets/images/vip/vip1.png"><h3>VIP 1</h3><button>Acheter</button></div>
-<div class="card"><img src="assets/images/vip/vip2.png"><h3>VIP 2</h3><button>Acheter</button></div>
-<div class="card"><img src="assets/images/vip/vip3.png"><h3>VIP 3</h3><button>Acheter</button></div>
+<div class="payments">
+<img src="assets/images/payments/visa.png" alt="Visa">
+<img src="assets/images/payments/paypal.png" alt="PayPal">
+<img src="assets/images/payments/mastercard.png" alt="MasterCard">
+<img src="assets/images/payments/applepay.png" alt="Apple Pay">
 </div>
-</section>
 
-<section id="armes">
-<h2>Armes</h2>
-<div class="cards">
-<div class="card"><img src="assets/images/armes/arme1.png"><h3>Arme 1</h3><button>Acheter</button></div>
-<div class="card"><img src="assets/images/armes/arme2.png"><h3>Arme 2</h3><button>Acheter</button></div>
-<div class="card"><img src="assets/images/armes/arme3.png"><h3>Arme 3</h3><button>Acheter</button></div>
-<div class="card"><img src="assets/images/armes/arme4.png"><h3>Arme 4</h3><button>Acheter</button></div>
-<div class="card"><img src="assets/images/armes/arme5.png"><h3>Arme 5</h3><button>Acheter</button></div>
-<div class="card"><img src="assets/images/armes/arme6.png"><h3>Arme 6</h3><button>Acheter</button></div>
-<div class="card"><img src="assets/images/armes/arme7.png"><h3>Arme 7</h3><button>Acheter</button></div>
+<div class="categories">
+<div class="category-card" id="abonnements">Abonnements</div>
+<div class="category-card" id="objets">Objets</div>
+<div class="category-card" id="armes">Armes</div>
+<div class="category-card" id="permissions">Permissions IG</div>
+<div class="category-card" id="packs">Packs</div>
+<div class="category-card" id="divers">Divers</div>
 </div>
-</section>
-
-<section id="permissions">
-<h2>Permissions IG</h2>
-<div class="cards">
-<div class="card"><img src="assets/images/permissions/staff1.png"><h3>Staff 1</h3><button>Acheter</button></div>
-<div class="card"><img src="assets/images/permissions/staff2.png"><h3>Staff 2</h3><button>Acheter</button></div>
-<div class="card"><img src="assets/images/permissions/staff3.png"><h3>Staff 3</h3><button>Acheter</button></div>
-</div>
-</section>
 </main>
 
 <footer>
@@ -171,9 +152,9 @@ mobileIcon.addEventListener("click",()=>{navUl.classList.toggle("show");});
 const searchInput=document.querySelector(".search-bar input");
 searchInput.addEventListener("input",(e)=>{
   const query=e.target.value.toLowerCase();
-  document.querySelectorAll(".card").forEach(card=>{
-    const title=card.querySelector("h3").textContent.toLowerCase();
-    card.style.display=title.includes(query)?"block":"none";
+  document.querySelectorAll(".category-card").forEach(card=>{
+    const title=card.textContent.toLowerCase();
+    card.style.display=title.includes(query)?"flex":"none";
   });
 });
 </script>
