@@ -6,128 +6,88 @@
 <title>GTA New Shop - Panier</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Staatliches&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#0f0f0f;
-  --panel:#171717;
-  --white:#fff;
-  --purple:#8a2be2;
-  --transition:0.28s;
-  --glass: rgba(255,255,255,0.04);
-}
-
-*{box-sizing:border-box;}
-body{margin:0;font-family:"Poppins",sans-serif;background:var(--bg);color:var(--white);}
-header{
-  display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;position:fixed;width:100%;top:0;background:var(--panel);z-index:1000;transition:background var(--transition);
-}
-.logo img{height:75px;}
-.nav-left{display:flex;align-items:center;gap:2rem;}
-.nav-left ul{display:flex;gap:2rem;align-items:center;}
-.nav-left ul li a{color:var(--white);text-decoration:none;font-weight:500;transition:color var(--transition);}
-.nav-left ul li a:hover{color:var(--purple);}
-.header-right{display:flex;align-items:center;gap:1rem;}
-.header-right button,.gcoins-btn{
-  background:var(--purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;font-weight:600;cursor:pointer;transition:background var(--transition), transform var(--transition);
-}
-.header-right button:hover,.gcoins-btn:hover{background:#9d4edd;transform:scale(1.05);}
-.search-bar{position:relative;}
-.search-bar input{padding:0.4rem 1rem;border-radius:50px;border:none;outline:none;width:150px;background:var(--panel);color:#fff;}
-.search-bar input::placeholder{color:rgba(255,255,255,0.5);}
-
-main{padding:110px 2rem 4rem;max-width:1200px;margin:0 auto;}
-h1{font-family:'Staatliches',sans-serif;font-size:2rem;margin-bottom:1rem;}
-.cart-item{
-  display:flex;align-items:center;justify-content:space-between;padding:1rem;border-radius:12px;background:var(--panel);margin-bottom:1rem;transition:transform var(--transition), box-shadow var(--transition);
-}
-.cart-item:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.6);}
-.cart-item img{width:80px;height:80px;object-fit:cover;border-radius:8px;margin-right:1rem;}
-.item-info{flex:1;display:flex;flex-direction:column;gap:0.3rem;}
-.item-info .name{font-weight:600;}
-.item-info .price{color:rgba(255,255,255,0.8);}
-.item-controls{display:flex;align-items:center;gap:0.5rem;}
-.item-controls button{background:transparent;border:1px solid rgba(255,255,255,0.3);color:#fff;padding:0.3rem 0.6rem;border-radius:8px;cursor:pointer;transition:background var(--transition);}
-.item-controls button:hover{background:rgba(138,43,226,0.3);}
-.total{display:flex;justify-content:flex-end;align-items:center;font-size:1.3rem;font-weight:700;margin-top:1rem;gap:1rem;}
-.checkout-btn{background:var(--purple);padding:0.5rem 1.2rem;border-radius:50px;border:none;color:#fff;font-weight:600;cursor:pointer;transition:background var(--transition);}
-.checkout-btn:hover{background:#9d4edd;}
-footer{margin-top:2.5rem;padding:2rem 0;background:var(--panel);color:rgba(255,255,255,0.7);text-align:center;}
+  body {background:#0f0f0f;color:#fff;font-family:'Poppins',sans-serif;margin:0;padding:0;}
+  header, footer {background:#171717;padding:1rem 2rem;}
+  header a, footer a {color:#fff;text-decoration:none;margin-right:1rem;}
+  main {padding:2rem;}
+  .cart-item {display:flex;gap:1rem;padding:1rem;background:#171717;border-radius:12px;margin-bottom:1rem;align-items:center;}
+  .cart-item img {width:100px;height:75px;object-fit:cover;border-radius:8px;}
+  .cart-info {flex:1;}
+  .cart-title {font-weight:700;font-size:1.2rem;}
+  .cart-price {color:#8a2be2;font-weight:600;}
+  .remove-btn {background:#ff4b4b;border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;cursor:pointer;}
+  .total {text-align:right;font-size:1.5rem;font-weight:700;margin-top:2rem;}
+  .empty {text-align:center;color:rgba(255,255,255,0.6);margin-top:3rem;font-size:1.2rem;}
 </style>
 </head>
 <body>
+
 <header>
-  <div class="logo"><img src="assets/images/logo.png" alt="GTA New Shop"></div>
-  <div class="nav-left">
-    <ul>
-      <li><a href="abonnements.html">Abonnements</a></li>
-      <li><a href="objets.html">Objets</a></li>
-      <li><a href="armes.html">Armes</a></li>
-      <li><a href="permissions.html">Permissions IG</a></li>
-      <li><a href="packs.html">Packs</a></li>
-      <li><a href="vehicules.html">Véhicules</a></li>
-    </ul>
-  </div>
-  <div class="header-right">
-    <div class="search-bar"><input type="text" placeholder="Rechercher..."></div>
-    <button id="panier-btn">Panier (0)</button>
-    <button>Se connecter</button>
-    <a href="gcoins.html" class="gcoins-btn">+ Ajouter des GCoins</a>
-  </div>
+  <a href="index.html">Accueil</a>
+  <a href="objets.html">Objets</a>
+  <a href="packs.html">Packs</a>
+  <a href="vehicules.html">Véhicules</a>
+  <a href="permissions.html">Permissions</a>
+  <a href="armes.html">Armes</a>
+  <a href="abonnements.html">Abonnements</a>
+  <a href="gcoins.html">GCoins</a>
+  <button id="panier-btn">Panier (0)</button>
 </header>
 
 <main>
-<h1>Votre Panier</h1>
-<div id="cart-items">
-  <!-- Les items seront ajoutés ici dynamiquement -->
-</div>
-<div class="total">
-  <span>Total : </span><span id="total-price">0€</span>
-  <button class="checkout-btn">Passer à la commande</button>
-</div>
+  <h1>Mon Panier</h1>
+  <div id="cart-items"></div>
+  <div class="total" id="cart-total"></div>
 </main>
 
-<footer>© GTA New Shop — Tous droits réservés</footer>
+<footer>
+  © GTA New Shop — Tous droits réservés
+</footer>
 
 <script>
-// Simuler un panier stocké dans localStorage
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-const cartItemsContainer = document.getElementById('cart-items');
-const totalPriceEl = document.getElementById('total-price');
+  let panier = JSON.parse(localStorage.getItem('panier')) || [];
+  const cartItems = document.getElementById('cart-items');
+  const cartTotal = document.getElementById('cart-total');
+  const panierBtn = document.getElementById('panier-btn');
 
-function renderCart(){
-  cartItemsContainer.innerHTML = '';
-  let total = 0;
-  cart.forEach((item,index)=>{
-    total += item.price*item.quantity;
-    const div = document.createElement('div');
-    div.className='cart-item';
-    div.innerHTML=`
-      <img src="${item.img}" alt="${item.name}">
-      <div class="item-info">
-        <div class="name">${item.name}</div>
-        <div class="price">${item.price}€</div>
-      </div>
-      <div class="item-controls">
-        <button class="decrease">-</button>
-        <span>${item.quantity}</span>
-        <button class="increase">+</button>
-        <button class="remove">Supprimer</button>
-      </div>
-    `;
-    cartItemsContainer.appendChild(div);
-
-    div.querySelector('.increase').addEventListener('click',()=>{item.quantity++; renderCart();});
-    div.querySelector('.decrease').addEventListener('click',()=>{
-      if(item.quantity>1){item.quantity--; renderCart();}
+  function renderCart() {
+    cartItems.innerHTML = '';
+    if(panier.length === 0) {
+      cartItems.innerHTML = '<div class="empty">Votre panier est vide.</div>';
+      cartTotal.textContent = '';
+      panierBtn.innerText = 'Panier (0)';
+      return;
+    }
+    let total = 0;
+    panier.forEach((item, index) => {
+      total += parseFloat(item.price);
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `
+        ${item.img ? `<img src="${item.img}" alt="${item.title}">` : ''}
+        <div class="cart-info">
+          <div class="cart-title">${item.title}</div>
+          <div class="cart-price">${item.price}€</div>
+        </div>
+        <button class="remove-btn" data-index="${index}">Supprimer</button>
+      `;
+      cartItems.appendChild(div);
     });
-    div.querySelector('.remove').addEventListener('click',()=>{
-      cart.splice(index,1); renderCart();
-    });
-  });
-  totalPriceEl.textContent = total+'€';
-  localStorage.setItem('cart',JSON.stringify(cart));
-}
+    cartTotal.textContent = 'Total: ' + total + '€';
+    panierBtn.innerText = `Panier (${panier.length})`;
 
-renderCart();
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = btn.dataset.index;
+        panier.splice(idx,1);
+        localStorage.setItem('panier', JSON.stringify(panier));
+        renderCart();
+      });
+    });
+  }
+
+  renderCart();
 </script>
+
 </body>
 </html>
