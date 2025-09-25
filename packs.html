@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GTA New Shop - Packs</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 :root {
   --primary-black:#0f0f0f;
@@ -161,6 +162,9 @@ main{padding:8rem 3rem 5rem 3rem;}
   text-align:left;
   margin-bottom:1.5rem;
 }
+.modal-desc ul{padding-left:1.5rem;}
+.modal-desc li{margin-bottom:0.5rem;}
+.modal-desc i{margin-right:0.5rem; color:#8a2be2;}
 .close-btn{
   position:absolute;
   top:10px;
@@ -302,7 +306,7 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
       <img class="modal-vehicle" src="" alt="Pack">
     </div>
     <h2 class="modal-title"></h2>
-    <p class="modal-desc"></p>
+    <div class="modal-desc"></div>
     <button class="buy-btn modal-buy-btn">Ajouter au Panier</button>
   </div>
 </div>
@@ -320,7 +324,6 @@ footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1
   </div>
 </footer>
 
-<script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
 <script>
 let panierCount = 0;
 const panierBtn = document.getElementById('panier-btn');
@@ -334,6 +337,18 @@ const modalDesc = modal.querySelector('.modal-desc');
 const modalBuy = modal.querySelector('.modal-buy-btn');
 const closeBtn = modal.querySelector('.close-btn');
 
+function getIcon(item){
+    const lower = item.toLowerCase();
+    if(lower.includes('véhicule')) return '<i class="fas fa-car"></i>';
+    if(lower.includes('$')) return '<i class="fas fa-money-bill-wave"></i>';
+    if(lower.includes('eau')) return '<i class="fas fa-tint"></i>';
+    if(lower.includes('pain')) return '<i class="fas fa-bread-slice"></i>';
+    if(lower.includes('fusil') || lower.includes('arme')) return '<i class="fas fa-gun"></i>';
+    if(lower.includes('bandage') || lower.includes('kit')) return '<i class="fas fa-kit-medical"></i>';
+    if(lower.includes('vip')) return '<i class="fas fa-star"></i>';
+    return '';
+}
+
 document.querySelectorAll('.vehicle-card').forEach(card=>{
   const btn = card.querySelector('.buy-btn');
   btn.addEventListener('click',(e)=>{
@@ -341,14 +356,18 @@ document.querySelectorAll('.vehicle-card').forEach(card=>{
     panierCount++;
     panierBtn.innerText=`Panier (${panierCount})`;
   });
+
   card.addEventListener('click',()=>{
     modal.style.display='flex';
-    modalImg.src=card.dataset.img;
-    modalTitle.textContent=card.dataset.title;
-    modalDesc.textContent=card.dataset.desc;
-    modalBuy.onclick=()=>{
+    modalImg.src = card.dataset.img;
+    modalTitle.textContent = card.dataset.title;
+
+    const descItems = card.dataset.desc.split('\n').map(item => item.replace('- ', '').trim());
+    modalDesc.innerHTML = '<ul>' + descItems.map(item => `<li>${getIcon(item)} ${item}</li>`).join('') + '</ul>';
+
+    modalBuy.onclick = () => {
       panierCount++;
-      panierBtn.innerText=`Panier (${panierCount})`;
+      panierBtn.innerText = `Panier (${panierCount})`;
     };
     setTimeout(()=>{modalContent.style.transform='rotateY(0deg) scale(1)'; modalContent.style.opacity=1;},50);
   });
