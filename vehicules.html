@@ -472,55 +472,66 @@
   </footer>
 
   <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
-  <script>
-    let panierCount = 0;
-    const panierBtn = document.getElementById('panier-btn');
+<script>
+let panierCount = JSON.parse(localStorage.getItem('cart'))?.reduce((a,b)=>a+b.quantity,0) || 0;
+const panierBtn = document.getElementById('panier-btn');
 
-    const modal = document.getElementById('vehicle-modal');
-    const modalContent = modal.querySelector('.modal-content');
-    const modalImg = modal.querySelector('.modal-vehicle');
-    const modalTitle = modal.querySelector('.modal-title');
-    const modalDesc = modal.querySelector('.modal-desc');
-    const modalBuy = modal.querySelector('.modal-buy-btn');
-    const closeBtn = modal.querySelector('.close-btn');
+const modal = document.getElementById('vehicle-modal');
+const modalContent = modal.querySelector('.modal-content');
+const modalImg = modal.querySelector('.modal-vehicle');
+const modalTitle = modal.querySelector('.modal-title');
+const modalDesc = modal.querySelector('.modal-desc');
+const modalBuy = modal.querySelector('.modal-buy-btn');
+const closeBtn = modal.querySelector('.close-btn');
 
-    document.querySelectorAll('.vehicle-card').forEach(card => {
-      const btn = card.querySelector('.buy-btn');
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        panierCount++;
-        panierBtn.innerText = `Panier (${panierCount})`;
-      });
-      card.addEventListener('click', () => {
-        modal.style.display = 'flex';
-        modalImg.src = card.dataset.img;
-        modalTitle.textContent = card.dataset.title;
-        modalDesc.textContent = card.dataset.desc;
-        modalBuy.onclick = () => {
-          panierCount++;
-          panierBtn.innerText = `Panier (${panierCount})`;
-        };
-        setTimeout(() => {
-          modalContent.style.transform = 'rotateY(0deg) scale(1)';
-          modalContent.style.opacity = 1;
-        }, 50);
-      });
-    });
+function addToCart(name, price, img){
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const exist = cart.find(i=>i.name===name);
+  if(exist){exist.quantity++;} 
+  else {cart.push({name, price, img, quantity:1});}
+  localStorage.setItem('cart',JSON.stringify(cart));
+  panierCount = cart.reduce((a,b)=>a+b.quantity,0);
+  panierBtn.innerText = `Panier (${panierCount})`;
+}
 
-    closeBtn.addEventListener('click', () => {
-      modalContent.style.transform = 'rotateY(-20deg) scale(0.5)';
-      modalContent.style.opacity = 0;
-      setTimeout(() => modal.style.display = 'none', 300);
-    });
+document.querySelectorAll('.vehicle-card').forEach(card => {
+  const btn = card.querySelector('.buy-btn');
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    addToCart(card.dataset.title, parseInt(card.dataset.price), card.dataset.img);
+  });
+  card.addEventListener('click', () => {
+    modal.style.display = 'flex';
+    modalImg.src = card.dataset.img;
+    modalTitle.textContent = card.dataset.title;
+    modalDesc.textContent = card.dataset.desc;
+    modalBuy.onclick = () => {
+      addToCart(card.dataset.title, parseInt(card.dataset.price), card.dataset.img);
+    };
+    setTimeout(() => {
+      modalContent.style.transform = 'rotateY(0deg) scale(1)';
+      modalContent.style.opacity = 1;
+    }, 50);
+  });
+});
 
-    window.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modalContent.style.transform = 'rotateY(-20deg) scale(0.5)';
-        modalContent.style.opacity = 0;
-        setTimeout(() => modal.style.display = 'none', 300);
-      }
-    });
-  </script>
+closeBtn.addEventListener('click', () => {
+  modalContent.style.transform = 'rotateY(-20deg) scale(0.5)';
+  modalContent.style.opacity = 0;
+  setTimeout(() => modal.style.display = 'none', 300);
+});
+
+window.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modalContent.style.transform = 'rotateY(-20deg) scale(0.5)';
+    modalContent.style.opacity = 0;
+    setTimeout(() => modal.style.display = 'none', 300);
+  }
+});
+
+panierBtn.innerText = `Panier (${panierCount})`;
+</script>
+
 
 </body>
 </html>
