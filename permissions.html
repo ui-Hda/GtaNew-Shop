@@ -322,7 +322,7 @@ main{padding:110px 2rem 4rem}
 </footer>
 
 <script>
-let panierCount = 0;
+let panierCount = JSON.parse(localStorage.getItem('cart'))?.reduce((a,b)=>a+b.quantity,0) || 0;
 const panierBtn = document.getElementById('panier-btn');
 const updatePanier = ()=> panierBtn.innerText = `Panier (${panierCount})`;
 
@@ -336,6 +336,16 @@ const modalBuy = document.getElementById('modal-buy');
 const modalClose = document.getElementById('modal-close');
 const modalCancel = document.getElementById('modal-cancel');
 
+function addToCart(name, price, img){
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const exist = cart.find(i=>i.name===name);
+  if(exist){exist.quantity++;} 
+  else {cart.push({name, price, img, quantity:1});}
+  localStorage.setItem('cart',JSON.stringify(cart));
+  panierCount = cart.reduce((a,b)=>a+b.quantity,0);
+  updatePanier();
+}
+
 const openModal = (card)=>{
   const title = card.dataset.title;
   const price = card.dataset.price;
@@ -345,7 +355,7 @@ const openModal = (card)=>{
   modalTitle.textContent = title;
   modalPrice.textContent = price + "€";
   modalDesc.textContent = desc;
-  modalVisual.style.background = image;
+  modalVisual.style.background = `url(${image})`;
   modalVisual.style.backgroundSize = 'cover';
   modalVisual.style.backgroundPosition = 'center';
   modal.classList.add('show');
@@ -354,8 +364,7 @@ const openModal = (card)=>{
   modalContent.style.opacity = '1';
 
   modalBuy.onclick = ()=>{
-    panierCount++;
-    updatePanier();
+    addToCart(title, parseInt(price), image);
     modalBuy.textContent = 'Ajouté ✓';
     setTimeout(()=> modalBuy.textContent = 'Ajouter au panier',800);
   }
@@ -364,8 +373,7 @@ const openModal = (card)=>{
 document.querySelectorAll('.permission-card').forEach(card=>{
   card.querySelector('.buy-btn.primary').addEventListener('click',(e)=>{
     e.stopPropagation();
-    panierCount++;
-    updatePanier();
+    addToCart(card.dataset.title, parseInt(card.dataset.price), card.dataset.image);
   });
   card.querySelector('.add-btn').addEventListener('click',(e)=>{
     e.stopPropagation();
@@ -384,6 +392,7 @@ modalCancel.addEventListener('click',closeModal);
 modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
 updatePanier();
 </script>
+
 
 </body>
 </html>
