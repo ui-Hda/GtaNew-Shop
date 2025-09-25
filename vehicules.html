@@ -343,23 +343,13 @@
 
     /* Responsive */
     @media screen and (max-width:1024px) {
-      .vehicle-grid {
-        grid-template-columns: repeat(2,1fr);
-      }
+      .vehicle-grid { grid-template-columns: repeat(2,1fr); }
     }
 
     @media screen and (max-width:768px) {
-      .vehicle-grid {
-        grid-template-columns: 1fr;
-      }
-      .vehicle-card {
-        flex-direction: column;
-        max-width: 90%;
-      }
-      .vehicle-card img {
-        width: 100%;
-        height: 200px;
-      }
+      .vehicle-grid { grid-template-columns: 1fr; }
+      .vehicle-card { flex-direction: column; max-width: 90%; }
+      .vehicle-card img { width: 100%; height: 200px; }
     }
   </style>
 </head>
@@ -395,7 +385,7 @@
     </section>
 
     <section class="vehicle-grid">
-      <!-- Exemple véhicule -->
+      <!-- Tous les véhicules inclus -->
       <div class="vehicle-card" data-title="Comet RS" data-img="assets/images/vehicule.png" data-desc="La Comet RS est une voiture sportive ultra-rapide, idéale pour les courses en ville et sur l’autoroute. Accélération fulgurante, maniabilité parfaite, design élégant." data-price="1200">
         <img src="assets/images/vehicule.png" alt="Comet RS">
         <div class="vehicle-info">
@@ -404,7 +394,54 @@
           <button class="buy-btn">Ajouter au Panier</button>
         </div>
       </div>
-      <!-- Ajoute ici les autres véhicules comme Rhino, Buzzard, etc. -->
+      <div class="vehicle-card" data-title="Rhino" data-img="assets/images/vehicule.png" data-desc="Le Rhino est un char puissant et blindé. Idéal pour les combats les plus intenses sur le serveur, résistant aux attaques et extrêmement destructeur." data-price="5000">
+        <img src="assets/images/vehicule.png" alt="Rhino">
+        <div class="vehicle-info">
+          <h3>Rhino</h3>
+          <span>5000 GCoins</span>
+          <button class="buy-btn">Ajouter au Panier</button>
+        </div>
+      </div>
+      <div class="vehicle-card" data-title="Buzzard" data-img="assets/images/vehicule.png" data-desc="L’hélicoptère Buzzard offre mobilité et puissance de feu. Idéal pour le transport rapide et les combats aériens intenses." data-price="3000">
+        <img src="assets/images/vehicule.png" alt="Buzzard">
+        <div class="vehicle-info">
+          <h3>Buzzard</h3>
+          <span>3000 GCoins</span>
+          <button class="buy-btn">Ajouter au Panier</button>
+        </div>
+      </div>
+      <div class="vehicle-card" data-title="T20" data-img="assets/images/vehicule.png" data-desc="La T20 est une supercar alliant vitesse et maniabilité, parfaite pour les courses illégales et impressionner vos amis." data-price="3500">
+        <img src="assets/images/vehicule.png" alt="T20">
+        <div class="vehicle-info">
+          <h3>T20</h3>
+          <span>3500 GCoins</span>
+          <button class="buy-btn">Ajouter au Panier</button>
+        </div>
+      </div>
+      <div class="vehicle-card" data-title="Insurgent" data-img="assets/images/vehicule.png" data-desc="Le véhicule blindé Insurgent est parfait pour les missions périlleuses et les raids. Très résistant et intimidant." data-price="4000">
+        <img src="assets/images/vehicule.png" alt="Insurgent">
+        <div class="vehicle-info">
+          <h3>Insurgent</h3>
+          <span>4000 GCoins</span>
+          <button class="buy-btn">Ajouter au Panier</button>
+        </div>
+      </div>
+      <div class="vehicle-card" data-title="Cargobob" data-img="assets/images/vehicule.png" data-desc="Le Cargobob est un hélicoptère cargo capable de transporter d’autres véhicules. Essentiel pour les missions de transport lourdes." data-price="4500">
+        <img src="assets/images/vehicule.png" alt="Cargobob">
+        <div class="vehicle-info">
+          <h3>Cargobob</h3>
+          <span>4500 GCoins</span>
+          <button class="buy-btn">Ajouter au Panier</button>
+        </div>
+      </div>
+      <div class="vehicle-card" data-title="Phantom Wedge" data-img="assets/images/vehicule.png" data-desc="Le Phantom Wedge est un camion modifié, puissant et rapide pour les courses et les missions de destruction. Indispensable pour dominer le serveur." data-price="3800">
+        <img src="assets/images/vehicule.png" alt="Phantom Wedge">
+        <div class="vehicle-info">
+          <h3>Phantom Wedge</h3>
+          <span>3800 GCoins</span>
+          <button class="buy-btn">Ajouter au Panier</button>
+        </div>
+      </div>
     </section>
   </main>
 
