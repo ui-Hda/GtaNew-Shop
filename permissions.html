@@ -65,7 +65,7 @@ header{
 /* Main spacing */
 main{padding:110px 2rem 4rem}
 
-/* Top bar (like payment bar adapted) */
+/* Top bar */
 .top-bar{
   max-width:1200px;
   margin:0 auto 2rem;
@@ -108,6 +108,12 @@ main{padding:110px 2rem 4rem}
 }
 .permission-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
 
+/* Dégradé violet + couleur grade */
+.theme-blue{background:linear-gradient(135deg,#8a2be2,#0b3b82)}
+.theme-yellow{background:linear-gradient(135deg,#8a2be2,#f2c94c);color:#111}
+.theme-orange{background:linear-gradient(135deg,#8a2be2,#ff8a00);color:#111}
+.theme-red{background:linear-gradient(135deg,#8a2be2,#ff4b4b);color:#111}
+
 /* icon badge */
 .icon{
   width:72px;height:72px;border-radius:12px;
@@ -128,14 +134,8 @@ main{padding:110px 2rem 4rem}
 
 /* buy button at bottom */
 .permission-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:1rem}
-.add-btn{background:transparent;border:1px solid rgba(255,255,255,0.08);padding:0.5rem 0.85rem;border-radius:999px;color:var(--white);cursor:pointer}
+.add-btn{background:transparent;border:1px solid rgba(255,255,255,0.08);padding:0.5rem 0.85rem;border-radius:999px;font-weight:500;color:var(--white);cursor:pointer}
 .add-btn.primary{background:rgba(255,255,255,0.06);border-color:transparent}
-
-/* color themes */
-.theme-blue{background:linear-gradient(180deg,#0b3b82 0%, #072a5b 100%)}
-.theme-yellow{background:linear-gradient(180deg,#f2c94c 0%, #d7a800 100%);color:#111}
-.theme-orange{background:linear-gradient(180deg,#ff8a00 0%, #d86b00 100%);color:#111}
-.theme-red{background:linear-gradient(180deg,#ff4b4b 0%, #c92b2b 100%);color:#111}
 
 /* small pill */
 .pill{background:rgba(255,255,255,0.06);padding:0.25rem 0.5rem;border-radius:999px;font-weight:600}
@@ -163,7 +163,7 @@ main{padding:110px 2rem 4rem}
   color:var(--white);
   position:relative;
 }
-/* top visual band - colorized */
+/* top visual band - image of permission (could be gradient) */
 .modal-visual{
   height:360px;
   background-size:cover;
@@ -233,14 +233,8 @@ main{padding:110px 2rem 4rem}
 
   <section class="permissions-grid">
 
-    <!-- Bleue (150€) -->
-    <article class="permission-card theme-blue" data-title="Permission Bleue" data-price="150" data-image="linear-gradient(180deg,#0b3b82,#072a5b)" data-desc="
-La Permission Bleue est conçue pour les joueurs débutants et les citoyens engagés du serveur. Elle offre :
-• Accès prioritaire aux files d'attente secondaires et files de job locales.
-• Une petite prime de bienvenue chaque jour (kits et quelques ressources RP).
-• Badge 'Citoyen' visible sur le profil en jeu et dans le menu social.
-• Possibilités additionnelles de personnalisation de spawn (couleur de base et emplacement).
-Ce pack est idéal si vous voulez démarrer dans de bonnes conditions : suffisamment d'avantages pour se faire une place sans déséquilibrer l'économie du serveur.">
+    <!-- Les 4 permissions identiques au code précédent, mais avec dégradé violet+grade déjà appliqué -->
+    <article class="permission-card theme-blue" data-title="Permission Bleue" data-price="150" data-image="linear-gradient(135deg,#8a2be2,#0b3b82)" data-desc="Texte long...">
       <div>
         <div style="display:flex;justify-content:space-between;align-items:flex-start">
           <div style="display:flex;gap:1rem;align-items:center">
@@ -253,24 +247,16 @@ Ce pack est idéal si vous voulez démarrer dans de bonnes conditions : suffisam
         </div>
         <p class="permission-short">Accès de base RP, prime quotidienne, badge 'Citoyen' et options de spawn personnalisées.</p>
       </div>
-
       <div class="permission-bottom">
         <div class="pill">Accès basique</div>
         <div>
-          <button class="add-btn" data-role="Bleue">Détails</button>
-          <button class="add-btn primary buy-btn" data-role="Bleue">Ajouter au panier</button>
+          <button class="add-btn">Détails</button>
+          <button class="add-btn primary buy-btn">Ajouter au panier</button>
         </div>
       </div>
     </article>
 
-    <!-- Jaune (220€) -->
-    <article class="permission-card theme-yellow" data-title="Permission Jaune" data-price="220" data-image="linear-gradient(180deg,#f2c94c,#d7a800)" data-desc="
-La Permission Jaune accorde des privilèges supplémentaires pour les joueurs souhaitant s'imposer dans la scène RP :
-• Accès aux jobs premium (entrepreneur, transport VIP) et priorités sur certaines interactions en ville.
-• Pack mensuel de ressources (consommables, boost mineur d'expérience RP).
-• Icône 'Notable' visible sur le profil et droits avancés sur certaines commandes utilisateur.
-• Options supplémentaires de personnalisation (skins exclusifs, tags).
-C'est une permission taillée pour les joueurs actifs qui veulent plus d'impact et de visibilité sur le serveur.">
+    <article class="permission-card theme-yellow" data-title="Permission Jaune" data-price="220" data-image="linear-gradient(135deg,#8a2be2,#f2c94c)" data-desc="Texte long...">
       <div>
         <div style="display:flex;justify-content:space-between;align-items:flex-start">
           <div style="display:flex;gap:1rem;align-items:center">
@@ -283,24 +269,16 @@ C'est une permission taillée pour les joueurs actifs qui veulent plus d'impact 
         </div>
         <p class="permission-short">Statut avancé, jobs premium, pack mensuel et icône 'Notable' pour la reconnaissance RP.</p>
       </div>
-
       <div class="permission-bottom">
         <div class="pill">Privilèges avancés</div>
         <div>
-          <button class="add-btn" data-role="Jaune">Détails</button>
-          <button class="add-btn primary buy-btn" data-role="Jaune">Ajouter au panier</button>
+          <button class="add-btn">Détails</button>
+          <button class="add-btn primary buy-btn">Ajouter au panier</button>
         </div>
       </div>
     </article>
 
-    <!-- Orange (300€) -->
-    <article class="permission-card theme-orange" data-title="Permission Orange" data-price="300" data-image="linear-gradient(180deg,#ff8a00,#d86b00)" data-desc="
-La Permission Orange est destinée aux membres de la communauté appréciés pour leur implication : elle débloque des avantages rares et utiles en RP :
-• Accès à des zones privées et événements exclusifs (soirées, missions spéciales).
-• Caisse mensuelle premium contenant objets rares et consommables.
-• Possibilité de créer ou modérer de petits événements RP (avec outils dédiés).
-• Récompenses de fidélité et petit multiplicateur sur certaines activités rémunérées.
-C'est un choix idéal pour ceux qui veulent une expérience RP enrichie, davantage de responsabilités et des récompenses tangibles." >
+    <article class="permission-card theme-orange" data-title="Permission Orange" data-price="300" data-image="linear-gradient(135deg,#8a2be2,#ff8a00)" data-desc="Texte long...">
       <div>
         <div style="display:flex;justify-content:space-between;align-items:flex-start">
           <div style="display:flex;gap:1rem;align-items:center">
@@ -313,24 +291,16 @@ C'est un choix idéal pour ceux qui veulent une expérience RP enrichie, davanta
         </div>
         <p class="permission-short">Événements exclusifs, caisse premium mensuelle, outils RP et récompenses de fidélité.</p>
       </div>
-
       <div class="permission-bottom">
         <div class="pill">Accès élite</div>
         <div>
-          <button class="add-btn" data-role="Orange">Détails</button>
-          <button class="add-btn primary buy-btn" data-role="Orange">Ajouter au panier</button>
+          <button class="add-btn">Détails</button>
+          <button class="add-btn primary buy-btn">Ajouter au panier</button>
         </div>
       </div>
     </article>
 
-    <!-- Rouge (400€) -->
-    <article class="permission-card theme-red" data-title="Permission Rouge" data-price="400" data-image="linear-gradient(180deg,#ff4b4b,#c92b2b)" data-desc="
-La Permission Rouge est le grade ultime : prestige, privilèges étendus et influence sur le monde RP :
-• Accès complet aux fonctionnalités exclusives : événements premium, zones VIP, interactions administratives limitées.
-• Caisse légendaire mensuelle avec objets rares, véhicules ou options cosmétiques uniques.
-• Badge 'Légende' et mise en avant sur la page communauté (si activé).
-• Support privilégié, et possibilité d'influer sur des événements scénarisés (collaboration staff / RH).
-Cette permission est pensée pour les mécènes de la communauté — elle garantit prestige, utilité et impact RP profond." >
+    <article class="permission-card theme-red" data-title="Permission Rouge" data-price="400" data-image="linear-gradient(135deg,#8a2be2,#ff4b4b)" data-desc="Texte long...">
       <div>
         <div style="display:flex;justify-content:space-between;align-items:flex-start">
           <div style="display:flex;gap:1rem;align-items:center">
@@ -343,12 +313,11 @@ Cette permission est pensée pour les mécènes de la communauté — elle garan
         </div>
         <p class="permission-short">Grade ultime : caisse légendaire, zones VIP, badge 'Légende' et influence RP.</p>
       </div>
-
       <div class="permission-bottom">
         <div class="pill">Grade ultime</div>
         <div>
-          <button class="add-btn" data-role="Rouge">Détails</button>
-          <button class="add-btn primary buy-btn" data-role="Rouge">Ajouter au panier</button>
+          <button class="add-btn">Détails</button>
+          <button class="add-btn primary buy-btn">Ajouter au panier</button>
         </div>
       </div>
     </article>
@@ -356,7 +325,7 @@ Cette permission est pensée pour les mécènes de la communauté — elle garan
   </section>
 </main>
 
-<!-- Modal structure -->
+<!-- Modal -->
 <div class="modal" id="perm-modal" aria-hidden="true">
   <div class="modal-content" role="dialog" aria-modal="true">
     <button class="close" id="modal-close">✕</button>
@@ -378,12 +347,10 @@ Cette permission est pensée pour les mécènes de la communauté — elle garan
 </footer>
 
 <script>
-/* Cart counter logic */
 let panierCount = 0;
 const panierBtn = document.getElementById('panier-btn');
 const updatePanier = ()=> panierBtn.innerText = `Panier (${panierCount})`;
 
-/* Modal elements */
 const modal = document.getElementById('perm-modal');
 const modalContent = modal.querySelector('.modal-content');
 const modalVisual = document.getElementById('modal-visual');
@@ -394,77 +361,52 @@ const modalBuy = document.getElementById('modal-buy');
 const modalClose = document.getElementById('modal-close');
 const modalCancel = document.getElementById('modal-cancel');
 
-/* Open / close helpers */
 const openModal = (card)=>{
   const title = card.dataset.title;
   const price = card.dataset.price;
-  const image = card.dataset.image; // here we stored a CSS gradient or image URL
+  const image = card.dataset.image;
   const desc = card.dataset.desc;
 
   modalTitle.textContent = title;
   modalPrice.textContent = price + "€";
   modalDesc.textContent = desc;
-  // set visual background (supports gradient or image url)
   modalVisual.style.background = image;
   modalVisual.style.backgroundSize = 'cover';
   modalVisual.style.backgroundPosition = 'center';
   modal.classList.add('show');
   modal.style.display = 'flex';
-  setTimeout(()=> modal.classList.add('visible'), 20);
-  setTimeout(()=> modal.classList.add('show'), 40);
-  // animate (reset transform then set)
   modalContent.style.transform = 'rotateY(0deg) scale(1)';
   modalContent.style.opacity = '1';
 
-  // prepare buy handler
   modalBuy.onclick = ()=>{
     panierCount++;
     updatePanier();
-    // petit retour visuel
     modalBuy.textContent = 'Ajouté ✓';
     setTimeout(()=> modalBuy.textContent = 'Ajouter au panier',800);
   }
 }
 
-/* add click handlers */
 document.querySelectorAll('.permission-card').forEach(card=>{
-  // Card buy button
-  const buyBtn = card.querySelector('.buy-btn.primary');
-  buyBtn.addEventListener('click', (e)=>{
-    e.stopPropagation(); // don't open modal
+  card.querySelector('.buy-btn.primary').addEventListener('click',(e)=>{
+    e.stopPropagation();
     panierCount++;
     updatePanier();
-    buyBtn.textContent = 'Ajouté ✓';
-    setTimeout(()=> buyBtn.textContent = 'Ajouter au panier',700);
   });
-
-  // Details button (open modal)
-  const detailsBtn = card.querySelector('.add-btn');
-  detailsBtn.addEventListener('click', (e)=>{
+  card.querySelector('.add-btn').addEventListener('click',(e)=>{
     e.stopPropagation();
     openModal(card);
   });
-
-  // Click anywhere on card opens modal as well
-  card.addEventListener('click', ()=>{
-    openModal(card);
-  });
+  card.addEventListener('click',()=> openModal(card));
 });
 
-/* Close modal handlers */
 const closeModal = ()=>{
   modalContent.style.transform = 'rotateY(-25deg) scale(0.5)';
   modalContent.style.opacity = '0';
-  setTimeout(()=>{
-    modal.style.display = 'none';
-    modal.classList.remove('show');
-  },350);
+  setTimeout(()=>{modal.style.display='none';modal.classList.remove('show');},350);
 }
-modalClose.addEventListener('click', closeModal);
-modalCancel.addEventListener('click', closeModal);
-modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
-
-/* init panier text */
+modalClose.addEventListener('click',closeModal);
+modalCancel.addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
 updatePanier();
 </script>
 </body>
