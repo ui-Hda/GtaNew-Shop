@@ -85,7 +85,7 @@ main{padding:110px 2rem 4rem}
   grid-template-columns:repeat(2, 1fr);
   gap:1.5rem;
 }
-.permission-card{
+.permission-card {
   aspect-ratio:1/1;
   border-radius:14px;
   display:flex;
@@ -98,6 +98,8 @@ main{padding:110px 2rem 4rem}
   transition:transform var(--transition), box-shadow var(--transition);
   box-shadow: 0 6px 20px rgba(0,0,0,0.6);
   border:1px solid rgba(255,255,255,0.03);
+  /* Nouveau dégradé violet + couleur de la permission */
+  background: linear-gradient(180deg, rgba(138,43,226,0.35), rgba(0,0,0,0.2)), var(--card-bg);
 }
 .permission-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
 
