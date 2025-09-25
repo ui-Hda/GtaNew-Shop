@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>GTA New Shop - Permissions</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Staatliches&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0f0f0f;
+  --panel:#171717;
+  --white:#ffffff;
+  --purple:#8a2be2;
+  --transition:0.28s;
+  --glass: rgba(255,255,255,0.04);
+}
+
+/* Base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:"Poppins",sans-serif;
+  background:var(--bg);
+  color:var(--white);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Header (identique à index) */
+header{
+  position:fixed;
+  top:0;left:0;right:0;
+  height:88px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:1rem 2.5rem;
+  background:var(--panel);
+  z-index:1000;
+  gap:1rem;
+}
+.logo img{height:64px}
+.nav-left{display:flex;align-items:center;gap:2rem}
+.nav-left ul{display:flex;gap:1.25rem;align-items:center;padding:0;margin:0;list-style:none}
+.nav-left ul li a{color:var(--white);text-decoration:none;font-weight:500}
+.nav-left ul li a:hover{color:var(--purple)}
+.header-right{display:flex;align-items:center;gap:0.75rem}
+.search-bar{position:relative}
+.search-bar input{
+  background:var(--panel);
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.04);
+  padding:0.45rem 1rem;
+  color:var(--white);
+  width:160px;
+}
+.gcoins-btn{background:var(--purple);border:none;border-radius:50px;padding:0.45rem 0.9rem;color:#fff;font-weight:600;cursor:pointer}
+.header-right button{background:var(--purple);border:none;border-radius:50px;padding:0.45rem 0.9rem;color:#fff;cursor:pointer}
+.header-right button#panier-btn{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+
+/* Main spacing */
+main{padding:110px 2rem 4rem}
+
+/* Top bar (like payment bar adapted) */
+.top-bar{
+  max-width:1200px;
+  margin:0 auto 2rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+  padding:1.2rem 1.5rem;
+  border-radius:12px;
+  background:linear-gradient(90deg,#1b0f2f,#111);
+  background-size:200% 200%;
+  animation: bgmove 10s linear infinite;
+  box-shadow:0 6px 30px rgba(0,0,0,0.6);
+}
+@keyframes bgmove{0%{background-position:0 0}50%{background-position:100% 0}100%{background-position:0 0}}
+.top-bar .title{font-family:'Staatliches',sans-serif;font-size:1.8rem;color:var(--white)}
+.top-bar .sub{max-width:640px;text-align:right;color:rgba(255,255,255,0.85)}
+
+/* Grid 2x2 square cards */
+.permissions-grid{
+  max-width:1100px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:1.5rem;
+}
+.permission-card{
+  aspect-ratio:1/1;
+  border-radius:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:1.25rem;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  border:1px solid rgba(255,255,255,0.03);
+}
+.permission-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
+
+/* icon badge */
+.icon{
+  width:72px;height:72px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;font-size:2rem;
+  color:#111;
+  font-weight:700;
+  background:rgba(255,255,255,0.85);
+  box-shadow:0 4px 14px rgba(0,0,0,0.35);
+}
+
+/* title / price area */
+.permission-top{display:flex;align-items:center;gap:1rem}
+.permission-title{font-family:'Staatliches',sans-serif;font-size:1.35rem;color:#fff}
+.permission-price{font-weight:700;font-size:1.05rem;color:rgba(255,255,255,0.95)}
+
+/* description short */
+.permission-short{color:rgba(255,255,255,0.85);margin-top:0.6rem;font-size:0.95rem;line-height:1.3}
+
+/* buy button at bottom */
+.permission-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:1rem}
+.add-btn{background:transparent;border:1px solid rgba(255,255,255,0.08);padding:0.5rem 0.85rem;border-radius:999px;color:var(--white);cursor:pointer}
+.add-btn.primary{background:rgba(255,255,255,0.06);border-color:transparent}
+
+/* color themes */
+.theme-blue{background:linear-gradient(180deg,#0b3b82 0%, #072a5b 100%)}
+.theme-yellow{background:linear-gradient(180deg,#f2c94c 0%, #d7a800 100%);color:#111}
+.theme-orange{background:linear-gradient(180deg,#ff8a00 0%, #d86b00 100%);color:#111}
+.theme-red{background:linear-gradient(180deg,#ff4b4b 0%, #c92b2b 100%);color:#111}
+
+/* small pill */
+.pill{background:rgba(255,255,255,0.06);padding:0.25rem 0.5rem;border-radius:999px;font-weight:600}
+
+/* modal */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.7);
+  z-index:2000;
+  justify-content:center;
+  align-items:center;
+  perspective:1200px;
+}
+.modal-content{
+  width:min(920px,94%);
+  border-radius:14px;
+  overflow:hidden;
+  transform: rotateY(-25deg) scale(0.5);
+  opacity:0;
+  transition: transform 0.5s cubic-bezier(.2,.9,.2,1), opacity 0.45s;
+  box-shadow:0 30px 80px rgba(0,0,0,0.7);
+  background:linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.45));
+  color:var(--white);
+  position:relative;
+}
+/* top visual band - colorized */
+.modal-visual{
+  height:360px;
+  background-size:cover;
+  background-position:center;
+  position:relative;
+}
+.modal-visual::after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.5));
+}
+.modal-inner{
+  padding:1.25rem 1.5rem;
+}
+.modal-title{
+  font-family:'Staatliches',sans-serif;
+  font-size:2.2rem;
+  color:var(--purple);
+  margin:0 0 0.5rem;
+}
+.modal-price{font-weight:700;margin-bottom:0.5rem;color:rgba(255,255,255,0.95)}
+.modal-desc{color:rgba(255,255,255,0.92);line-height:1.6;max-height:320px;overflow:auto;padding-right:0.5rem}
+
+/* close */
+.modal .close{position:absolute;right:14px;top:14px;background:rgba(0,0,0,0.4);border-radius:8px;padding:0.4rem 0.55rem;cursor:pointer;border:1px solid rgba(255,255,255,0.06);color:#fff}
+
+/* modal show */
+.modal.show .modal-content{transform:rotateY(0deg) scale(1);opacity:1}
+
+/* responsive */
+@media (max-width:900px){
+  .permissions-grid{grid-template-columns:1fr;gap:1rem}
+  .modal-visual{height:260px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div style="display:flex;align-items:center;gap:1rem">
+    <div class="logo"><img src="assets/images/logo.png" alt="logo"></div>
+    <nav class="nav-left">
+      <ul>
+        <li><a href="abonnements.html">Abonnements</a></li>
+        <li><a href="objets.html">Objets</a></li>
+        <li><a href="armes.html">Armes</a></li>
+        <li><a href="permissions.html">Permissions</a></li>
+        <li><a href="packs.html">Packs</a></li>
+        <li><a href="vehicules.html">Véhicules</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="header-right">
+    <div class="search-bar"><input placeholder="Rechercher..." /></div>
+    <button id="panier-btn" onclick="window.location.href='panier.html'">Panier (0)</button>
+    <button>Se connecter</button>
+    <button class="gcoins-btn" onclick="window.location.href='gcoins.html'">+ Ajouter des GCoins</button>
+  </div>
+</header>
+
+<main>
+  <div class="top-bar">
+    <div class="title">Permissions</div>
+    <div class="sub">Choisissez la permission qui correspond à votre statut RP. Chaque permission débloque des capacités et du prestige uniques — lire la description complète en cliquant sur une carte.</div>
+  </div>
+
+  <section class="permissions-grid">
+
+    <!-- Bleue (150€) -->
+    <article class="permission-card theme-blue" data-title="Permission Bleue" data-price="150" data-image="linear-gradient(180deg,#0b3b82,#072a5b)" data-desc="
+La Permission Bleue est conçue pour les joueurs débutants et les citoyens engagés du serveur. Elle offre :
+• Accès prioritaire aux files d'attente secondaires et files de job locales.
+• Une petite prime de bienvenue chaque jour (kits et quelques ressources RP).
+• Badge 'Citoyen' visible sur le profil en jeu et dans le menu social.
+• Possibilités additionnelles de personnalisation de spawn (couleur de base et emplacement).
+Ce pack est idéal si vous voulez démarrer dans de bonnes conditions : suffisamment d'avantages pour se faire une place sans déséquilibrer l'économie du serveur.">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <div style="display:flex;gap:1rem;align-items:center">
+            <div class="icon">🔒</div>
+            <div>
+              <div class="permission-title">Permission Bleue</div>
+              <div class="permission-price">150€</div>
+            </div>
+          </div>
+        </div>
+        <p class="permission-short">Accès de base RP, prime quotidienne, badge 'Citoyen' et options de spawn personnalisées.</p>
+      </div>
+
+      <div class="permission-bottom">
+        <div class="pill">Accès basique</div>
+        <div>
+          <button class="add-btn" data-role="Bleue">Détails</button>
+          <button class="add-btn primary buy-btn" data-role="Bleue">Ajouter au panier</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Jaune (220€) -->
+    <article class="permission-card theme-yellow" data-title="Permission Jaune" data-price="220" data-image="linear-gradient(180deg,#f2c94c,#d7a800)" data-desc="
+La Permission Jaune accorde des privilèges supplémentaires pour les joueurs souhaitant s'imposer dans la scène RP :
+• Accès aux jobs premium (entrepreneur, transport VIP) et priorités sur certaines interactions en ville.
+• Pack mensuel de ressources (consommables, boost mineur d'expérience RP).
+• Icône 'Notable' visible sur le profil et droits avancés sur certaines commandes utilisateur.
+• Options supplémentaires de personnalisation (skins exclusifs, tags).
+C'est une permission taillée pour les joueurs actifs qui veulent plus d'impact et de visibilité sur le serveur.">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <div style="display:flex;gap:1rem;align-items:center">
+            <div class="icon">🔑</div>
+            <div>
+              <div class="permission-title">Permission Jaune</div>
+              <div class="permission-price">220€</div>
+            </div>
+          </div>
+        </div>
+        <p class="permission-short">Statut avancé, jobs premium, pack mensuel et icône 'Notable' pour la reconnaissance RP.</p>
+      </div>
+
+      <div class="permission-bottom">
+        <div class="pill">Privilèges avancés</div>
+        <div>
+          <button class="add-btn" data-role="Jaune">Détails</button>
+          <button class="add-btn primary buy-btn" data-role="Jaune">Ajouter au panier</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Orange (300€) -->
+    <article class="permission-card theme-orange" data-title="Permission Orange" data-price="300" data-image="linear-gradient(180deg,#ff8a00,#d86b00)" data-desc="
+La Permission Orange est destinée aux membres de la communauté appréciés pour leur implication : elle débloque des avantages rares et utiles en RP :
+• Accès à des zones privées et événements exclusifs (soirées, missions spéciales).
+• Caisse mensuelle premium contenant objets rares et consommables.
+• Possibilité de créer ou modérer de petits événements RP (avec outils dédiés).
+• Récompenses de fidélité et petit multiplicateur sur certaines activités rémunérées.
+C'est un choix idéal pour ceux qui veulent une expérience RP enrichie, davantage de responsabilités et des récompenses tangibles." >
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <div style="display:flex;gap:1rem;align-items:center">
+            <div class="icon">🛡️</div>
+            <div>
+              <div class="permission-title">Permission Orange</div>
+              <div class="permission-price">300€</div>
+            </div>
+          </div>
+        </div>
+        <p class="permission-short">Événements exclusifs, caisse premium mensuelle, outils RP et récompenses de fidélité.</p>
+      </div>
+
+      <div class="permission-bottom">
+        <div class="pill">Accès élite</div>
+        <div>
+          <button class="add-btn" data-role="Orange">Détails</button>
+          <button class="add-btn primary buy-btn" data-role="Orange">Ajouter au panier</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Rouge (400€) -->
+    <article class="permission-card theme-red" data-title="Permission Rouge" data-price="400" data-image="linear-gradient(180deg,#ff4b4b,#c92b2b)" data-desc="
+La Permission Rouge est le grade ultime : prestige, privilèges étendus et influence sur le monde RP :
+• Accès complet aux fonctionnalités exclusives : événements premium, zones VIP, interactions administratives limitées.
+• Caisse légendaire mensuelle avec objets rares, véhicules ou options cosmétiques uniques.
+• Badge 'Légende' et mise en avant sur la page communauté (si activé).
+• Support privilégié, et possibilité d'influer sur des événements scénarisés (collaboration staff / RH).
+Cette permission est pensée pour les mécènes de la communauté — elle garantit prestige, utilité et impact RP profond." >
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <div style="display:flex;gap:1rem;align-items:center">
+            <div class="icon">⭐</div>
+            <div>
+              <div class="permission-title">Permission Rouge</div>
+              <div class="permission-price">400€</div>
+            </div>
+          </div>
+        </div>
+        <p class="permission-short">Grade ultime : caisse légendaire, zones VIP, badge 'Légende' et influence RP.</p>
+      </div>
+
+      <div class="permission-bottom">
+        <div class="pill">Grade ultime</div>
+        <div>
+          <button class="add-btn" data-role="Rouge">Détails</button>
+          <button class="add-btn primary buy-btn" data-role="Rouge">Ajouter au panier</button>
+        </div>
+      </div>
+    </article>
+
+  </section>
+</main>
+
+<!-- Modal structure -->
+<div class="modal" id="perm-modal" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-modal="true">
+    <button class="close" id="modal-close">✕</button>
+    <div id="modal-visual" class="modal-visual"></div>
+    <div class="modal-inner">
+      <div class="modal-title" id="modal-title">Titre</div>
+      <div class="modal-price" id="modal-price">0€</div>
+      <div class="modal-desc" id="modal-desc">Description</div>
+      <div style="margin-top:1rem;display:flex;gap:0.5rem;justify-content:flex-end">
+        <button class="add-btn" id="modal-cancel">Fermer</button>
+        <button class="add-btn primary" id="modal-buy">Ajouter au panier</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer style="margin-top:2.5rem;padding:2rem 0;background:var(--panel);color:rgba(255,255,255,0.7);text-align:center">
+  <div style="max-width:1100px;margin:0 auto">© GTA New Shop — Tous droits réservés</div>
+</footer>
+
+<script>
+/* Cart counter logic */
+let panierCount = 0;
+const panierBtn = document.getElementById('panier-btn');
+const updatePanier = ()=> panierBtn.innerText = `Panier (${panierCount})`;
+
+/* Modal elements */
+const modal = document.getElementById('perm-modal');
+const modalContent = modal.querySelector('.modal-content');
+const modalVisual = document.getElementById('modal-visual');
+const modalTitle = document.getElementById('modal-title');
+const modalDesc = document.getElementById('modal-desc');
+const modalPrice = document.getElementById('modal-price');
+const modalBuy = document.getElementById('modal-buy');
+const modalClose = document.getElementById('modal-close');
+const modalCancel = document.getElementById('modal-cancel');
+
+/* Open / close helpers */
+const openModal = (card)=>{
+  const title = card.dataset.title;
+  const price = card.dataset.price;
+  const image = card.dataset.image; // here we stored a CSS gradient or image URL
+  const desc = card.dataset.desc;
+
+  modalTitle.textContent = title;
+  modalPrice.textContent = price + "€";
+  modalDesc.textContent = desc;
+  // set visual background (supports gradient or image url)
+  modalVisual.style.background = image;
+  modalVisual.style.backgroundSize = 'cover';
+  modalVisual.style.backgroundPosition = 'center';
+  modal.classList.add('show');
+  modal.style.display = 'flex';
+  setTimeout(()=> modal.classList.add('visible'), 20);
+  setTimeout(()=> modal.classList.add('show'), 40);
+  // animate (reset transform then set)
+  modalContent.style.transform = 'rotateY(0deg) scale(1)';
+  modalContent.style.opacity = '1';
+
+  // prepare buy handler
+  modalBuy.onclick = ()=>{
+    panierCount++;
+    updatePanier();
+    // petit retour visuel
+    modalBuy.textContent = 'Ajouté ✓';
+    setTimeout(()=> modalBuy.textContent = 'Ajouter au panier',800);
+  }
+}
+
+/* add click handlers */
+document.querySelectorAll('.permission-card').forEach(card=>{
+  // Card buy button
+  const buyBtn = card.querySelector('.buy-btn.primary');
+  buyBtn.addEventListener('click', (e)=>{
+    e.stopPropagation(); // don't open modal
+    panierCount++;
+    updatePanier();
+    buyBtn.textContent = 'Ajouté ✓';
+    setTimeout(()=> buyBtn.textContent = 'Ajouter au panier',700);
+  });
+
+  // Details button (open modal)
+  const detailsBtn = card.querySelector('.add-btn');
+  detailsBtn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    openModal(card);
+  });
+
+  // Click anywhere on card opens modal as well
+  card.addEventListener('click', ()=>{
+    openModal(card);
+  });
+});
+
+/* Close modal handlers */
+const closeModal = ()=>{
+  modalContent.style.transform = 'rotateY(-25deg) scale(0.5)';
+  modalContent.style.opacity = '0';
+  setTimeout(()=>{
+    modal.style.display = 'none';
+    modal.classList.remove('show');
+  },350);
+}
+modalClose.addEventListener('click', closeModal);
+modalCancel.addEventListener('click', closeModal);
+modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+
+/* init panier text */
+updatePanier();
+</script>
+</body>
+</html>
