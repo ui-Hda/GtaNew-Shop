@@ -5,88 +5,149 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GTA New Shop - Panier</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-  body {background:#0f0f0f;color:#fff;font-family:'Poppins',sans-serif;margin:0;padding:0;}
-  header, footer {background:#171717;padding:1rem 2rem;}
-  header a, footer a {color:#fff;text-decoration:none;margin-right:1rem;}
-  main {padding:2rem;}
-  .cart-item {display:flex;gap:1rem;padding:1rem;background:#171717;border-radius:12px;margin-bottom:1rem;align-items:center;}
-  .cart-item img {width:100px;height:75px;object-fit:cover;border-radius:8px;}
-  .cart-info {flex:1;}
-  .cart-title {font-weight:700;font-size:1.2rem;}
-  .cart-price {color:#8a2be2;font-weight:600;}
-  .remove-btn {background:#ff4b4b;border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;cursor:pointer;}
-  .total {text-align:right;font-size:1.5rem;font-weight:700;margin-top:2rem;}
-  .empty {text-align:center;color:rgba(255,255,255,0.6);margin-top:3rem;font-size:1.2rem;}
+:root {
+  --primary-black:#0f0f0f;
+  --secondary-black:#171717;
+  --primary-purple:#8a2be2;
+  --white:#fff;
+  --transition:0.3s;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:var(--primary-black);color:var(--white);overflow-x:hidden;transition: background var(--transition), color var(--transition);}
+header{display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;position:fixed;width:100%;top:0;background:var(--secondary-black);z-index:1000;transition:background var(--transition);}
+header .logo img{height:75px;}
+.nav-left{display:flex;align-items:center;gap:2rem;}
+.nav-left ul{display:flex;flex-direction:row;gap:2rem;align-items:center;}
+.nav-left ul li a{color:var(--white);font-weight:500;transition:color var(--transition);text-decoration:none;}
+.nav-left ul li a:hover{color:var(--primary-purple);}
+.header-right{display:flex;align-items:center;gap:1rem;}
+.header-right button, .header-right .gcoins-btn{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;font-weight:600;cursor:pointer;transition: background var(--transition), transform var(--transition);}
+.header-right button:hover, .header-right .gcoins-btn:hover{background:#9d4edd;transform:scale(1.05);}
+main{padding:8rem 3rem 5rem 3rem;}
+.panier-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;}
+.panier-item{display:flex;align-items:center;background:var(--secondary-black);padding:1rem;border-radius:12px;gap:1rem;}
+.panier-item img{width:120px;height:80px;object-fit:cover;border-radius:8px;}
+.item-info{flex:1;}
+.item-info h3{font-size:1.2rem;color:var(--white);}
+.item-info span{display:block;font-weight:600;color:var(--primary-purple);}
+.item-quantity{display:flex;align-items:center;gap:0.5rem;}
+.item-quantity button{background:var(--primary-purple);border:none;color:#fff;padding:0.3rem 0.7rem;border-radius:50px;cursor:pointer;transition:0.3s;}
+.item-quantity button:hover{background:#9d4edd;}
+.remove-btn{background:#ff4d4d;border:none;padding:0.3rem 0.7rem;color:#fff;border-radius:50px;cursor:pointer;transition:0.3s;}
+.remove-btn:hover{background:#ff1a1a;}
+.total-bar{margin-top:2rem;padding:1rem;border-radius:12px;background:linear-gradient(-45deg,#8a2be2,#4b0082,#171717,#0f0f0f);display:flex;justify-content:space-between;align-items:center;color:#fff;font-weight:600;}
+footer{text-align:center;padding:2rem 0;background:var(--secondary-black);color:rgba(255,255,255,0.6);margin-top:5rem;}
+footer a{margin:0 1rem;color:rgba(255,255,255,0.6);}
+footer a:hover{color:var(--primary-purple);}
 </style>
 </head>
 <body>
 
 <header>
-  <a href="index.html">Accueil</a>
-  <a href="objets.html">Objets</a>
-  <a href="packs.html">Packs</a>
-  <a href="vehicules.html">Véhicules</a>
-  <a href="permissions.html">Permissions</a>
-  <a href="armes.html">Armes</a>
-  <a href="abonnements.html">Abonnements</a>
-  <a href="gcoins.html">GCoins</a>
-  <button id="panier-btn">Panier (0)</button>
+  <div class="logo"><img src="assets/images/logo.png" alt="GTA New Shop"></div>
+  <div class="nav-left">
+    <ul>
+      <li><a href="abonnements.html">Abonnements</a></li>
+      <li><a href="objets.html">Objets</a></li>
+      <li><a href="armes.html">Armes</a></li>
+      <li><a href="permissions.html">Permissions IG</a></li>
+      <li><a href="packs.html">Packs</a></li>
+      <li><a href="vehicules.html">Véhicules</a></li>
+    </ul>
+  </div>
+  <div class="header-right">
+    <button id="panier-btn">Panier (0)</button>
+    <button>Se connecter</button>
+    <a href="gcoins.html" class="gcoins-btn">+ Ajouter des GCoins</a>
+  </div>
 </header>
 
 <main>
-  <h1>Mon Panier</h1>
-  <div id="cart-items"></div>
-  <div class="total" id="cart-total"></div>
+  <h1>Votre Panier</h1>
+  <section class="panier-grid" id="panier-grid">
+    <!-- Articles ajoutés via JS -->
+  </section>
+  <div class="total-bar">
+    <span>Total :</span>
+    <span id="total-prices">0 GCoins / 0 €</span>
+  </div>
 </main>
 
 <footer>
-  © GTA New Shop — Tous droits réservés
+  <div>
+    <a href="mentions-legales.html">Mentions légales</a>|
+    <a href="confidentialite.html">Confidentialité</a>|
+    <a href="contact.html">Contact</a>
+  </div>
 </footer>
 
 <script>
-  let panier = JSON.parse(localStorage.getItem('panier')) || [];
-  const cartItems = document.getElementById('cart-items');
-  const cartTotal = document.getElementById('cart-total');
-  const panierBtn = document.getElementById('panier-btn');
+let panier = JSON.parse(localStorage.getItem('panier')) || [];
+const panierGrid = document.getElementById('panier-grid');
+const totalPrices = document.getElementById('total-prices');
+const panierBtn = document.getElementById('panier-btn');
 
-  function renderCart() {
-    cartItems.innerHTML = '';
-    if(panier.length === 0) {
-      cartItems.innerHTML = '<div class="empty">Votre panier est vide.</div>';
-      cartTotal.textContent = '';
-      panierBtn.innerText = 'Panier (0)';
-      return;
-    }
-    let total = 0;
-    panier.forEach((item, index) => {
-      total += parseFloat(item.price);
-      const div = document.createElement('div');
-      div.className = 'cart-item';
-      div.innerHTML = `
-        ${item.img ? `<img src="${item.img}" alt="${item.title}">` : ''}
-        <div class="cart-info">
-          <div class="cart-title">${item.title}</div>
-          <div class="cart-price">${item.price}€</div>
+function updatePanierUI() {
+  panierGrid.innerHTML = '';
+  let totalG = 0, totalE = 0;
+
+  panier.forEach((item, index) => {
+    totalG += parseFloat(item.gcoins);
+    totalE += parseFloat(item.euro);
+
+    const div = document.createElement('div');
+    div.classList.add('panier-item');
+    div.innerHTML = `
+      <img src="${item.img}" alt="${item.title}">
+      <div class="item-info">
+        <h3>${item.title}</h3>
+        <span>${item.gcoins} GCoins / ${item.euro} €</span>
+        <div class="item-quantity">
+          <button class="minus-btn">-</button>
+          <span>${item.qty || 1}</span>
+          <button class="plus-btn">+</button>
+          <button class="remove-btn">Supprimer</button>
         </div>
-        <button class="remove-btn" data-index="${index}">Supprimer</button>
-      `;
-      cartItems.appendChild(div);
-    });
-    cartTotal.textContent = 'Total: ' + total + '€';
-    panierBtn.innerText = `Panier (${panier.length})`;
+      </div>
+    `;
 
-    document.querySelectorAll('.remove-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const idx = btn.dataset.index;
-        panier.splice(idx,1);
-        localStorage.setItem('panier', JSON.stringify(panier));
-        renderCart();
-      });
-    });
-  }
+    const minusBtn = div.querySelector('.minus-btn');
+    const plusBtn = div.querySelector('.plus-btn');
+    const removeBtn = div.querySelector('.remove-btn');
+    const qtySpan = div.querySelector('.item-quantity span');
 
-  renderCart();
+    minusBtn.addEventListener('click', () => {
+      if(item.qty > 1) item.qty--;
+      else item.qty = 1;
+      qtySpan.textContent = item.qty;
+      updatePanierStorage();
+    });
+    plusBtn.addEventListener('click', () => {
+      item.qty = (item.qty || 1) + 1;
+      qtySpan.textContent = item.qty;
+      updatePanierStorage();
+    });
+    removeBtn.addEventListener('click', () => {
+      panier.splice(index,1);
+      updatePanierStorage();
+      updatePanierUI();
+    });
+
+    panierGrid.appendChild(div);
+  });
+
+  totalPrices.textContent = `${totalG} GCoins / ${totalE} €`;
+  panierBtn.innerText = `Panier (${panier.length})`;
+}
+
+function updatePanierStorage() {
+  localStorage.setItem('panier', JSON.stringify(panier));
+  updatePanierUI();
+}
+
+updatePanierUI();
 </script>
 
 </body>
