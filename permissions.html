@@ -32,35 +32,21 @@ body{
 
 /* Header (navbar de vehicules.html) */
 header{
-  position:fixed;
-  top:0;left:0;right:0;
-  height:88px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:1rem 2.5rem;
-  background:var(--panel);
-  z-index:1000;
-  gap:1rem;
+  display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;position:fixed;width:100%;top:0;background:var(--panel);z-index:1000;transition:background var(--transition);
 }
-.logo img{height:64px}
-.nav-left{display:flex;align-items:center;gap:2rem}
-.nav-left ul{display:flex;gap:1.25rem;align-items:center;padding:0;margin:0;list-style:none}
-.nav-left ul li a{color:var(--white);text-decoration:none;font-weight:500}
-.nav-left ul li a:hover{color:var(--purple)}
-.header-right{display:flex;align-items:center;gap:0.75rem}
-.search-bar{position:relative}
-.search-bar input{
-  background:var(--panel);
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,0.04);
-  padding:0.45rem 1rem;
-  color:var(--white);
-  width:160px;
-}
-.gcoins-btn{background:var(--purple);border:none;border-radius:50px;padding:0.45rem 0.9rem;color:#fff;font-weight:600;cursor:pointer}
-.header-right button{background:var(--purple);border:none;border-radius:50px;padding:0.45rem 0.9rem;color:#fff;cursor:pointer}
-.header-right button#panier-btn{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+.logo img{height:75px;}
+.nav-left{display:flex;align-items:center;gap:2rem;}
+.nav-left ul{display:flex;flex-direction:row;gap:2rem;align-items:center;}
+.nav-left ul li a{color:var(--white);font-weight:500;transition:color var(--transition);text-decoration:none;}
+.nav-left ul li a:hover{color:var(--purple);}
+.gcoins-btn{background:var(--purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;font-weight:600;cursor:pointer;transition:background var(--transition), transform var(--transition);}
+.gcoins-btn:hover{background:#9d4edd;transform:scale(1.05);}
+.header-right{display:flex;align-items:center;gap:1rem;}
+.header-right button{background:var(--purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;cursor:pointer;transition:background var(--transition), transform var(--transition);}
+.header-right button:hover{background:#9d4edd;transform:scale(1.05);}
+.search-bar{position:relative;}
+.search-bar input{padding:0.4rem 1rem;border-radius:50px;border:none;outline:none;width:150px;background:var(--panel);color:#fff;}
+.search-bar input::placeholder{color:rgba(255,255,255,0.5);}
 
 /* Main spacing */
 main{padding:110px 2rem 4rem}
@@ -163,7 +149,6 @@ main{padding:110px 2rem 4rem}
   color:var(--white);
   position:relative;
 }
-/* top visual band - image of permission (could be gradient) */
 .modal-visual{
   height:360px;
   background-size:cover;
@@ -186,11 +171,7 @@ main{padding:110px 2rem 4rem}
 }
 .modal-price{font-weight:700;margin-bottom:0.5rem;color:rgba(255,255,255,0.95)}
 .modal-desc{color:rgba(255,255,255,0.92);line-height:1.6;max-height:320px;overflow:auto;padding-right:0.5rem}
-
-/* close */
 .modal .close{position:absolute;right:14px;top:14px;background:rgba(0,0,0,0.4);border-radius:8px;padding:0.4rem 0.55rem;cursor:pointer;border:1px solid rgba(255,255,255,0.06);color:#fff}
-
-/* modal show */
 .modal.show .modal-content{transform:rotateY(0deg) scale(1);opacity:1}
 
 /* responsive */
@@ -203,25 +184,25 @@ main{padding:110px 2rem 4rem}
 <body>
 
 <header>
-  <div style="display:flex;align-items:center;gap:1rem">
-    <div class="logo"><img src="assets/images/logo.png" alt="logo"></div>
-    <nav class="nav-left">
-      <ul>
-        <li><a href="vehicules.html">Véhicules</a></li>
-        <li><a href="abonnements.html">Abonnements</a></li>
-        <li><a href="objets.html">Objets</a></li>
-        <li><a href="armes.html">Armes</a></li>
-        <li><a href="permissions.html">Permissions</a></li>
-        <li><a href="packs.html">Packs</a></li>
-      </ul>
-    </nav>
+  <div class="logo"><img src="assets/images/logo.png" alt="GTA New Shop"></div>
+  <div class="nav-left">
+    <ul>
+      <li><a href="abonnements.html">Abonnements</a></li>
+      <li><a href="objets.html">Objets</a></li>
+      <li><a href="armes.html">Armes</a></li>
+      <li><a href="permissions.html" style="color:var(--purple);">Permissions IG</a></li>
+      <li><a href="packs.html">Packs</a></li>
+      <li><a href="vehicules.html">Véhicules</a></li>
+    </ul>
   </div>
-
   <div class="header-right">
-    <div class="search-bar"><input placeholder="Rechercher..." /></div>
+    <div class="search-bar">
+      <input type="text" placeholder="Rechercher...">
+      <i class="fas fa-search"></i>
+    </div>
     <button id="panier-btn" onclick="window.location.href='panier.html'">Panier (0)</button>
     <button>Se connecter</button>
-    <button class="gcoins-btn" onclick="window.location.href='gcoins.html'">+ Ajouter des GCoins</button>
+    <a href="gcoins.html" class="gcoins-btn">+ Ajouter des GCoins</a>
   </div>
 </header>
 
@@ -232,17 +213,14 @@ main{padding:110px 2rem 4rem}
   </div>
 
   <section class="permissions-grid">
-
-    <!-- Cartes bleue, jaune, orange, rouge identiques au code précédent -->
-    <article class="permission-card theme-blue" data-title="Permission Bleue" data-price="150" data-image="linear-gradient(135deg,#8a2be2,#0b3b82)" data-desc="Texte long...">
+    <!-- Permission Bleue -->
+    <article class="permission-card theme-blue" data-title="Permission Bleue" data-price="150" data-image="assets/images/perm-bleue.png" data-desc="Accès de base RP, prime quotidienne, badge 'Citoyen' et options de spawn personnalisées.">
       <div>
-        <div style="display:flex;justify-content:space-between;align-items:flex-start">
-          <div style="display:flex;gap:1rem;align-items:center">
-            <div class="icon">🔒</div>
-            <div>
-              <div class="permission-title">Permission Bleue</div>
-              <div class="permission-price">150€</div>
-            </div>
+        <div class="permission-top">
+          <div class="icon">🔒</div>
+          <div>
+            <div class="permission-title">Permission Bleue</div>
+            <div class="permission-price">150€</div>
           </div>
         </div>
         <p class="permission-short">Accès de base RP, prime quotidienne, badge 'Citoyen' et options de spawn personnalisées.</p>
@@ -256,15 +234,14 @@ main{padding:110px 2rem 4rem}
       </div>
     </article>
 
-    <article class="permission-card theme-yellow" data-title="Permission Jaune" data-price="220" data-image="linear-gradient(135deg,#8a2be2,#f2c94c)" data-desc="Texte long...">
+    <!-- Permission Jaune -->
+    <article class="permission-card theme-yellow" data-title="Permission Jaune" data-price="220" data-image="assets/images/perm-jaune.png" data-desc="Statut avancé, jobs premium, pack mensuel et icône 'Notable' pour la reconnaissance RP.">
       <div>
-        <div style="display:flex;justify-content:space-between;align-items:flex-start">
-          <div style="display:flex;gap:1rem;align-items:center">
-            <div class="icon">🔑</div>
-            <div>
-              <div class="permission-title">Permission Jaune</div>
-              <div class="permission-price">220€</div>
-            </div>
+        <div class="permission-top">
+          <div class="icon">🔑</div>
+          <div>
+            <div class="permission-title">Permission Jaune</div>
+            <div class="permission-price">220€</div>
           </div>
         </div>
         <p class="permission-short">Statut avancé, jobs premium, pack mensuel et icône 'Notable' pour la reconnaissance RP.</p>
@@ -278,15 +255,14 @@ main{padding:110px 2rem 4rem}
       </div>
     </article>
 
-    <article class="permission-card theme-orange" data-title="Permission Orange" data-price="300" data-image="linear-gradient(135deg,#8a2be2,#ff8a00)" data-desc="Texte long...">
+    <!-- Permission Orange -->
+    <article class="permission-card theme-orange" data-title="Permission Orange" data-price="300" data-image="assets/images/perm-orange.png" data-desc="Événements exclusifs, caisse premium mensuelle, outils RP et récompenses de fidélité.">
       <div>
-        <div style="display:flex;justify-content:space-between;align-items:flex-start">
-          <div style="display:flex;gap:1rem;align-items:center">
-            <div class="icon">🛡️</div>
-            <div>
-              <div class="permission-title">Permission Orange</div>
-              <div class="permission-price">300€</div>
-            </div>
+        <div class="permission-top">
+          <div class="icon">🛡️</div>
+          <div>
+            <div class="permission-title">Permission Orange</div>
+            <div class="permission-price">300€</div>
           </div>
         </div>
         <p class="permission-short">Événements exclusifs, caisse premium mensuelle, outils RP et récompenses de fidélité.</p>
@@ -300,15 +276,14 @@ main{padding:110px 2rem 4rem}
       </div>
     </article>
 
-    <article class="permission-card theme-red" data-title="Permission Rouge" data-price="400" data-image="linear-gradient(135deg,#8a2be2,#ff4b4b)" data-desc="Texte long...">
+    <!-- Permission Rouge -->
+    <article class="permission-card theme-red" data-title="Permission Rouge" data-price="400" data-image="assets/images/perm-rouge.png" data-desc="Grade ultime : caisse légendaire, zones VIP, badge 'Légende' et influence RP.">
       <div>
-        <div style="display:flex;justify-content:space-between;align-items:flex-start">
-          <div style="display:flex;gap:1rem;align-items:center">
-            <div class="icon">⭐</div>
-            <div>
-              <div class="permission-title">Permission Rouge</div>
-              <div class="permission-price">400€</div>
-            </div>
+        <div class="permission-top">
+          <div class="icon">⭐</div>
+          <div>
+            <div class="permission-title">Permission Rouge</div>
+            <div class="permission-price">400€</div>
           </div>
         </div>
         <p class="permission-short">Grade ultime : caisse légendaire, zones VIP, badge 'Légende' et influence RP.</p>
@@ -409,5 +384,6 @@ modalCancel.addEventListener('click',closeModal);
 modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
 updatePanier();
 </script>
+
 </body>
 </html>
