@@ -353,6 +353,35 @@
     }
   </style>
 </head>
+  <script>
+document.querySelectorAll('.buy-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const card = btn.closest('[data-title]');
+    if (!card) return;
+
+    const item = {
+      name: card.dataset.title,
+      gcoins: parseInt(card.dataset.gcoins || 0),
+      euro: parseFloat(card.dataset.euro || 0),
+      img: card.dataset.img,
+      quantity: 1
+    };
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let existing = cart.find(p => p.name === item.name);
+    if(existing){
+      existing.quantity += 1;
+    } else {
+      cart.push(item);
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    btn.textContent = "Ajouté ✓";
+    setTimeout(() => btn.textContent = "Ajouter au Panier", 800);
+  });
+});
+</script>
 <body>
 
   <header>
