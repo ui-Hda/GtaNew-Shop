@@ -1,47 +1,41 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GTA New Shop - Panier</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Staatliches&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
-:root {
-  --primary-black:#0f0f0f;
-  --secondary-black:#171717;
-  --primary-purple:#8a2be2;
-  --white:#fff;
-  --transition:0.3s;
-}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:var(--primary-black);color:var(--white);overflow-x:hidden;transition: background var(--transition), color var(--transition);}
-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;position:fixed;width:100%;top:0;background:var(--secondary-black);z-index:1000;transition:background var(--transition);}
-header .logo img{height:75px;}
-.nav-left{display:flex;align-items:center;gap:2rem;}
-.nav-left ul{display:flex;flex-direction:row;gap:2rem;align-items:center;}
-.nav-left ul li a{color:var(--white);font-weight:500;transition:color var(--transition);text-decoration:none;}
-.nav-left ul li a:hover{color:var(--primary-purple);}
-.header-right{display:flex;align-items:center;gap:1rem;}
-.header-right button, .header-right .gcoins-btn{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;font-weight:600;cursor:pointer;transition: background var(--transition), transform var(--transition);}
-.header-right button:hover, .header-right .gcoins-btn:hover{background:#9d4edd;transform:scale(1.05);}
-main{padding:8rem 3rem 5rem 3rem;}
-.panier-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;}
-.panier-item{display:flex;align-items:center;background:var(--secondary-black);padding:1rem;border-radius:12px;gap:1rem;}
-.panier-item img{width:120px;height:80px;object-fit:cover;border-radius:8px;}
-.item-info{flex:1;}
-.item-info h3{font-size:1.2rem;color:var(--white);}
-.item-info span{display:block;font-weight:600;color:var(--primary-purple);}
-.item-quantity{display:flex;align-items:center;gap:0.5rem;}
-.item-quantity button{background:var(--primary-purple);border:none;color:#fff;padding:0.3rem 0.7rem;border-radius:50px;cursor:pointer;transition:0.3s;}
-.item-quantity button:hover{background:#9d4edd;}
-.remove-btn{background:#ff4d4d;border:none;padding:0.3rem 0.7rem;color:#fff;border-radius:50px;cursor:pointer;transition:0.3s;}
-.remove-btn:hover{background:#ff1a1a;}
-.total-bar{margin-top:2rem;padding:1rem;border-radius:12px;background:linear-gradient(-45deg,#8a2be2,#4b0082,#171717,#0f0f0f);display:flex;justify-content:space-between;align-items:center;color:#fff;font-weight:600;}
-footer{text-align:center;padding:2rem 0;background:var(--secondary-black);color:rgba(255,255,255,0.6);margin-top:5rem;}
-footer a{margin:0 1rem;color:rgba(255,255,255,0.6);}
-footer a:hover{color:var(--primary-purple);}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Panier - GTA New Shop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Staatliches&display=swap" rel="stylesheet">
+  <style>
+    :root {--primary-black:#0f0f0f;--secondary-black:#171717;--primary-purple:#8a2be2;--white:#fff;--transition:0.3s;}
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+    body{background:var(--primary-black);color:var(--white);}
+    header{display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;position:fixed;width:100%;top:0;background:var(--secondary-black);z-index:1000;}
+    .logo img{height:75px;}
+    .nav-left ul{display:flex;gap:2rem;}
+    .nav-left ul li a{color:var(--white);font-weight:500;text-decoration:none;transition:color var(--transition);}
+    .nav-left ul li a:hover{color:var(--primary-purple);}
+    .header-right{display:flex;align-items:center;gap:1rem;}
+    .header-right button,.gcoins-btn{background:var(--primary-purple);border:none;padding:0.5rem 1rem;border-radius:50px;color:#fff;font-weight:600;cursor:pointer;transition:background var(--transition),transform var(--transition);}
+    .header-right button:hover,.gcoins-btn:hover{background:#9d4edd;transform:scale(1.05);}
+    main{padding:8rem 3rem;}
+    h1{font-family:'Staatliches',sans-serif;font-size:2.5rem;margin-bottom:2rem;text-align:center;color:var(--primary-purple);}
+    table{width:100%;border-collapse:collapse;margin-bottom:2rem;}
+    th,td{padding:1rem;text-align:center;}
+    th{background:var(--secondary-black);color:var(--primary-purple);}
+    tr:nth-child(even){background:#1e1e1e;}
+    tr img{width:80px;height:60px;object-fit:cover;border-radius:8px;}
+    .actions button{margin:0 5px;padding:5px 10px;border:none;border-radius:6px;cursor:pointer;}
+    .btn-plus{background:#4caf50;color:#fff;}
+    .btn-minus{background:#f39c12;color:#fff;}
+    .btn-remove{background:#e74c3c;color:#fff;}
+    .total-box{background:var(--secondary-black);padding:1.5rem;border-radius:12px;text-align:right;font-size:1.2rem;}
+    .btn-clear{background:#e74c3c;color:#fff;padding:0.7rem 1.2rem;border:none;border-radius:50px;font-weight:600;cursor:pointer;margin-top:1rem;}
+    .btn-clear:hover{background:#ff5c5c;}
+    footer{text-align:center;padding:2rem 0;background:var(--secondary-black);color:rgba(255,255,255,0.6);margin-top:5rem;}
+    footer a{margin:0 1rem;color:rgba(255,255,255,0.6);}
+    footer a:hover{color:var(--primary-purple);}
+    footer .footer-socials{margin-top:1rem;display:flex;justify-content:center;gap:1rem;}
+  </style>
 </head>
 <body>
 
@@ -59,19 +53,29 @@ footer a:hover{color:var(--primary-purple);}
   </div>
   <div class="header-right">
     <button id="panier-btn">Panier (0)</button>
-    <button>Se connecter</button>
     <a href="gcoins.html" class="gcoins-btn">+ Ajouter des GCoins</a>
   </div>
 </header>
 
 <main>
   <h1>Votre Panier</h1>
-  <section class="panier-grid" id="panier-grid">
-    <!-- Articles ajoutés via JS -->
-  </section>
-  <div class="total-bar">
-    <span>Total :</span>
-    <span id="total-prices">0 GCoins / 0 €</span>
+  <table id="cart-table">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Nom</th>
+        <th>Prix GCoins</th>
+        <th>Prix €</th>
+        <th>Quantité</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <div class="total-box">
+    Total : <span id="total-gcoins">0</span> GCoins | <span id="total-euro">0</span> €
+    <br>
+    <button class="btn-clear" onclick="clearCart()">Vider le panier</button>
   </div>
 </main>
 
@@ -81,73 +85,61 @@ footer a:hover{color:var(--primary-purple);}
     <a href="confidentialite.html">Confidentialité</a>|
     <a href="contact.html">Contact</a>
   </div>
+  <div class="footer-socials">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-discord"></i></a>
+  </div>
 </footer>
 
 <script>
-let panier = JSON.parse(localStorage.getItem('panier')) || [];
-const panierGrid = document.getElementById('panier-grid');
-const totalPrices = document.getElementById('total-prices');
-const panierBtn = document.getElementById('panier-btn');
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+const tbody = document.querySelector("#cart-table tbody");
+const totalGcoinsEl = document.getElementById("total-gcoins");
+const totalEuroEl = document.getElementById("total-euro");
+const panierBtn = document.getElementById("panier-btn");
 
-function updatePanierUI() {
-  panierGrid.innerHTML = '';
-  let totalG = 0, totalE = 0;
-
-  panier.forEach((item, index) => {
-    totalG += parseFloat(item.gcoins);
-    totalE += parseFloat(item.euro);
-
-    const div = document.createElement('div');
-    div.classList.add('panier-item');
-    div.innerHTML = `
-      <img src="${item.img}" alt="${item.title}">
-      <div class="item-info">
-        <h3>${item.title}</h3>
-        <span>${item.gcoins} GCoins / ${item.euro} €</span>
-        <div class="item-quantity">
-          <button class="minus-btn">-</button>
-          <span>${item.qty || 1}</span>
-          <button class="plus-btn">+</button>
-          <button class="remove-btn">Supprimer</button>
-        </div>
-      </div>
-    `;
-
-    const minusBtn = div.querySelector('.minus-btn');
-    const plusBtn = div.querySelector('.plus-btn');
-    const removeBtn = div.querySelector('.remove-btn');
-    const qtySpan = div.querySelector('.item-quantity span');
-
-    minusBtn.addEventListener('click', () => {
-      if(item.qty > 1) item.qty--;
-      else item.qty = 1;
-      qtySpan.textContent = item.qty;
-      updatePanierStorage();
-    });
-    plusBtn.addEventListener('click', () => {
-      item.qty = (item.qty || 1) + 1;
-      qtySpan.textContent = item.qty;
-      updatePanierStorage();
-    });
-    removeBtn.addEventListener('click', () => {
-      panier.splice(index,1);
-      updatePanierStorage();
-      updatePanierUI();
-    });
-
-    panierGrid.appendChild(div);
+function updateCart(){
+  tbody.innerHTML="";
+  let totalGcoins=0,totalEuro=0;
+  cart.forEach((item,index)=>{
+    totalGcoins += item.gcoins*item.quantity;
+    totalEuro += item.euro*item.quantity;
+    let row=document.createElement("tr");
+    row.innerHTML=`
+      <td><img src="${item.img}" alt="${item.name}"></td>
+      <td>${item.name}</td>
+      <td>${item.gcoins}</td>
+      <td>${item.euro.toFixed(2)}</td>
+      <td>${item.quantity}</td>
+      <td class="actions">
+        <button class="btn-plus" onclick="changeQty(${index},1)">+</button>
+        <button class="btn-minus" onclick="changeQty(${index},-1)">-</button>
+        <button class="btn-remove" onclick="removeItem(${index})">Suppr</button>
+      </td>`;
+    tbody.appendChild(row);
   });
-
-  totalPrices.textContent = `${totalG} GCoins / ${totalE} €`;
-  panierBtn.innerText = `Panier (${panier.length})`;
+  totalGcoinsEl.textContent=totalGcoins;
+  totalEuroEl.textContent=totalEuro.toFixed(2);
+  panierBtn.innerText=`Panier (${cart.reduce((a,b)=>a+b.quantity,0)})`;
+  localStorage.setItem("cart",JSON.stringify(cart));
 }
 
-function updatePanierStorage() {
-  localStorage.setItem('panier', JSON.stringify(panier));
-  updatePanierUI();
+function changeQty(index,delta){
+  cart[index].quantity+=delta;
+  if(cart[index].quantity<=0){cart.splice(index,1);}
+  updateCart();
+}
+function removeItem(index){
+  cart.splice(index,1);
+  updateCart();
+}
+function clearCart(){
+  cart=[];
+  updateCart();
 }
 
-updatePanierUI();
+updateCart();
 </script>
 
 </body>
