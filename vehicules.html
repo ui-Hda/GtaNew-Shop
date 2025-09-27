@@ -475,8 +475,8 @@ document.querySelectorAll('.buy-btn').forEach(btn => {
       <a href="#"><i class="fab fa-discord"></i></a>
     </div>
   </footer>
-
-  <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
 <script>
 let panierCount = JSON.parse(localStorage.getItem('cart'))?.reduce((a,b)=>a+b.quantity,0) || 0;
 const panierBtn = document.getElementById('panier-btn');
